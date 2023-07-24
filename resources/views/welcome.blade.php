@@ -28,17 +28,13 @@
         @if (Route::has('login'))
             <div
                 class="px-10 py-8 border rounded-lg shadow-md border-slate-900 shadow-slate-600 bg-slate-900 text-slate-300">
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}"
-                        class="p-1 text-xl font-semibold underline rounded-lg decoration-slate-600">Login</a>
+                <a href="{{ route('login') }}"
+                    class="p-1 text-xl font-semibold underline rounded-lg decoration-slate-600">Login</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="p-1 ml-3 text-xl font-semibold underline rounded-lg decoration-slate-600">Register</a>
-                    @endif
-                @endauth
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}"
+                        class="p-1 ml-3 text-xl font-semibold underline rounded-lg decoration-slate-600">Register</a>
+                @endif
             </div>
         @endif
     </div>
