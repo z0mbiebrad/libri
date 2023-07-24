@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-slate-300">
-            {{ __('Home') }}
+            {{ __('Book Wishlist') }}
         </h2>
     </x-slot>
 
