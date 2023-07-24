@@ -19,24 +19,24 @@
         <div class="absolute mb-56 text-center align-top text-slate-300">
             <h2 class="mb-2 text-3xl">
                 <x-application-logo></x-application-logo>
-                Welcome to Libri <span class="-ml-2 font-mono font-extrabold">!</span>
+                Welcome to Libri <span class="-ml-2.5 font-mono font-extrabold">!</span>
             </h2>
-            <p class="text-lg">A tool to help you organize and track your books effortlessly.</p>
-            <p class="text-lg">Happy reading!</p>
+            <p class="mb-2 text-lg">A tool to help you organize and track your books effortlessly.</p>
+            <p class="mb-12 text-lg">Happy reading!</p>
         </div>
 
         @if (Route::has('login'))
             <div
-                class="px-10 py-8 border rounded-lg shadow-md border-slate-900 shadow-slate-400 bg-slate-800 text-slate-300">
+                class="px-10 py-8 border rounded-lg shadow-md border-slate-900 shadow-slate-600 bg-slate-900 text-slate-300">
                 @auth
                     <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}"
-                        class="p-1 text-xl font-semibold rounded-lg shadow-sm shadow-slate-900">Login</a>
+                        class="p-1 text-xl font-semibold underline rounded-lg decoration-slate-600">Login</a>
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
-                            class="p-1 ml-3 text-xl font-semibold rounded-lg shadow-sm shadow-slate-900">Register</a>
+                            class="p-1 ml-3 text-xl font-semibold underline rounded-lg decoration-slate-600">Register</a>
                     @endif
                 @endauth
             </div>
