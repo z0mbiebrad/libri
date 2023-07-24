@@ -16,16 +16,13 @@
 
 <body class="antialiased">
     <div class="flex flex-wrap items-center justify-center min-h-screen bg-black">
-        <div class="absolute mb-56 text-center align-top">
-            <h2 class="mb-2 text-3xl text-slate-300"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="inline-block w-10 m-0">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                </svg>
-                Welcome to Libri!
+        <div class="absolute mb-56 text-center align-top text-slate-300">
+            <h2 class="mb-2 text-3xl">
+                <x-application-logo></x-application-logo>
+                Welcome to Libri <span class="-ml-2 font-mono font-extrabold">!</span>
             </h2>
-            <p class="text-lg text-slate-300">A tool to help you organize your read and to-be-read lists
-                effortlessly</p>
+            <p class="text-lg">A tool to help you organize and track your books effortlessly.</p>
+            <p class="text-lg">Happy reading!</p>
         </div>
 
         @if (Route::has('login'))
