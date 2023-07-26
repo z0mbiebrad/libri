@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
+use \Illuminate\Support\Facades\Http;
+
 
 class BookSearch extends Controller
 {
@@ -12,10 +13,15 @@ class BookSearch extends Controller
         return view('booksearch');
     }
 
-    public function show()
+    public function show(Request $request)
     {
-        Artisan::call('fetch:books');
+        $book = $request->input('bookSearch');
 
-        return view('booksearch');
+        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes?q=' . $book . '&maxResults=40');
+        $bookResults = $bookResponse->body();
+        $bookData = json_decode($bookResults);
+        $books = $bookData->items;
+
+        return view('booksearch', ['books' => $books]);
     }
 }
