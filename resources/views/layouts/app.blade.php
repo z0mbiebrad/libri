@@ -17,8 +17,8 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="shadow bg-slate-900">
-                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <header class="shadow-md shadow-slate-600 bg-slate-900">
+                <div class="px-4 py-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
             </header>
