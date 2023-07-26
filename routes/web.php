@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookSearch;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/book-search', [BookSearch::class, 'index'])->middleware(['auth', 'verified'])->name('booksearch');
+Route::get('/results', [BookSearch::class, 'show'])->middleware(['auth', 'verified'])->name('results');
+
 
 Route::get('/finished', function () {
     return view('finished');
