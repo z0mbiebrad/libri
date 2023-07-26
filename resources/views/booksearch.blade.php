@@ -13,4 +13,12 @@
             <button class="block w-full py-2">Search</button>
         </form>
     </div>
+    <div>
+        @foreach ($books as $book)
+            <div class="border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
+                <p class="">{{ $book->volumeInfo->title }}</p>
+                <p> Description: {{ @$book->volumeInfo->description }}</p>
+            </div>
+        @endforeach
+    </div>
 </x-app-layout>
