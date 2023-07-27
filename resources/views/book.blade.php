@@ -5,15 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="w-full mx-auto my-1 shadow-md bg-slate-900 text-slate-300 shadow-slate-600">
-        <form action="{{ route('results') }}" class="text-lg font-semibold">
-            @csrf
-            <label for="bookSearch" class="block w-full py-2 text-center"></label>
-            <input id="bookSearch" name="bookSearch" class="block w-3/4 mx-auto text-black rounded-lg"
-                placeholder="Name of book...">
-            <button class="block w-full py-2">Search</button>
-        </form>
-    </div>
+    <x-booksearch></x-booksearch>
+
     <div>
         <div class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">
             <img class="w-1/2 mx-auto mb-4 border rounded-sm lg:w-1/6 border-slate-300"

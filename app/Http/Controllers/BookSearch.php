@@ -10,14 +10,18 @@ class BookSearch extends Controller
 {
     public function index(Request $request)
     {
+        return view('booksearch');
+    }
+    public function show(Request $request)
+    {
         $book = $request->input('bookSearch');
 
         $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes?q=' . $book);
         $bookResults = $bookResponse->body();
         $bookData = json_decode($bookResults);
-        $books = $bookData->items ?? null;
+        $books = $bookData->items;
 
-        return view('booksearch', ['books' => $books] ?? null);
+        return view('results', ['books' => $books]);
     }
 
     public function book(Request $request, $id)
