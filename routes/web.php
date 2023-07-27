@@ -20,7 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('/book-search', [BookSearch::class, 'index'])->middleware(['auth', 'verified'])->name('booksearch');
-Route::get('/results', [BookSearch::class, 'show'])->middleware(['auth', 'verified'])->name('results');
+Route::post('/book-search', [BookSearch::class, 'index'])->middleware(['auth', 'verified'])->name('results');
+Route::get('/{book:id}', [BookSearch::class, 'book'])->middleware(['auth', 'verified'])->name('book');
 
 
 Route::get('/finished', function () {
