@@ -27,7 +27,7 @@
 
         @if (Route::has('login'))
             <div
-                class="px-10 py-8 border rounded-lg shadow-md border-slate-900 shadow-slate-600 bg-slate-900 text-slate-300">
+                class="px-10 py-8 border rounded-lg shadow-md border-slate-600 shadow-slate-600 bg-slate-900 text-slate-300">
                 <a href="{{ route('login') }}"
                     class="p-1 text-xl font-semibold underline rounded-lg decoration-slate-600">Login</a>
 
