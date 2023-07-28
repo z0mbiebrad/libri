@@ -18,7 +18,8 @@
                 <a class="px-4 py-6 underline text-slate-300" href="{{ route('addFinished', $book->id) }}">Add to
                     Finished
                     Books</a>
-                <a class="px-4 py-6 underline text-slate-300" href="">Add to Current Books</a>
+                <a class="px-4 py-6 underline text-slate-300" href="{{ route('addCurrent', $book->id) }}">Add to Current
+                    Books</a>
                 <a class="px-4 py-6 underline text-slate-300" href="">Add to Wishlist Books</a>
             </div>
             <form action="{{ route('addFinished', $book->id) }}" method="POST">
