@@ -30,11 +30,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('results/{book:id}', [BookSearch::class, 'book'])->name('book');
 
-    Route::get('results/f/{book:id}', [FinishedBooksController::class, 'store'])->name('addFinished');
+    Route::post('results/f/{book:id}', [FinishedBooksController::class, 'store'])->name('addFinished');
 
-    Route::get('results/c/{book:id}', [CurrentBooksController::class, 'store'])->name('addCurrent');
+    Route::post('results/c/{book:id}', [CurrentBooksController::class, 'store'])->name('addCurrent');
 
-    Route::get('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
+    Route::post('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
 });
 
 

@@ -15,17 +15,20 @@
             </svg>Back</a>
         <div class="text-lg text-center border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
             <div class="flex justify-center">
-                <a class="px-4 py-6 underline text-slate-300" href="{{ route('addFinished', $book->id) }}">Add to
-                    Finished
-                    Books</a>
-                <a class="px-4 py-6 underline text-slate-300" href="{{ route('addCurrent', $book->id) }}">Add to Current
-                    Books</a>
-                <a class="px-4 py-6 underline text-slate-300" href="{{ route('addWishlist', $book->id) }}">Add to
-                    Wishlist Books</a>
+                <form class="p-2" action="{{ route('addFinished', $book->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="text-slate-300">Add to Finished</button>
+                </form>
+                <form class="p-2" action="{{ route('addCurrent', $book->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="text-slate-300">Add to Current</button>
+                </form>
+                <form class="p-2" action="{{ route('addWishlist', $book->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="text-slate-300">Add to Wishlist</button>
+                </form>
             </div>
-            <form action="{{ route('addFinished', $book->id) }}" method="POST">
-                <button type="submit" class="text-slate-300">Add to Finished</button>
-            </form>
+
             <img class="w-1/2 mx-auto mb-6 border rounded-sm lg:w-1/6 border-slate-300"
                 src="{{ $book->volumeInfo->imageLinks->thumbnail ?? url('/images/book.jpg') }}" alt="">
             <h5 class="py-2 underline border rounded-md shadow-md border-slate-600 shadow-slate-600">
