@@ -20,7 +20,8 @@
                     Books</a>
                 <a class="px-4 py-6 underline text-slate-300" href="{{ route('addCurrent', $book->id) }}">Add to Current
                     Books</a>
-                <a class="px-4 py-6 underline text-slate-300" href="">Add to Wishlist Books</a>
+                <a class="px-4 py-6 underline text-slate-300" href="{{ route('addWishlist', $book->id) }}">Add to
+                    Wishlist Books</a>
             </div>
             <form action="{{ route('addFinished', $book->id) }}" method="POST">
                 <button type="submit" class="text-slate-300">Add to Finished</button>

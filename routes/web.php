@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookSearch;
 use App\Http\Controllers\CurrentBooksController;
 use App\Http\Controllers\FinishedBooksController;
+use App\Http\Controllers\WishlistBooksController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('results/f/{book:id}', [FinishedBooksController::class, 'store'])->name('addFinished');
 
     Route::get('results/c/{book:id}', [CurrentBooksController::class, 'store'])->name('addCurrent');
+
+    Route::get('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
 });
 
 

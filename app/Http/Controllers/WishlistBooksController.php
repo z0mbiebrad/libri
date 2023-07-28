@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CurrentBooks;
+use App\Models\WishlistBooks;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Http;
 
-
-class CurrentBooksController extends Controller
+class WishlistBooksController extends Controller
 {
     public function store(Request $request, $id)
     {
@@ -19,7 +18,7 @@ class CurrentBooksController extends Controller
         $book = $bookData;
 
         try {
-            CurrentBooks::create([
+            WishlistBooks::create([
                 'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
                 'title' => $book->volumeInfo->title ?? null,
                 'subtitle' => $book->volumeInfo->subtitle ?? null,

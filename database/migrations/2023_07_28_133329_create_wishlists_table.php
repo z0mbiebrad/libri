@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wishlists', function (Blueprint $table) {
+        Schema::create('wishlist_books', function (Blueprint $table) {
             $table->id();
             $table->text('thumbnail');
             $table->string('title');
@@ -23,6 +23,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('publisher');
             $table->timestamps();
+
+            $table->unique('title', 'authors');
         });
     }
 

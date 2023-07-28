@@ -23,6 +23,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('publisher');
             $table->timestamps();
+
+            $table->unique('title', 'authors');
         });
     }
 
