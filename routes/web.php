@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\BookSearch;
+use App\Http\Controllers\FinishedBooksController;
 use App\Http\Controllers\ProfileController;
+use App\Models\FinishedBooks;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +28,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('results', [BookSearch::class, 'show'])->name('results');
 
     Route::get('results/{book:id}', [BookSearch::class, 'book'])->name('book');
+
+    Route::get('results/f/{book:id}', [FinishedBooksController::class, 'store'])->name('addFinished');
 });
 
 
