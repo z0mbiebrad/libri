@@ -5,6 +5,7 @@ use App\Http\Controllers\CurrentBooksController;
 use App\Http\Controllers\FinishedBooksController;
 use App\Http\Controllers\WishlistBooksController;
 use App\Http\Controllers\ProfileController;
+use App\Models\FinishedBooks;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,15 +33,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('results/f/{book:id}', [FinishedBooksController::class, 'store'])->name('addFinished');
 
+    Route::get('finished', [FinishedBooksController::class, 'show'])->name('finished');
+
     Route::post('results/c/{book:id}', [CurrentBooksController::class, 'store'])->name('addCurrent');
 
     Route::post('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
 });
 
-
-Route::get('finished', function () {
-    return view('finished');
-})->middleware(['auth', 'verified'])->name('finished');
 
 Route::get('currently-reading', function () {
     return view('unfinished');

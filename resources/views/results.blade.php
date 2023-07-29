@@ -19,7 +19,6 @@
                 <h5 class="p-1 text-base">{{ $book->volumeInfo->authors[0] ?? null }}</h5>
                 <p class="p-1 italic">{{ $book->volumeInfo->categories[0] ?? null }}</p>
                 <p class="p-1 italic">Published Date: {{ $book->volumeInfo->publishedDate ?? null }}</p>
-                {{-- <p class="pt-1 text-base">{{ @$book->volumeInfo->description }}</p> --}}
             </div>
         @endforeach
     </div>

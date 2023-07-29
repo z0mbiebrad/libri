@@ -59,5 +59,4 @@
                 {!! $book->volumeInfo->description !!}</p>
         </div>
     </div>
-    {{-- <div><a class="text-slate-300" href="/next">next</a></div> --}}
 </x-app-layout>

@@ -8,6 +8,12 @@ use \Illuminate\Support\Facades\Http;
 
 class FinishedBooksController extends Controller
 {
+    public function show()
+    {
+        $books = Finishedbooks::all();
+
+        return view('finished', ['books' => $books]);
+    }
     public function store(Request $request, $id)
     {
         $book = $id;
