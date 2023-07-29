@@ -39,13 +39,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('results/c/{book:id}', [CurrentBooksController::class, 'store'])->name('addCurrent');
 
+    Route::get('current', [CurrentBooksController::class, 'show'])->name('current');
+
+    Route::get('current/{book:id}', [CurrentBooksController::class, 'bookshow'])->name('currentbook');
+
     Route::post('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
 });
 
 
-Route::get('currently-reading', function () {
-    return view('unfinished');
-})->middleware(['auth', 'verified'])->name('unfinished');
 
 Route::get('wishlist', function () {
     return view('wishlist');

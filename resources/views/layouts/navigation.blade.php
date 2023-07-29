@@ -79,7 +79,7 @@
             <x-responsive-nav-link :href="route('finished')" :active="request()->routeIs('finished')">
                 {{ __('Finished Books') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('unfinished')" :active="request()->routeIs('unfinished')">
+            <x-responsive-nav-link :href="route('current')" :active="request()->routeIs('unfinished')">
                 {{ __('Currently Reading') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('wishlist')" :active="request()->routeIs('wishlist')">
