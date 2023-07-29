@@ -35,6 +35,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('finished', [FinishedBooksController::class, 'show'])->name('finished');
 
+    Route::get('finished/{book:id}', [FinishedBooksController::class, 'bookshow'])->name('finishedbook');
+
     Route::post('results/c/{book:id}', [CurrentBooksController::class, 'store'])->name('addCurrent');
 
     Route::post('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
