@@ -44,13 +44,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('current/{book:id}', [CurrentBooksController::class, 'bookshow'])->name('currentbook');
 
     Route::post('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
+
+    Route::get('wishlist', [WishlistBooksController::class, 'show'])->name('wishlist');
+
+    Route::get('wishlist/{book:id}', [WishlistBooksController::class, 'bookshow'])->name('wishlistbook');
 });
-
-
-
-Route::get('wishlist', function () {
-    return view('wishlist');
-})->middleware(['auth', 'verified'])->name('wishlist');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

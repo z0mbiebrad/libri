@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('wishlist_books', function (Blueprint $table) {
             $table->id();
-            $table->text('thumbnail');
-            $table->string('title');
-            $table->string('subtitle');
-            $table->string('authors');
-            $table->string('categories');
-            $table->string('rating');
-            $table->string('published_date');
-            $table->text('description');
-            $table->string('publisher');
+            $table->text('thumbnail')->nullable();
+            $table->string('title')->nullable();
+            $table->string('subtitle')->nullable();
+            $table->string('authors')->nullable();
+            $table->string('categories')->nullable();
+            $table->string('rating')->nullable();
+            $table->string('published_date')->nullable();
+            $table->text('description')->nullable();
+            $table->string('publisher')->nullable();
             $table->timestamps();
 
             $table->unique('title', 'authors');

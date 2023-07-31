@@ -11,11 +11,9 @@
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
             </svg>Back</a>
-        <a name="book" href="finished/{{ $book->id }}">
-            <img class="w-1/2 mx-auto mb-4 border rounded-sm lg:w-1/6 border-slate-300"
-                src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
-            <h5 class="p-1 underline">{{ $book->title ?? null }}</h5>
-        </a>
+        <img class="w-1/2 mx-auto mb-4 border rounded-sm lg:w-1/6 border-slate-300"
+            src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
+        <h5 class="p-1 underline">{{ $book->title ?? null }}</h5>
         <h5 class="p-1 text-base">{{ $book->subtitle ?? null }}</h5>
         <h5 class="p-1 text-base">{{ $book->authors ?? null }}</h5>
         <p class="p-1 italic">{{ $book->categories ?? null }}</p>

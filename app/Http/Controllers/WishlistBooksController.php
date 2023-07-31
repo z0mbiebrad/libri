@@ -8,6 +8,20 @@ use \Illuminate\Support\Facades\Http;
 
 class WishlistBooksController extends Controller
 {
+    public function show()
+    {
+        $books = Wishlistbooks::all();
+
+        return view('wishlist', ['books' => $books]);
+    }
+
+    public function bookshow(Request $request, $id)
+    {
+        $book = WishlistBooks::find($id);
+
+        return view('wishlist-book', ['book' => $book]);
+    }
+
     public function store(Request $request, $id)
     {
         $book = $id;
