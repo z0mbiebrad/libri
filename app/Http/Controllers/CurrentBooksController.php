@@ -47,6 +47,14 @@ class CurrentBooksController extends Controller
             //throw $th;
         }
 
-        return view('book', ['book' => $book]);
+        return view('book', ['book' => $book])->with('current', 'Book added to currently reading list.');
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        CurrentBooks::where('id', $id)->delete();
+
+        return redirect()->route('current')
+            ->with('message', 'Book deleted successfully.');
     }
 }

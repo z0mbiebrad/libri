@@ -7,6 +7,16 @@
 
     <x-booksearch></x-booksearch>
 
+    @if (!empty($finished))
+        <div class="text-lg text-center text-slate-300"> {{ $finished }}</div>
+    @endif
+    @if (!empty($current))
+        <div class="text-lg text-center text-slate-300"> {{ $current }}</div>
+    @endif
+    @if (!empty($wishlist))
+        <div class="text-lg text-center text-slate-300"> {{ $wishlist }}</div>
+    @endif
+
     <div>
         <a class="flex items-center my-3 text-lg font-semibold text-slate-300" href="{{ url()->previous() }}"><svg
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

@@ -47,6 +47,14 @@ class WishlistBooksController extends Controller
             //throw $th;
         }
 
-        return view('book', ['book' => $book]);
+        return view('book', ['book' => $book])->with('current', 'Book added to wishlist reading list.');
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        WishlistBooks::where('id', $id)->delete();
+
+        return redirect()->route('wishlist')
+            ->with('message', 'Book deleted successfully.');
     }
 }

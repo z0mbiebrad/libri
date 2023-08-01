@@ -5,6 +5,11 @@
         </h2>
     </x-slot>
 
+    @if (Session::has('message'))
+        <div class="text-white alert alert-info">
+            {{ Session::get('message') }}
+        </div>
+    @endif
     @foreach ($books as $book)
         <div class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">
             <a name="book" href="current/{{ $book->id }}">
