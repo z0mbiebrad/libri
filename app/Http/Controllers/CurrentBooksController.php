@@ -9,6 +9,19 @@ use \Illuminate\Support\Facades\Http;
 
 class CurrentBooksController extends Controller
 {
+    public function show()
+    {
+        $books = Currentbooks::all();
+
+        return view('current', ['books' => $books]);
+    }
+
+    public function bookshow(Request $request, $id)
+    {
+        $book = CurrentBooks::find($id);
+
+        return view('current-book', ['book' => $book]);
+    }
     public function store(Request $request, $id)
     {
         $book = $id;

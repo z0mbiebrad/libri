@@ -8,6 +8,20 @@ use \Illuminate\Support\Facades\Http;
 
 class FinishedBooksController extends Controller
 {
+    public function show()
+    {
+        $books = Finishedbooks::all();
+
+        return view('finished', ['books' => $books]);
+    }
+
+    public function bookshow(Request $request, $id)
+    {
+        $book = FinishedBooks::find($id);
+
+        return view('finished-book', ['book' => $book]);
+    }
+
     public function store(Request $request, $id)
     {
         $book = $id;
@@ -30,7 +44,7 @@ class FinishedBooksController extends Controller
                 'publisher' => $book->volumeInfo->publisher ?? null,
             ]);
         } catch (\Throwable $th) {
-            //throw $th;
+            // throw $th;
         }
 
         return view('book', ['book' => $book]);

@@ -5,6 +5,7 @@ use App\Http\Controllers\CurrentBooksController;
 use App\Http\Controllers\FinishedBooksController;
 use App\Http\Controllers\WishlistBooksController;
 use App\Http\Controllers\ProfileController;
+use App\Models\FinishedBooks;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,25 +31,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('results/{book:id}', [BookSearch::class, 'book'])->name('book');
 
-    Route::get('results/f/{book:id}', [FinishedBooksController::class, 'store'])->name('addFinished');
+    Route::post('results/f/{book:id}', [FinishedBooksController::class, 'store'])->name('addFinished');
 
-    Route::get('results/c/{book:id}', [CurrentBooksController::class, 'store'])->name('addCurrent');
+    Route::get('finished', [FinishedBooksController::class, 'show'])->name('finished');
 
-    Route::get('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
+    Route::get('finished/{book:id}', [FinishedBooksController::class, 'bookshow'])->name('finishedbook');
+
+    Route::post('results/c/{book:id}', [CurrentBooksController::class, 'store'])->name('addCurrent');
+
+    Route::get('current', [CurrentBooksController::class, 'show'])->name('current');
+
+    Route::get('current/{book:id}', [CurrentBooksController::class, 'bookshow'])->name('currentbook');
+
+    Route::post('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
+
+    Route::get('wishlist', [WishlistBooksController::class, 'show'])->name('wishlist');
+
+    Route::get('wishlist/{book:id}', [WishlistBooksController::class, 'bookshow'])->name('wishlistbook');
 });
-
-
-Route::get('finished', function () {
-    return view('finished');
-})->middleware(['auth', 'verified'])->name('finished');
-
-Route::get('currently-reading', function () {
-    return view('unfinished');
-})->middleware(['auth', 'verified'])->name('unfinished');
-
-Route::get('wishlist', function () {
-    return view('wishlist');
-})->middleware(['auth', 'verified'])->name('wishlist');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
