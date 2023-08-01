@@ -10,12 +10,22 @@
             <a name="book" href="wishlist/{{ $book->id }}">
                 <img class="w-1/2 mx-auto mb-4 border rounded-sm lg:w-1/6 border-slate-300"
                     src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
-                <h5 class="p-1 underline">{{ $book->title ?? null }}</h5>
+                @isset($book->title)
+                    <h5 class="p-1 underline">{{ $book->title }}</h5>
+                @endisset
             </a>
-            <h5 class="p-1 text-base">{{ $book->subtitle ?? null }}</h5>
-            <h5 class="p-1 text-base">{{ $book->authors ?? null }}</h5>
-            <p class="p-1 italic">{{ $book->categories ?? null }}</p>
-            <p class="p-1 italic">Published Date: {{ $book->published_date ?? null }}</p>
+            @isset($book->subtitle)
+                <h5 class="p-1 text-base">{{ $book->subtitle }}</h5>
+            @endisset
+            @isset($book->authors)
+                <h5 class="p-1 text-base">{{ $book->authors }}</h5>
+            @endisset
+            @isset($book->categories)
+                <p class="p-1 italic">{{ $book->categories }}</p>
+            @endisset
+            @isset($book->publishedDate)
+                <p class="p-1 italic">Published Date: {{ $book->publishe_date }}</p>
+            @endisset
             <p class="p-1 italic">Finished Reading: {{ date('d-m-Y', strtotime($book->created_at)) ?? null }}</p>
         </div>
     @endforeach
