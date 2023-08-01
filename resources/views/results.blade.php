@@ -13,12 +13,22 @@
                 <a name="book" href="results/{{ $book->id }}">
                     <img class="w-1/2 mx-auto mb-4 border rounded-sm lg:w-1/6 border-slate-300"
                         src="{{ $book->volumeInfo->imageLinks->thumbnail ?? url('/images/book.jpg') }}" alt="">
-                    <h5 class="p-1 underline">{{ $book->volumeInfo->title ?? null }}</h5>
+                    @isset($book->volumeInfo->title)
+                        <h5 class="p-1 underline">{{ $book->volumeInfo->title }}</h5>
+                    @endisset
                 </a>
-                <h5 class="p-1 text-base">{{ $book->volumeInfo->subtitle ?? null }}</h5>
-                <h5 class="p-1 text-base">{{ $book->volumeInfo->authors[0] ?? null }}</h5>
-                <p class="p-1 italic">{{ $book->volumeInfo->categories[0] ?? null }}</p>
-                <p class="p-1 italic">Published Date: {{ $book->volumeInfo->publishedDate ?? null }}</p>
+                @isset($book->volumeInfo->subtitle)
+                    <h5 class="p-1 text-base">{{ $book->volumeInfo->subtitle }}</h5>
+                @endisset
+                @isset($book->volumeInfo->authors[0])
+                    <h5 class="p-1 text-base">{{ $book->volumeInfo->authors[0] }}</h5>
+                @endisset
+                @isset($book->volumeInfo->categories[0])
+                    <p class="p-1 italic">{{ $book->volumeInfo->categories[0] }}</p>
+                @endisset
+                @isset($book->volumeInfo->publishedDate)
+                    <p class="p-1 italic">Published Date: {{ $book->volumeInfo->publishedDate }}</p>
+                @endisset
             </div>
         @endforeach
     </div>
