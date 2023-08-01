@@ -47,6 +47,14 @@ class FinishedBooksController extends Controller
             // throw $th;
         }
 
-        return view('book', ['book' => $book]);
+        return view('book', ['book' => $book])->with('finished', 'Book added to finished reading list.');
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        FinishedBooks::where('id', $id)->delete();
+
+        return redirect()->route('finished')
+            ->with('message', 'Book deleted successfully.');
     }
 }

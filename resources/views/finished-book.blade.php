@@ -4,6 +4,13 @@
             {{ __('Finished Books') }}
         </h2>
     </x-slot>
+    <form action="/finished/delete/{{ $book->id }}" method="post">
+        @method('delete')
+        @csrf
+        <button type="submit" value="delete"
+            class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Delete
+            Book</button>
+    </form>
 
     <div class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">
         <img class="w-1/2 mx-auto mb-6 border rounded-sm lg:w-1/6 border-slate-300"

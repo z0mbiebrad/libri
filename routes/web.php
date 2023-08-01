@@ -25,29 +25,39 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
+    // **BOOKSEARCH**
     Route::get('book-search', [BookSearch::class, 'index'])->name('booksearch');
 
     Route::get('results', [BookSearch::class, 'show'])->name('results');
 
     Route::get('results/{book:id}', [BookSearch::class, 'book'])->name('book');
 
+    // **FINISHED ROUTES**
     Route::post('results/f/{book:id}', [FinishedBooksController::class, 'store'])->name('addFinished');
 
     Route::get('finished', [FinishedBooksController::class, 'show'])->name('finished');
 
     Route::get('finished/{book:id}', [FinishedBooksController::class, 'bookshow'])->name('finishedbook');
 
+    Route::delete('finished/delete/{book:id}', [FinishedBooksController::class, 'destroy'])->name('deleteFinishedBook');
+
+    // **CURRENT ROUTES**
     Route::post('results/c/{book:id}', [CurrentBooksController::class, 'store'])->name('addCurrent');
 
     Route::get('current', [CurrentBooksController::class, 'show'])->name('current');
 
     Route::get('current/{book:id}', [CurrentBooksController::class, 'bookshow'])->name('currentbook');
 
+    Route::delete('current/delete/{book:id}', [CurrentBooksController::class, 'destroy'])->name('deleteCurrentBook');
+
+    // **WISHLIST ROUTES**
     Route::post('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
 
     Route::get('wishlist', [WishlistBooksController::class, 'show'])->name('wishlist');
 
     Route::get('wishlist/{book:id}', [WishlistBooksController::class, 'bookshow'])->name('wishlistbook');
+
+    Route::delete('wishlist/delete/{book:id}', [WishlistBooksController::class, 'destroy'])->name('deleteWishlistBook');
 });
 
 Route::middleware('auth')->group(function () {
