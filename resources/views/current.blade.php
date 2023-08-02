@@ -31,7 +31,6 @@
             @isset($book->publishedDate)
                 <p class="p-1 italic">Published Date: {{ $book->publishe_date }}</p>
             @endisset
-            <p class="p-1 italic">Finished Reading: {{ date('d-m-Y', strtotime($book->created_at)) ?? null }}</p>
         </div>
     @endforeach
 </x-app-layout>

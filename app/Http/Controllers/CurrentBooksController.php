@@ -82,6 +82,6 @@ class CurrentBooksController extends Controller
         CurrentBooks::where('id', $id)->delete();
 
         return redirect()->route('current')
-            ->with('message', 'Book transfer to finished successfully.');
+            ->with('message', 'Book transfer to finished reading successfully.');
     }
 }

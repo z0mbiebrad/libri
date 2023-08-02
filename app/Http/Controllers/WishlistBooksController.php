@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CurrentBooks;
 use App\Models\WishlistBooks;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Http;
@@ -56,5 +57,31 @@ class WishlistBooksController extends Controller
 
         return redirect()->route('wishlist')
             ->with('message', 'Book deleted successfully.');
+    }
+
+    public function currentTransfer(Request $request, $id)
+    {
+        $book = WishlistBooks::find($id);
+
+        try {
+            CurrentBooks::create([
+                'thumbnail' => $book->thumbnail ?? null,
+                'title' => $book->title ?? null,
+                'subtitle' => $book->subtitle ?? null,
+                'authors' => $book->authors ?? null,
+                'categories' => $book->categories ?? null,
+                'rating' => $book->averageRating ?? null,
+                'published_date' => $book->publishedDate ?? null,
+                'description' => $book->description ?? null,
+                'publisher' => $book->publisher ?? null,
+            ]);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+
+        WishlistBooks::where('id', $id)->delete();
+
+        return redirect()->route('wishlist')
+            ->with('message', 'Book transfer to currently reading successfully.');
     }
 }
