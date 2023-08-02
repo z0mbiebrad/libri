@@ -50,6 +50,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::delete('current/delete/{book:id}', [CurrentBooksController::class, 'destroy'])->name('deleteCurrentBook');
 
+    Route::post('current/transfer/{book:id}', [CurrentBooksController::class, 'finishedTransfer'])->name('finished.transfer');
+
+
     // **WISHLIST ROUTES**
     Route::post('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
 
