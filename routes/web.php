@@ -50,6 +50,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::delete('current/delete/{book:id}', [CurrentBooksController::class, 'destroy'])->name('deleteCurrentBook');
 
+    Route::post('current/transfer/{book:id}', [CurrentBooksController::class, 'finishedTransfer'])->name('finished.transfer');
+
+
     // **WISHLIST ROUTES**
     Route::post('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
 
@@ -58,6 +61,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('wishlist/{book:id}', [WishlistBooksController::class, 'bookshow'])->name('wishlistbook');
 
     Route::delete('wishlist/delete/{book:id}', [WishlistBooksController::class, 'destroy'])->name('deleteWishlistBook');
+
+    Route::post('wishlist/transfer/{book:id}', [WishlistBooksController::class, 'currentTransfer'])->name('current.transfer');
 });
 
 Route::middleware('auth')->group(function () {

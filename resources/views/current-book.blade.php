@@ -5,13 +5,22 @@
         </h2>
     </x-slot>
 
-    <form action="/current/delete/{{ $book->id }}" method="post">
-        @method('delete')
-        @csrf
-        <button type="submit" value="delete"
-            class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Delete
-            Book</button>
-    </form>
+    <div class="flex">
+        <form action="/current/delete/{{ $book->id }}" method="post" class="p-3 mx-2">
+            @method('delete')
+            @csrf
+            <button type="submit" value="delete"
+                class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Delete
+                Book</button>
+        </form>
+
+        <form action="/current/transfer/{{ $book->id }}" method="post" class="p-3 mx-2">
+            @csrf
+            <button type="submit" value="delete"
+                class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Finished
+                Reading</button>
+        </form>
+    </div>
 
     <div class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">
         <img class="w-1/2 mx-auto mb-6 border rounded-sm lg:w-1/6 border-slate-300"
