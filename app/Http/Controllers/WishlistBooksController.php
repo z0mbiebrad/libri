@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CurrentBook;
 use App\Models\CurrentBooks;
 use App\Models\WishlistBooks;
 use Illuminate\Http\Request;
@@ -64,7 +65,7 @@ class WishlistBooksController extends Controller
         $book = WishlistBooks::find($id);
 
         try {
-            CurrentBooks::create([
+            CurrentBook::create([
                 'thumbnail' => $book->thumbnail ?? null,
                 'title' => $book->title ?? null,
                 'subtitle' => $book->subtitle ?? null,
