@@ -13,7 +13,8 @@
 
     @foreach ($books as $book)
         <div class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">
-            <a name="book" href="finished/{{ $book->id }}">
+            <a name="book" href="finished/{{ $book->ulid }}">
+                <p>{{ $book->ulid }}</p>
                 <img class="w-1/2 mx-auto mb-4 border rounded-sm lg:w-1/6 border-slate-300"
                     src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
                 @isset($book->title)

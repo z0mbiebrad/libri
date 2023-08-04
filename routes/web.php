@@ -33,13 +33,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('results/{book:id}', [BookSearch::class, 'book'])->name('book');
 
     // **FINISHED ROUTES**
-    Route::post('results/f/{book:id}', [FinishedBooksController::class, 'store'])->name('addFinished');
+    Route::post('results/finished', [FinishedBooksController::class, 'store'])->name('addFinished');
 
     Route::get('finished', [FinishedBooksController::class, 'show'])->name('finished');
 
-    Route::get('finished/{book:id}', [FinishedBooksController::class, 'bookshow'])->name('finishedbook');
+    Route::get('finished/{book}', [FinishedBooksController::class, 'bookshow'])->name('finishedbook');
 
-    Route::delete('finished/delete/{book:id}', [FinishedBooksController::class, 'destroy'])->name('deleteFinishedBook');
+    Route::delete('finished/{book}', [FinishedBooksController::class, 'destroy'])->name('deleteFinishedBook');
 
     // **CURRENT ROUTES**
     Route::post('results/c/{book:id}', [CurrentBooksController::class, 'store'])->name('addCurrent');

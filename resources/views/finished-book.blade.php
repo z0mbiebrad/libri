@@ -4,7 +4,8 @@
             {{ __('Finished Books') }}
         </h2>
     </x-slot>
-    <form action="/finished/delete/{{ $book->id }}" method="post">
+
+    <form action="{{ route('deleteFinishedBook', $book) }}" method="post">
         @method('delete')
         @csrf
         <button type="submit" value="delete"

@@ -25,8 +25,9 @@
             </svg>Back</a>
         <div class="text-lg text-center border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
             <div class="flex justify-center">
-                <form class="p-2" action="{{ route('addFinished', $book->id) }}" method="POST">
+                <form class="p-2" action="{{ route('addFinished') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="google_book_id" value="{{ $book->id }}">
                     <button type="submit" class="text-slate-300">Add to Finished</button>
                 </form>
                 <form class="p-2" action="{{ route('addCurrent', $book->id) }}" method="POST">
