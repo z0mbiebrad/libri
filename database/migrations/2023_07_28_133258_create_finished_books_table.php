@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('finished_books', function (Blueprint $table) {
             $table->id();
+            $table->ulid();
             $table->text('thumbnail')->nullable();
             $table->string('title')->nullable();
             $table->string('subtitle')->nullable();
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->string('published_date')->nullable();
             $table->text('description')->nullable();
             $table->string('publisher')->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->unique(['title', 'authors']);

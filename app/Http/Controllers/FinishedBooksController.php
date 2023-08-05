@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FinishedBooks;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class FinishedBooksController extends Controller
 {
@@ -15,44 +16,41 @@ class FinishedBooksController extends Controller
         return view('finished', ['books' => $books]);
     }
 
-    public function bookshow(Request $request, $id)
+    public function bookshow(FinishedBooks $book)
     {
-        $book = FinishedBooks::find($id);
-
         return view('finished-book', ['book' => $book]);
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $book = $id;
 
-        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $book);
+        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $request->google_book_id);
         $bookResults = $bookResponse->body();
         $bookData = json_decode($bookResults);
         $book = $bookData;
 
-        try {
-            FinishedBooks::create([
-                'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
-                'title' => $book->volumeInfo->title ?? null,
-                'subtitle' => $book->volumeInfo->subtitle ?? null,
-                'authors' => $book->volumeInfo->authors[0] ?? null,
-                'categories' => $book->volumeInfo->categories[0] ?? null,
-                'rating' => $book->volumeInfo->averageRating ?? null,
-                'published_date' => $book->volumeInfo->publishedDate ?? null,
-                'description' => $book->volumeInfo->description ?? null,
-                'publisher' => $book->volumeInfo->publisher ?? null,
-            ]);
-        } catch (\Throwable $th) {
-            // throw $th;
-        }
+        // try {
+        FinishedBooks::create([
+            'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
+            'title' => $book->volumeInfo->title ?? null,
+            'subtitle' => $book->volumeInfo->subtitle ?? null,
+            'authors' => $book->volumeInfo->authors[0] ?? null,
+            'categories' => $book->volumeInfo->categories[0] ?? null,
+            'rating' => $book->volumeInfo->averageRating ?? null,
+            'published_date' => $book->volumeInfo->publishedDate ?? null,
+            'description' => $book->volumeInfo->description ?? null,
+            'publisher' => $book->volumeInfo->publisher ?? null,
+        ]);
+        // } catch (\Throwable $th) {
+        //     // throw $th;
+        // }
 
         return view('book', ['book' => $book])->with('finished', 'Book added to finished reading list.');
     }
 
-    public function destroy(Request $request, $id)
+    public function destroy(FinishedBooks $book)
     {
-        FinishedBooks::where('id', $id)->delete();
+        $book->delete();
 
         return redirect()->route('finished')
             ->with('message', 'Book deleted successfully.');

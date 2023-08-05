@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('wishlist_books', function (Blueprint $table) {
             $table->id();
+            $table->ulid();
             $table->text('thumbnail')->nullable();
             $table->string('title')->nullable();
             $table->string('subtitle')->nullable();

@@ -12,22 +12,19 @@ class CurrentBooksController extends Controller
 {
     public function show()
     {
-        $books = Currentbooks::all();
+        $books = CurrentBooks::all();
 
         return view('current', ['books' => $books]);
     }
 
-    public function bookshow(Request $request, $id)
+    public function bookshow(CurrentBooks $book)
     {
-        $book = CurrentBooks::find($id);
-
         return view('current-book', ['book' => $book]);
     }
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $book = $id;
 
-        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $book);
+        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $request->google_book_id);
         $bookResults = $bookResponse->body();
         $bookData = json_decode($bookResults);
         $book = $bookData;
@@ -51,17 +48,16 @@ class CurrentBooksController extends Controller
         return view('book', ['book' => $book])->with('current', 'Book added to currently reading list.');
     }
 
-    public function destroy(Request $request, $id)
+    public function destroy(CurrentBooks $book)
     {
-        CurrentBooks::where('id', $id)->delete();
+        $book->delete();
 
         return redirect()->route('current')
             ->with('message', 'Book deleted successfully.');
     }
 
-    public function finishedTransfer(Request $request, $id)
+    public function finishedTransfer(CurrentBooks $book)
     {
-        $book = CurrentBooks::find($id);
 
         try {
             FinishedBooks::create([
@@ -79,7 +75,7 @@ class CurrentBooksController extends Controller
             //throw $th;
         }
 
-        CurrentBooks::where('id', $id)->delete();
+        $book->delete();
 
         return redirect()->route('current')
             ->with('message', 'Book transfer to finished reading successfully.');
