@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CurrentBooks;
+use Illuminate\Support\Facades\Auth;
 use App\Models\FinishedBooks;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Http;
@@ -12,7 +13,7 @@ class CurrentBooksController extends Controller
 {
     public function show()
     {
-        $books = CurrentBooks::all();
+        $books = CurrentBooks::where('user_id', Auth::user()->id)->get();
 
         return view('current', ['books' => $books]);
     }
@@ -31,6 +32,7 @@ class CurrentBooksController extends Controller
 
         try {
             CurrentBooks::create([
+                'user_id' => Auth::id(),
                 'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
                 'title' => $book->volumeInfo->title ?? null,
                 'subtitle' => $book->volumeInfo->subtitle ?? null,

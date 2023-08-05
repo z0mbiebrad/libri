@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CurrentBook;
+use Illuminate\Support\Facades\Auth;
 use App\Models\CurrentBooks;
 use App\Models\WishlistBooks;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class WishlistBooksController extends Controller
 {
     public function show()
     {
-        $books = Wishlistbooks::all();
+        $books = WishlistBooks::where('user_id', Auth::user()->id)->get();
 
         return view('wishlist', ['books' => $books]);
     }
@@ -31,6 +31,7 @@ class WishlistBooksController extends Controller
 
         try {
             WishlistBooks::create([
+                'user_id' => Auth::id(),
                 'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
                 'title' => $book->volumeInfo->title ?? null,
                 'subtitle' => $book->volumeInfo->subtitle ?? null,

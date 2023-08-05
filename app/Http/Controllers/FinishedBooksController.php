@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\FinishedBooks;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str;
 
 class FinishedBooksController extends Controller
 {
     public function show()
     {
-        $books = Finishedbooks::all();
+        $books = FinishedBooks::where('user_id', Auth::user()->id)->get();
 
         return view('finished', ['books' => $books]);
     }
@@ -29,21 +29,22 @@ class FinishedBooksController extends Controller
         $bookData = json_decode($bookResults);
         $book = $bookData;
 
-        // try {
-        FinishedBooks::create([
-            'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
-            'title' => $book->volumeInfo->title ?? null,
-            'subtitle' => $book->volumeInfo->subtitle ?? null,
-            'authors' => $book->volumeInfo->authors[0] ?? null,
-            'categories' => $book->volumeInfo->categories[0] ?? null,
-            'rating' => $book->volumeInfo->averageRating ?? null,
-            'published_date' => $book->volumeInfo->publishedDate ?? null,
-            'description' => $book->volumeInfo->description ?? null,
-            'publisher' => $book->volumeInfo->publisher ?? null,
-        ]);
-        // } catch (\Throwable $th) {
-        //     // throw $th;
-        // }
+        try {
+            FinishedBooks::create([
+                'user_id' => Auth::id(),
+                'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
+                'title' => $book->volumeInfo->title ?? null,
+                'subtitle' => $book->volumeInfo->subtitle ?? null,
+                'authors' => $book->volumeInfo->authors[0] ?? null,
+                'categories' => $book->volumeInfo->categories[0] ?? null,
+                'rating' => $book->volumeInfo->averageRating ?? null,
+                'published_date' => $book->volumeInfo->publishedDate ?? null,
+                'description' => $book->volumeInfo->description ?? null,
+                'publisher' => $book->volumeInfo->publisher ?? null,
+            ]);
+        } catch (\Throwable $th) {
+            //     // throw $th;
+        }
 
         return view('book', ['book' => $book])->with('finished', 'Book added to finished reading list.');
     }
