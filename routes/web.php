@@ -48,21 +48,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('current/{book}', [CurrentBooksController::class, 'bookshow'])->name('currentbook');
 
-    Route::delete('current/delete/{book}', [CurrentBooksController::class, 'destroy'])->name('deleteCurrentBook');
+    Route::delete('current/{book}', [CurrentBooksController::class, 'destroy'])->name('deleteCurrentBook');
 
-    Route::post('current/transfer/{book}', [CurrentBooksController::class, 'finishedTransfer'])->name('finished.transfer');
+    Route::post('current/{book}', [CurrentBooksController::class, 'finishedTransfer'])->name('finished.transfer');
 
 
     // **WISHLIST ROUTES**
-    Route::post('results/w/{book:id}', [WishlistBooksController::class, 'store'])->name('addWishlist');
+    Route::post('results/wishlist', [WishlistBooksController::class, 'store'])->name('addWishlist');
 
     Route::get('wishlist', [WishlistBooksController::class, 'show'])->name('wishlist');
 
-    Route::get('wishlist/{book:id}', [WishlistBooksController::class, 'bookshow'])->name('wishlistbook');
+    Route::get('wishlist/{book}', [WishlistBooksController::class, 'bookshow'])->name('wishlistbook');
 
-    Route::delete('wishlist/delete/{book:id}', [WishlistBooksController::class, 'destroy'])->name('deleteWishlistBook');
+    Route::delete('wishlist/{book}', [WishlistBooksController::class, 'destroy'])->name('deleteWishlistBook');
 
-    Route::post('wishlist/transfer/{book:id}', [WishlistBooksController::class, 'currentTransfer'])->name('current.transfer');
+    Route::post('wishlist/{book}', [WishlistBooksController::class, 'currentTransfer'])->name('current.transfer');
 });
 
 Route::middleware('auth')->group(function () {

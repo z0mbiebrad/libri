@@ -35,8 +35,9 @@
                     <input type="hidden" name="google_book_id" value="{{ $book->id }}">
                     <button type="submit" class="text-slate-300">Add to Current</button>
                 </form>
-                <form class="p-2" action="{{ route('addWishlist', $book->id) }}" method="POST">
+                <form class="p-2" action="{{ route('addWishlist') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="google_book_id" value="{{ $book->id }}">
                     <button type="submit" class="text-slate-300">Add to Wishlist</button>
                 </form>
             </div>

@@ -6,14 +6,14 @@
     </x-slot>
 
     <div class="flex">
-        <form action="/wishlist/delete/{{ $book->ulid }}" method="post">
+        <form action="{{ route('deleteWishlistBook', $book) }}" method="post">
             @method('delete')
             @csrf
             <button type="submit" value="delete"
                 class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Delete
                 Book</button>
         </form>
-        <form action="/wishlist/transfer/{{ $book->ulid }}" method="post" class="p-3 mx-2">
+        <form action="{{ route('current.transfer', $book) }}" method="post" class="p-3 mx-2">
             @csrf
             <button type="submit" value="delete"
                 class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Currently

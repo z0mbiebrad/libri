@@ -17,18 +17,14 @@ class WishlistBooksController extends Controller
         return view('wishlist', ['books' => $books]);
     }
 
-    public function bookshow(Request $request, $id)
+    public function bookshow(WishlistBooks $book)
     {
-        $book = WishlistBooks::find($id);
-
         return view('wishlist-book', ['book' => $book]);
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $book = $id;
-
-        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $book);
+        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $request->google_book_id);
         $bookResults = $bookResponse->body();
         $bookData = json_decode($bookResults);
         $book = $bookData;
@@ -52,20 +48,18 @@ class WishlistBooksController extends Controller
         return view('book', ['book' => $book])->with('current', 'Book added to wishlist reading list.');
     }
 
-    public function destroy(Request $request, $id)
+    public function destroy(WishlistBooks $book)
     {
-        WishlistBooks::where('id', $id)->delete();
+        $book->delete();
 
         return redirect()->route('wishlist')
             ->with('message', 'Book deleted successfully.');
     }
 
-    public function currentTransfer(Request $request, $id)
+    public function currentTransfer(WishlistBooks $book)
     {
-        $book = WishlistBooks::find($id);
-
         try {
-            CurrentBook::create([
+            CurrentBooks::create([
                 'thumbnail' => $book->thumbnail ?? null,
                 'title' => $book->title ?? null,
                 'subtitle' => $book->subtitle ?? null,
@@ -80,7 +74,7 @@ class WishlistBooksController extends Controller
             //throw $th;
         }
 
-        WishlistBooks::where('id', $id)->delete();
+        $book->delete();
 
         return redirect()->route('wishlist')
             ->with('message', 'Book transfer to currently reading successfully.');
