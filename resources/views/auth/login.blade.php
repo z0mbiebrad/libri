@@ -2,8 +2,11 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    <a href="{{ route('register') }}" class="p-2 mb-4 text-xl font-semibold underline rounded-lg">New user? Create
+        account here</a>
     <form method="POST" action="{{ route('login') }}">
         @csrf
+        <br>
 
         <!-- Email Address -->
         <div>
