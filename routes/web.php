@@ -19,18 +19,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// **BOOKSEARCH**
+Route::get('/', [BookSearch::class, 'index'])->name('booksearch');
+
+Route::get('results', [BookSearch::class, 'show'])->name('results');
+
+Route::get('results/{book:id}', [BookSearch::class, 'book'])->name('book');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-
-    // **BOOKSEARCH**
-    Route::get('book-search', [BookSearch::class, 'index'])->name('booksearch');
-
-    Route::get('results', [BookSearch::class, 'show'])->name('results');
-
-    Route::get('results/{book:id}', [BookSearch::class, 'book'])->name('book');
 
     // **FINISHED ROUTES**
     Route::post('results/finished', [FinishedBooksController::class, 'store'])->name('addFinished');
@@ -40,6 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('finished/{book}', [FinishedBooksController::class, 'bookshow'])->name('finishedbook');
 
     Route::delete('finished/{book}', [FinishedBooksController::class, 'destroy'])->name('deleteFinishedBook');
+
 
     // **CURRENT ROUTES**
     Route::post('results/current', [CurrentBooksController::class, 'store'])->name('addCurrent');
@@ -63,11 +61,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('wishlist/{book}', [WishlistBooksController::class, 'destroy'])->name('deleteWishlistBook');
 
     Route::post('wishlist/{book}', [WishlistBooksController::class, 'currentTransfer'])->name('current.transfer');
-});
 
-Route::middleware('auth')->group(function () {
+
+    // **PROFILE ROUTES**
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

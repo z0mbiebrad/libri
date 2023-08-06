@@ -24,25 +24,34 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
             </svg>Back</a>
         <div class="text-lg text-center border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
-            <div class="flex justify-center">
-                <form class="p-2" action="{{ route('addFinished') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="google_book_id" value="{{ $book->id }}">
-                    <button type="submit" class="text-slate-300">Add to Finished</button>
-                </form>
-                <form class="p-2" action="{{ route('addCurrent') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="google_book_id" value="{{ $book->id }}">
-                    <button type="submit" class="text-slate-300">Add to Current</button>
-                </form>
-                <form class="p-2" action="{{ route('addWishlist') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="google_book_id" value="{{ $book->id }}">
-                    <button type="submit" class="text-slate-300">Add to Wishlist</button>
-                </form>
-            </div>
+            @if (Auth::user())
+                <div class="flex justify-center">
+                    <form class="p-2" action="{{ route('addFinished') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="google_book_id" value="{{ $book->id }}">
+                        <button type="submit" class="text-slate-300">Add to Finished</button>
+                    </form>
+                    <form class="p-2" action="{{ route('addCurrent') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="google_book_id" value="{{ $book->id }}">
+                        <button type="submit" class="text-slate-300">Add to Current</button>
+                    </form>
+                    <form class="p-2" action="{{ route('addWishlist') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="google_book_id" value="{{ $book->id }}">
+                        <button type="submit" class="text-slate-300">Add to Wishlist</button>
+                    </form>
+                </div>
+            @else
+                <a href="{{ route('login') }}"
+                    class="flex w-3/5 mx-auto font-semibold underline rounded-lg max-w-2/3 text-md">Login
+                    or
+                    create
+                    account
+                    to add to your book lists</a>
+            @endif
 
-            <img class="w-1/2 mx-auto mb-6 border rounded-sm lg:w-1/6 border-slate-300"
+            <img class="w-1/2 mx-auto my-6 border rounded-sm lg:w-1/6 border-slate-300"
                 src="{{ $book->volumeInfo->imageLinks->thumbnail ?? url('/images/book.jpg') }}" alt="">
             @isset($book->volumeInfo->title)
                 <h5 class="py-2 underline border rounded-md shadow-md border-slate-600 shadow-slate-600">
