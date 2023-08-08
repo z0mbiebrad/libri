@@ -18,8 +18,15 @@ class FinishedBooksController extends Controller
 
     public function bookshow(FinishedBooks $book)
     {
-        $book::where('user_id', Auth::id())->get();
-        return view('finished-book', ['book' => $book]);
+        try {
+            if (Auth::id()  === $book->user_id) {
+                return view('finished-book', ['book' => $book]);
+            } else {
+                return view('booksearch');
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     public function store(Request $request)
