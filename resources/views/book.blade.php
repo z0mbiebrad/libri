@@ -26,28 +26,31 @@
         <div class="text-lg text-center border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
             @if (Auth::user())
                 <div class="flex justify-center">
-                    <form class="p-2" action="{{ route('addFinished') }}" method="POST">
+                    <form class="p-2" action="{{ route('addFinished') }}" method="POST" class="">
                         @csrf
-                        <input type="hidden" name="google_book_id" value="{{ $book->id }}">
-                        <button type="submit" class="text-slate-300">Add to Finished</button>
+                        <input type="hidden" name="google_book_id" value="{{ $book->id }}"
+                            class="flex items-center">
+                        <button type="submit" class="text-slate-300"><svg xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                class="inline-block w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            Finished</button>
                     </form>
                     <form class="p-2" action="{{ route('addCurrent') }}" method="POST">
                         @csrf
                         <input type="hidden" name="google_book_id" value="{{ $book->id }}">
-                        <button type="submit" class="text-slate-300">Add to Current</button>
+                        <button type="submit" class="text-slate-300"> Current</button>
                     </form>
                     <form class="p-2" action="{{ route('addWishlist') }}" method="POST">
                         @csrf
                         <input type="hidden" name="google_book_id" value="{{ $book->id }}">
-                        <button type="submit" class="text-slate-300">Add to Wishlist</button>
+                        <button type="submit" class="text-slate-300"> Wishlist</button>
                     </form>
                 </div>
             @else
                 <a href="{{ route('login') }}"
                     class="flex w-3/5 mx-auto font-semibold underline rounded-lg max-w-2/3 text-md">Login
-                    or
-                    create
-                    account
                     to add to your book lists</a>
             @endif
 

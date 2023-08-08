@@ -18,6 +18,7 @@ class FinishedBooksController extends Controller
 
     public function bookshow(FinishedBooks $book)
     {
+        $book::where('user_id', Auth::user()->id)->get();
         return view('finished-book', ['book' => $book]);
     }
 
