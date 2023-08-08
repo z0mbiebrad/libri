@@ -22,7 +22,7 @@ class FinishedBooksController extends Controller
             if (Auth::id()  === $book->user_id) {
                 return view('finished-book', ['book' => $book]);
             } else {
-                return redirect()->route('book');
+                return view('booksearch');
             }
         } catch (\Throwable $th) {
             throw $th;
