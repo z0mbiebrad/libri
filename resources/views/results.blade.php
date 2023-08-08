@@ -12,7 +12,7 @@
             <div
                 class="py-2 pt-16 pb-1 text-base underline border rounded-md shadow-md border-slate-600 shadow-slate-600">
                 <a name="book" href="results/{{ $book->id }}" class="0">
-                    <p class="pb-2 underline">Click here for more information.</p>
+                    <p class="pb-6 underline">More information</p>
                     <img class="w-1/2 mx-auto mb-10 border rounded-sm lg:w-1/6 border-slate-300"
                         src="{{ $book->volumeInfo->imageLinks->thumbnail ?? url('/images/book.jpg') }}" alt="">
                 </a>
