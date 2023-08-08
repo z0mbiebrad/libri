@@ -17,12 +17,8 @@
 </head>
 
 <body class="font-sans antialiased text-slate-900">
-    <div class="flex flex-col items-center min-h-screen pt-6 bg-black">
-        <div>
-            <a href="/">
-                <x-application-logo />
-            </a>
-        </div>
+    <div class="min-h-screen bg-black">
+        @include('layouts.navigation')
 
         <div
             class="w-full px-6 py-4 mt-6 overflow-hidden border rounded-lg shadow-md border-slate-600 shadow-slate-600 bg-slate-900 text-slate-300 sm:w-1/2 md:w-1/3">
@@ -30,6 +26,7 @@
         </div>
     </div>
 </body>
+{{-- class="w-full px-6 py-4 mt-6 overflow-hidden border rounded-lg shadow-md border-slate-600 shadow-slate-600 bg-slate-900 text-slate-300 sm:w-1/2 md:w-1/3"> --}}
 
 <x-footer></x-footer>
 

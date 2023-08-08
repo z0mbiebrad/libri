@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('booksearch') }}">
+                    <a href="{{ route('booksearch') }}" class="text-xl text-slate-300">
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-9" />
                     </a>
                 </div>
@@ -114,8 +114,14 @@
                 </div>
             </div>
         @else
-            <x-responsive-nav-link :href="route('login.register')" :active="request()->routeIs('login.register')">
-                {{ __('Please Login or Register') }}
+            <x-responsive-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
+                {{ __('Book Search') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                {{ __('Login') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                {{ __('Create Account') }}
             </x-responsive-nav-link>
         @endif
     </div>
