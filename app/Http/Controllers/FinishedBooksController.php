@@ -24,7 +24,7 @@ class FinishedBooksController extends Controller
             } else {
                 $book = $book->title;
 
-                $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes?q=' . $book);
+                $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $book);
                 $bookResults = $bookResponse->body();
                 $bookData = json_decode($bookResults);
                 $books = $bookData->items;
