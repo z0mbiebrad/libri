@@ -1,22 +1,47 @@
 <nav x-data="{ open: false }" class="border-b border-gray-100 bg-slate-900">
     <!-- Primary Navigation Menu -->
-    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="px-4 mx-auto sm:px-2 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('booksearch') }}" class="text-xl text-slate-300">
+                    <a href="{{ route('booksearch') }}" class="mr-2 text-xl text-slate-300">
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-9" />
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
-
-                </div>
+                @if (Auth::user())
+                    <!-- Navigation Links -->
+                    <div
+                        class="hidden 2xl:space-x-10 xl:space-x-8 lg:space-x-6 md:space-x-4 sm:space-x-2 sm:-my-px sm:flex">
+                        <x-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
+                            {{ __('Book Search') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('finished')" :active="request()->routeIs('finished')">
+                            {{ __('Finished Books') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('current')" :active="request()->routeIs('current')">
+                            {{ __('Current Books') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('wishlist')" :active="request()->routeIs('wishlist')">
+                            {{ __('Wishlist') }}
+                        </x-nav-link>
+                    </div>
+                @else
+                    <div class="hidden sm:space-x-8 sm:-my-px sm:flex sm:ml-4">
+                        <x-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
+                            {{ __('Book Search') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                            {{ __('Login') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                            {{ __('Create Account') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
-
-            (@isset(Auth::user()->name)
+            @if (Auth::user())
                 <!-- Settings Dropdown -->
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <x-dropdown align="right" width="48">
@@ -54,7 +79,9 @@
                         </x-slot>
                     </x-dropdown>
                 </div>
-            @endisset)
+            @endif
+
+
 
             <!-- Hamburger -->
             <div class="flex items-center -mr-2 sm:hidden">
