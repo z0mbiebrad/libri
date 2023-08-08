@@ -25,7 +25,7 @@ Route::get('/', [BookSearch::class, 'index'])->name('booksearch');
 
 Route::get('results', [BookSearch::class, 'show'])->name('results');
 
-Route::get('results/{book:id}', [BookSearch::class, 'book'])->name('book');
+Route::get('results/{book}', [BookSearch::class, 'book'])->name('book');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
