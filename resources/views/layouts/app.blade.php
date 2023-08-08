@@ -12,7 +12,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="bg-black sm:min-h-screen">
+    <div class="min-h-screen bg-black">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
