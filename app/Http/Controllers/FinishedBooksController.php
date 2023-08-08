@@ -11,14 +11,14 @@ class FinishedBooksController extends Controller
 {
     public function show()
     {
-        $books = FinishedBooks::where('user_id', Auth::user()->id)->get();
+        $books = FinishedBooks::where('user_id', Auth::id())->get();
 
         return view('finished', ['books' => $books]);
     }
 
     public function bookshow(FinishedBooks $book)
     {
-        $book::where('user_id', Auth::user()->id)->get();
+        $book::where('user_id', Auth::id())->get();
         return view('finished-book', ['book' => $book]);
     }
 
@@ -52,7 +52,13 @@ class FinishedBooksController extends Controller
 
     public function destroy(FinishedBooks $book)
     {
-        $book::where('user_id', Auth::user()->id)->delete();
+        try {
+            if (Auth::id()  === $book->user_id) {
+                $book->delete();
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
 
         return redirect()->route('finished')
             ->with('message', 'Book deleted successfully.');
