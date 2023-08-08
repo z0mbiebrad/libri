@@ -52,7 +52,7 @@ class FinishedBooksController extends Controller
 
     public function destroy(FinishedBooks $book)
     {
-        $book->delete();
+        $book::where('user_id', Auth::user()->id)->delete();
 
         return redirect()->route('finished')
             ->with('message', 'Book deleted successfully.');
