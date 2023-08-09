@@ -31,4 +31,6 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google_api' => env('API_KEY'),
+
 ];

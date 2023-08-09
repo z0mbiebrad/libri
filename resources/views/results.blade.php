@@ -13,7 +13,8 @@
                 <div class="flex justify-around pt-4 pb-8">
                     <form class="p-2" action="{{ route('addFinished') }}" method="POST" class="">
                         @csrf
-                        <input type="hidden" name="google_book_id" value="{{ $book->id }}" class="flex items-center">
+                        <input type="hidden" name="finished_google_book_id" value="{{ $book->id }}"
+                            class="flex items-center">
                         <button type="submit"
                             class="flex items-center p-2 mx-auto border rounded-md shadow-md decoration-0 text-slate-300 border-slate-600 shadow-slate-600"><svg
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

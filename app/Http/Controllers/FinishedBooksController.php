@@ -6,6 +6,7 @@ use App\Models\FinishedBooks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Http;
+use PHPUnit\Event\Application\Finished;
 
 class FinishedBooksController extends Controller
 {
@@ -38,14 +39,17 @@ class FinishedBooksController extends Controller
 
     public function store(Request $request)
     {
-
-        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $request->google_book_id);
+        if ($request->finished_google_book_id) {
+            $google_book_id = $request->finished_google_book_id;
+            $list = new FinishedBooks;
+        }
+        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $google_book_id);
         $bookResults = $bookResponse->body();
         $bookData = json_decode($bookResults);
         $book = $bookData;
 
         try {
-            FinishedBooks::create([
+            $list::create([
                 'user_id' => Auth::id(),
                 'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
                 'title' => $book->volumeInfo->title ?? null,
@@ -58,7 +62,7 @@ class FinishedBooksController extends Controller
                 'publisher' => $book->volumeInfo->publisher ?? null,
             ]);
         } catch (\Throwable $th) {
-            //     // throw $th;
+            throw $th;
         }
 
         return view('book', ['book' => $book])->with('finished', 'Book added to finished reading list.');

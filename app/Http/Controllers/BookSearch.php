@@ -14,12 +14,16 @@ class BookSearch extends Controller
     }
     public function show(Request $request)
     {
+        $key = config('services.google_api');
+
         $book = $request->input('bookSearch');
 
-        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes?q=' . $book);
+        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes?q=' . $book . '&key=' . $key);
         $bookResults = $bookResponse->body();
         $bookData = json_decode($bookResults);
+        dd($bookData);
         $books = $bookData->items;
+
 
         return view('results', ['books' => $books]);
     }
