@@ -21,7 +21,6 @@ class BookSearch extends Controller
         $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes?q=' . $book . '&key=' . $key);
         $bookResults = $bookResponse->body();
         $bookData = json_decode($bookResults);
-        dd($bookData);
         $books = $bookData->items;
 
 
@@ -30,9 +29,11 @@ class BookSearch extends Controller
 
     public function book(Request $request, $id)
     {
+        $key = config('services.google_api');
+
         $book = $id;
 
-        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $book);
+        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $book . '?key=' . $key);
         $bookResults = $bookResponse->body();
         $bookData = json_decode($bookResults);
         $book = $bookData;

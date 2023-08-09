@@ -28,7 +28,8 @@
                 <div class="flex justify-around">
                     <form class="p-2" action="{{ route('addFinished') }}" method="POST" class="">
                         @csrf
-                        <input type="hidden" name="google_book_id" value="{{ $book->id }}"
+                        @dd($book)
+                        <input type="hidden" name="finished_google_book_id" value="{{ $book->id }}"
                             class="flex items-center">
                         <button type="submit"
                             class="flex items-center p-2 mx-auto border rounded-md shadow-md text-slate-300 border-slate-600 shadow-slate-600"><svg
