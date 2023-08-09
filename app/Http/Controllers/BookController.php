@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CurrentBooks;
-use Illuminate\Support\Facades\Auth;
-use App\Models\FinishedBooks;
+use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Http;
 
-
-class CurrentBooksController extends Controller
+class BookController extends Controller
 {
-    public function show()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        $books = CurrentBooks::where('user_id', Auth::user()->id)->get();
+        $books = Book::where('user_id', Auth::user()->id)->get();
 
         return view('current', ['books' => $books]);
     }
 
-    public function bookshow(CurrentBooks $book)
-    {
-        return view('current-book', ['book' => $book]);
-    }
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $key = config('services.google_api');
@@ -33,7 +33,7 @@ class CurrentBooksController extends Controller
         $book = $bookData;
 
         try {
-            CurrentBooks::create([
+            Book::create([
                 'user_id' => Auth::id(),
                 'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
                 'title' => $book->volumeInfo->title ?? null,
@@ -52,29 +52,28 @@ class CurrentBooksController extends Controller
         return view('book', ['book' => $book])->with('current', 'Book added to currently reading list.');
     }
 
-    public function destroy(CurrentBooks $book)
+    /**
+     * Display the specified resource.
+     */
+    public function show(Book $book)
     {
-        $book->delete();
-
-        return redirect()->route('current')
-            ->with('message', 'Book deleted successfully.');
+        return view('current-book', ['book' => $book]);
     }
 
-    public function finishedTransfer(CurrentBooks $book)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Book $book)
     {
+        //
+    }
 
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Book $book)
+    {
         try {
-            FinishedBooks::create([
-                'thumbnail' => $book->thumbnail ?? null,
-                'title' => $book->title ?? null,
-                'subtitle' => $book->subtitle ?? null,
-                'authors' => $book->authors ?? null,
-                'categories' => $book->categories ?? null,
-                'rating' => $book->averageRating ?? null,
-                'published_date' => $book->publishedDate ?? null,
-                'description' => $book->description ?? null,
-                'publisher' => $book->publisher ?? null,
-            ]);
         } catch (\Throwable $th) {
             //throw $th;
         }
@@ -83,5 +82,16 @@ class CurrentBooksController extends Controller
 
         return redirect()->route('current')
             ->with('message', 'Book transfer to finished reading successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Book $book)
+    {
+        $book->delete();
+
+        return redirect()->route('current')
+            ->with('message', 'Book deleted successfully.');
     }
 }

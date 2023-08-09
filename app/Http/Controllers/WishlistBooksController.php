@@ -24,7 +24,9 @@ class WishlistBooksController extends Controller
 
     public function store(Request $request)
     {
-        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $request->google_book_id);
+        $key = config('services.google_api');
+
+        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $request->google_book_id . '?key=' . $key);
         $bookResults = $bookResponse->body();
         $bookData = json_decode($bookResults);
         $book = $bookData;
