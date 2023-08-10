@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('user_books', function (Blueprint $table) {
             $table->id();
             $table->ulid();
-            $table->boolean('finished');
-            $table->boolean('current');
-            $table->boolean('wishlist');
+            $table->text('user_id');
+            $table->string('list');
             $table->foreignId('book_id');
             $table->text('thumbnail')->nullable();
             $table->string('title')->nullable();
@@ -29,7 +28,7 @@ return new class extends Migration
             $table->string('publisher')->nullable();
             $table->timestamps();
 
-            $table->unique('title', 'authors');
+            $table->unique('list', 'user_id');
         });
     }
 

@@ -24,6 +24,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
             </svg>Back</a>
         <div class="text-lg text-center border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
+
             @if (Auth::user())
                 <div class="flex justify-around">
                     <form class="p-2" action="{{ route('book.store', $book) }}" method="POST" class="">

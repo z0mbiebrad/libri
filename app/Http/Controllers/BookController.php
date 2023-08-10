@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\UserBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use \Illuminate\Support\Facades\Http;
 
 class BookController extends Controller
 {
@@ -24,32 +24,29 @@ class BookController extends Controller
      */
     public function store(Book $book, Request $request)
     {
-        dd($book);
-        if ($request->finished_google_book)
-
-            $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $request->google_book_id . '?key=' . $key);
-        $bookResults = $bookResponse->body();
-        $bookData = json_decode($bookResults);
-        $book = $bookData;
-
+        if ($request->finished_google_book_id) {
+            $list = 'finished';
+        }
         try {
-            Book::create([
+            UserBook::create([
                 'user_id' => Auth::id(),
-                'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
-                'title' => $book->volumeInfo->title ?? null,
-                'subtitle' => $book->volumeInfo->subtitle ?? null,
-                'authors' => $book->volumeInfo->authors[0] ?? null,
-                'categories' => $book->volumeInfo->categories[0] ?? null,
-                'rating' => $book->volumeInfo->averageRating ?? null,
-                'published_date' => $book->volumeInfo->publishedDate ?? null,
-                'description' => $book->volumeInfo->description ?? null,
-                'publisher' => $book->volumeInfo->publisher ?? null,
+                'book_id' => $book->id,
+                'list' => $list,
+                'thumbnail' => $book->thumbnail ?? null,
+                'title' => $book->title ?? null,
+                'subtitle' => $book->subtitle ?? null,
+                'authors' => $book->authors ?? null,
+                'categories' => $book->categories ?? null,
+                'rating' => $book->averageRating ?? null,
+                'published_date' => $book->published_date ?? null,
+                'description' => $book->description ?? null,
+                'publisher' => $book->publisher ?? null,
             ]);
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
 
-        return view('book', ['book' => $book])->with('current', 'Book added to currently reading list.');
+        return view('book-search.results-book', ['book' => $book])->with('current', 'Book added to currently reading list.');
     }
 
     /**
