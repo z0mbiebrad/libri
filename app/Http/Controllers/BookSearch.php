@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Http;
 
@@ -23,6 +24,20 @@ class BookSearch extends Controller
         $bookData = json_decode($bookResults);
         $books = $bookData->items;
 
+        foreach ($books as $book) {
+            Book::create([
+                'google_book_id' => $book->id,
+                'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
+                'title' => $book->volumeInfo->title ?? null,
+                'subtitle' => $book->volumeInfo->subtitle ?? null,
+                'authors' => $book->volumeInfo->authors[0] ?? null,
+                'categories' => $book->volumeInfo->categories[0] ?? null,
+                'rating' => $book->volumeInfo->averageRating ?? null,
+                'published_date' => $book->volumeInfo->publishedDate ?? null,
+                'description' => $book->volumeInfo->description ?? null,
+                'publisher' => $book->volumeInfo->publisher ?? null,
+            ]);
+        }
 
         return view('results', ['books' => $books]);
     }

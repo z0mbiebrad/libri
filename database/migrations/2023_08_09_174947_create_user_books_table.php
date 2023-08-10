@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('user_books', function (Blueprint $table) {
             $table->id();
             $table->ulid();
-            $table->text('category');
+            $table->boolean('finished');
+            $table->boolean('current');
+            $table->boolean('wishlist');
             $table->foreignId('book_id');
             $table->text('thumbnail')->nullable();
             $table->string('title')->nullable();

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookSearch;
+use App\Http\Controllers\BookSearchController;
 use App\Http\Controllers\CurrentBooksController;
 use App\Http\Controllers\FinishedBooksController;
 use App\Http\Controllers\WishlistBooksController;
@@ -21,16 +23,18 @@ use Illuminate\Support\Facades\Route;
 
 
 // **BOOKSEARCH**
-Route::get('/', [BookSearch::class, 'index'])->name('booksearch');
+Route::get('/', function () {
+    return view('book-search.home');
+})->name('booksearch');
 
-Route::get('results', [BookSearch::class, 'show'])->name('results');
+Route::get('results', [BookSearchController::class, 'index'])->name('results.index');
 
-Route::get('results/{book}', [BookSearch::class, 'book'])->name('book');
+Route::get('results/{book}', [BookSearchController::class, 'show'])->name('results.show');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
     // **FINISHED ROUTES**
-    Route::post('results/finished', [FinishedBooksController::class, 'store'])->name('addFinished');
+    Route::post('results/{book}', [BookController::class, 'store'])->name('book.store');
 
     Route::get('finished', [FinishedBooksController::class, 'show'])->name('finished');
 

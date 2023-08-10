@@ -22,12 +22,12 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Book $book, Request $request)
     {
-        $key = config('services.google_api');
+        dd($book);
+        if ($request->finished_google_book)
 
-
-        $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $request->google_book_id . '?key=' . $key);
+            $bookResponse = HTTP::get('https://www.googleapis.com/books/v1/volumes/' . $request->google_book_id . '?key=' . $key);
         $bookResults = $bookResponse->body();
         $bookData = json_decode($bookResults);
         $book = $bookData;
