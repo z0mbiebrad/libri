@@ -39,7 +39,7 @@
                             </svg>
                             Finished</button>
                     </form>
-                    {{-- <form class="p-2" action="{{ route('addFinished') }}" method="POST">
+                    <form class="p-2" action="{{ route('book.store', $book) }}" method="POST">
                         @csrf
                         <input type="hidden" name="current_google_book_id" value="{{ $book->id }}">
                         <button type="submit"
@@ -50,7 +50,7 @@
                             </svg>
                             Current</button>
                     </form>
-                    <form class="p-2" action="{{ route('addFinished') }}" method="POST">
+                    {{-- <form class="p-2" action="{{ route('addFinished') }}" method="POST">
                         @csrf
                         <input type="hidden" name="wishlist_google_book_id" value="{{ $book->id }}">
                         <button type="submit"

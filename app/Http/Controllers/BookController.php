@@ -26,6 +26,11 @@ class BookController extends Controller
     {
         if ($request->finished_google_book_id) {
             $list = 'finished';
+            $message = 'finished';
+        }
+        if ($request->current_google_book_id) {
+            $list = 'current';
+            $message = 'current';
         }
         try {
             UserBook::create([
@@ -46,7 +51,7 @@ class BookController extends Controller
             throw $th;
         }
 
-        return view('book-search.results-book', ['book' => $book])->with('current', 'Book added to currently reading list.');
+        return view('book-search.results-book', ['book' => $book])->with('current', 'Book added to ' . $message . ' reading list.');
     }
 
     /**
