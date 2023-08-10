@@ -50,7 +50,7 @@
                             </svg>
                             Current</button>
                     </form>
-                    {{-- <form class="p-2" action="{{ route('addFinished') }}" method="POST">
+                    <form class="p-2" action="{{ route('book.store', $book) }}" method="POST">
                         @csrf
                         <input type="hidden" name="wishlist_google_book_id" value="{{ $book->id }}">
                         <button type="submit"
@@ -60,7 +60,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
                             Wishlist</button>
-                    </form> --}}
+                    </form>
                 </div>
             @else
                 <a href="{{ route('login') }}"

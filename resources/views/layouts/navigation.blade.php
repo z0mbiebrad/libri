@@ -17,7 +17,7 @@
                         <x-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
                             {{ __('Book Search') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('finished')" :active="request()->routeIs('finished')">
+                        <x-nav-link :href="route('finished.index')" value="finished" :active="request()->routeIs('finished.index')">
                             {{ __('Finished Books') }}
                         </x-nav-link>
                         <x-nav-link :href="route('current')" :active="request()->routeIs('current')">
@@ -106,7 +106,7 @@
                 <x-responsive-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
                     {{ __('Book Search') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('finished')" :active="request()->routeIs('finished')">
+                <x-responsive-nav-link :href="route('finished.index')" :active="request()->routeIs('finished')">
                     {{ __('Finished Books') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('current')" :active="request()->routeIs('unfinished')">

@@ -7,6 +7,7 @@ use App\Http\Controllers\CurrentBooksController;
 use App\Http\Controllers\FinishedBooksController;
 use App\Http\Controllers\WishlistBooksController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserBookController;
 use App\Models\FinishedBooks;
 use Illuminate\Support\Facades\Route;
 
@@ -31,20 +32,19 @@ Route::get('results', [BookSearchController::class, 'index'])->name('results.ind
 
 Route::get('results/{book}', [BookSearchController::class, 'show'])->name('results.show');
 
+Route::post('results/{book}', [BookController::class, 'store'])->name('book.store');
+
+
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    // **FINISHED ROUTES**
-    Route::post('results/{book}', [BookController::class, 'store'])->name('book.store');
 
-    Route::get('finished', [FinishedBooksController::class, 'show'])->name('finished');
+    Route::get('finished', [UserBookController::class, 'index'])->name('finished.index');
 
     Route::get('finished/{book}', [FinishedBooksController::class, 'bookshow'])->name('finishedbook');
 
     Route::delete('finished/{book}', [FinishedBooksController::class, 'destroy'])->name('deleteFinishedBook');
 
 
-    // **CURRENT ROUTES**
-    Route::post('results/current', [CurrentBooksController::class, 'store'])->name('addCurrent');
 
     Route::get('current', [CurrentBooksController::class, 'show'])->name('current');
 
@@ -55,8 +55,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('current/{book}', [CurrentBooksController::class, 'finishedTransfer'])->name('finished.transfer');
 
 
-    // **WISHLIST ROUTES**
-    Route::post('results/wishlist', [WishlistBooksController::class, 'store'])->name('addWishlist');
 
     Route::get('wishlist', [WishlistBooksController::class, 'show'])->name('wishlist');
 

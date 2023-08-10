@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserBook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserBookController extends Controller
 {
@@ -12,7 +13,10 @@ class UserBookController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user()) {
+            $books = UserBook::where('list', 'finished')->get();
+            return view('current', ['books' => $books]);
+        }
     }
 
     /**

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('user_id');
             $table->string('list');
             $table->foreignId('book_id');
+            $table->string('google_book_id');
             $table->text('thumbnail')->nullable();
             $table->string('title')->nullable();
             $table->string('subtitle')->nullable();
@@ -28,7 +29,8 @@ return new class extends Migration
             $table->string('publisher')->nullable();
             $table->timestamps();
 
-            $table->unique('list', 'user_id');
+
+            $table->unique(['google_book_id', 'list']);
         });
     }
 

@@ -14,9 +14,6 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::where('user_id', Auth::user()->id)->get();
-
-        return view('current', ['books' => $books]);
     }
 
     /**
@@ -32,11 +29,16 @@ class BookController extends Controller
             $list = 'current';
             $message = 'current';
         }
+        if ($request->wishlist_google_book_id) {
+            $list = 'wishlist';
+            $message = 'wishlist';
+        }
         try {
             UserBook::create([
                 'user_id' => Auth::id(),
                 'book_id' => $book->id,
                 'list' => $list,
+                'google_book_id' => $book->google_book_id,
                 'thumbnail' => $book->thumbnail ?? null,
                 'title' => $book->title ?? null,
                 'subtitle' => $book->subtitle ?? null,
