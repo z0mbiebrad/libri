@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_books', function (Blueprint $table) {
             $table->id();
             $table->ulid();
-            $table->text('user_id');
+            $table->integer('user_id');
             $table->string('list');
             $table->foreignId('book_id');
             $table->string('google_book_id');
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->timestamps();
 
 
-            $table->unique(['google_book_id', 'list']);
+            $table->unique(['user_id', 'book_id', 'list']);
         });
     }
 
