@@ -48,7 +48,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('current', [UserBookController::class, 'index'])->name('current.index');
 
-    Route::get('current/{book}', [CurrentBooksController::class, 'bookshow'])->name('currentbook');
+    Route::get('current/{book}', [UserBookController::class, 'show'])->name('current.show');
+
+
 
     Route::delete('current/{book}', [CurrentBooksController::class, 'destroy'])->name('deleteCurrentBook');
 

@@ -15,15 +15,15 @@ class UserBookController extends Controller
     {
         if ($request->is('finished')) {
             $books = UserBook::where('list', 'finished')->where('user_id', Auth::id())->get();
-            return view('finished', ['books' => $books]);
+            return view('list', ['books' => $books]);
         }
         if ($request->is('current')) {
             $books = UserBook::where('list', 'current')->where('user_id', Auth::id())->get();
-            return view('current', ['books' => $books]);
+            return view('list', ['books' => $books]);
         }
         if ($request->is('wishlist')) {
             $books = UserBook::where('list', 'wishlist')->where('user_id', Auth::id())->get();
-            return view('wishlist', ['books' => $books]);
+            return view('list', ['books' => $books]);
         }
     }
 
@@ -46,11 +46,9 @@ class UserBookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(UserBook $book, Request $request)
+    public function show(UserBook $book)
     {
-        if ($request->is('finished')) {
-            return view('finished-book', ['book' => $book]);
-        }
+        return view('book', ['book' => $book]);
     }
 
     /**
