@@ -46,7 +46,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 
-    Route::get('current', [CurrentBooksController::class, 'show'])->name('current');
+    Route::get('current', [UserBookController::class, 'index'])->name('current.index');
 
     Route::get('current/{book}', [CurrentBooksController::class, 'bookshow'])->name('currentbook');
 
@@ -55,8 +55,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('current/{book}', [CurrentBooksController::class, 'finishedTransfer'])->name('finished.transfer');
 
 
-
-    Route::get('wishlist', [WishlistBooksController::class, 'show'])->name('wishlist');
+    Route::get('wishlist', [UserBookController::class, 'index'])->name('wishlist.index');
 
     Route::get('wishlist/{book}', [WishlistBooksController::class, 'bookshow'])->name('wishlistbook');
 
