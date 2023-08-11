@@ -1,7 +1,10 @@
+@php
+    $book = $books->first();
+@endphp
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-slate-300">
-            {{ __('Finished Books') }}
+            {{ __(ucwords($book->list) . ' Books') }}
         </h2>
     </x-slot>
 
