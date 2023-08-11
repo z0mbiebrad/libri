@@ -17,13 +17,13 @@
                         <x-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
                             {{ __('Book Search') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('finished.index')" :active="request()->routeIs('finished.index')">
+                        <x-nav-link :href="route('list.index', ['list' => 'finished'])" :active="Request::is('list/finished')">
                             {{ __('Finished Books') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('current.index')" :active="request()->routeIs('current.index')">
+                        <x-nav-link :href="route('list.index', ['list' => 'current'])" :active="Request::is('list/current')">
                             {{ __('Current Books') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('wishlist.index')" :active="request()->routeIs('wishlist.index')">
+                        <x-nav-link :href="route('list.index', ['list' => 'wishlist'])" :active="Request::is('list/wishlist')">
                             {{ __('Wishlist') }}
                         </x-nav-link>
                     </div>
@@ -106,13 +106,13 @@
                 <x-responsive-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
                     {{ __('Book Search') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('finished.index')" :active="request()->routeIs('finished')">
+                <x-responsive-nav-link :href="route('list.index', ['list' => 'finished'])" :active="Request::is('list/finished')">
                     {{ __('Finished Books') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('current.index')" :active="request()->routeIs('current.index')">
+                <x-responsive-nav-link :href="route('list.index', ['list' => 'current'])" :active="Request::is('list/current')">
                     {{ __('Currently Reading') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('wishlist.index')" :active="request()->routeIs('wishlist.index')">
+                <x-responsive-nav-link :href="route('list.index', ['list' => 'wishlist'])" :active="Request::is('list/wishlist')">
                     {{ __('Wishlist') }}
                 </x-responsive-nav-link>
             </div>

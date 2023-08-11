@@ -32,32 +32,24 @@ Route::get('results', [BookSearchController::class, 'index'])->name('results.ind
 
 Route::get('results/{book}', [BookSearchController::class, 'show'])->name('results.show');
 
-Route::post('results/{book}', [BookController::class, 'store'])->name('book.store');
-
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
+    Route::post('results/{book}', [BookController::class, 'store'])->name('book.store');
 
-    Route::get('finished', [UserBookController::class, 'index'])->name('finished.index');
+    Route::get('list/{list}', [UserBookController::class, 'index'])->name('list.index');
+
+    Route::get('book/{book}', [UserBookController::class, 'show'])->name('book.show');
 
     Route::get('finished/{book}', [UserBookController::class, 'show'])->name('finished.show');
 
     Route::delete('finished/{book}', [UserBookController::class, 'destroy'])->name('finished.destroy');
 
-
-
-    Route::get('current', [UserBookController::class, 'index'])->name('current.index');
-
     Route::get('current/{book}', [UserBookController::class, 'show'])->name('current.show');
-
-
 
     Route::delete('current/{book}', [CurrentBooksController::class, 'destroy'])->name('deleteCurrentBook');
 
     Route::post('current/{book}', [CurrentBooksController::class, 'finishedTransfer'])->name('finished.transfer');
-
-
-    Route::get('wishlist', [UserBookController::class, 'index'])->name('wishlist.index');
 
     Route::get('wishlist/{book}', [WishlistBooksController::class, 'bookshow'])->name('wishlistbook');
 

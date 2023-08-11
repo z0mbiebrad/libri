@@ -11,17 +11,17 @@ class UserBookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index($list)
     {
-        if ($request->is('finished')) {
+        if ($list === 'finished') {
             $books = UserBook::where('list', 'finished')->where('user_id', Auth::id())->get();
             return view('list', ['books' => $books]);
         }
-        if ($request->is('current')) {
+        if ($list === 'current') {
             $books = UserBook::where('list', 'current')->where('user_id', Auth::id())->get();
             return view('list', ['books' => $books]);
         }
-        if ($request->is('wishlist')) {
+        if ($list === 'wishlist') {
             $books = UserBook::where('list', 'wishlist')->where('user_id', Auth::id())->get();
             return view('list', ['books' => $books]);
         }
@@ -72,9 +72,23 @@ class UserBookController extends Controller
      */
     public function destroy(UserBook $book)
     {
-        $book->delete();
+        if ($book->list === 'finished') {
+            $book->delete();
 
-        return redirect()->route('finished.index')
-            ->with('message', 'Book deleted successfully.');
+            return redirect()->route('finished.index')
+                ->with('message', 'Book deleted successfully.');
+        }
+        if ($book->list === 'current') {
+            $book->delete();
+
+            return redirect()->route('current.index')
+                ->with('message', 'Book deleted successfully.');
+        }
+        if ($book->list === 'wishlist') {
+            $book->delete();
+
+            return redirect()->route('wishlist.index')
+                ->with('message', 'Book deleted successfully.');
+        }
     }
 }
