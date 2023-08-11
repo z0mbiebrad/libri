@@ -33,27 +33,26 @@ class BookController extends Controller
             $list = 'wishlist';
             $message = 'wishlist';
         }
-        try {
-            UserBook::create([
-                'user_id' => Auth::id(),
-                'book_id' => $book->id,
-                'list' => $list,
-                'google_book_id' => $book->google_book_id,
-                'thumbnail' => $book->thumbnail ?? null,
-                'title' => $book->title ?? null,
-                'subtitle' => $book->subtitle ?? null,
-                'authors' => $book->authors ?? null,
-                'categories' => $book->categories ?? null,
-                'rating' => $book->averageRating ?? null,
-                'published_date' => $book->published_date ?? null,
-                'description' => $book->description ?? null,
-                'publisher' => $book->publisher ?? null,
-            ]);
-        } catch (\Throwable $th) {
-            throw $th;
-        }
+        if (UserBook::where('google_book_id', $book->google_book_id)->where('list', $list)->exists()) {
+            return view('book-search.results-book', ['book' => $book])->with('message', 'That book is already in your ' . $message . ' reading list.');
+        };
+        UserBook::create([
+            'user_id' => Auth::id(),
+            'book_id' => $book->id,
+            'list' => $list,
+            'google_book_id' => $book->google_book_id,
+            'thumbnail' => $book->thumbnail ?? null,
+            'title' => $book->title ?? null,
+            'subtitle' => $book->subtitle ?? null,
+            'authors' => $book->authors ?? null,
+            'categories' => $book->categories ?? null,
+            'rating' => $book->averageRating ?? null,
+            'published_date' => $book->published_date ?? null,
+            'description' => $book->description ?? null,
+            'publisher' => $book->publisher ?? null,
+        ]);
 
-        return view('book-search.results-book', ['book' => $book])->with('current', 'Book added to ' . $message . ' reading list.');
+        return view('book-search.results-book', ['book' => $book])->with('message', 'Book added to ' . $message . ' reading list.');
     }
 
     /**

@@ -7,14 +7,8 @@
 
     <x-booksearch></x-booksearch>
 
-    @if (!empty($finished))
-        <div class="text-lg text-center text-slate-300"> {{ $finished }}</div>
-    @endif
-    @if (!empty($current))
-        <div class="text-lg text-center text-slate-300"> {{ $current }}</div>
-    @endif
-    @if (!empty($wishlist))
-        <div class="text-lg text-center text-slate-300"> {{ $wishlist }}</div>
+    @if (!empty($message))
+        <div class="text-lg text-center text-slate-300"> {{ $message }}</div>
     @endif
 
     <div>
