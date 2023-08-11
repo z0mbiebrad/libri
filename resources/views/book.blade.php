@@ -13,13 +13,26 @@
                 class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Delete
                 Book</button>
         </form>
-
-        <form action="{{ route('finished.transfer', $book) }}" method="post" class="p-3 mx-2">
-            @csrf
-            <button type="submit" value="delete"
-                class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Finished
-                Reading</button>
-        </form>
+        @if ($book->list === 'current')
+            {
+            <form action="{{ route('finished.transfer', $book) }}" method="post" class="p-3 mx-2">
+                @csrf
+                <button type="submit" value="delete"
+                    class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Finished
+                    Reading</button>
+            </form>
+            }
+        @endif
+        @if ($book->list === 'wishlist')
+            {
+            <form action="{{ route('current.transfer', $book) }}" method="post" class="p-3 mx-2">
+                @csrf
+                <button type="submit" value="delete"
+                    class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Currently
+                    Reading</button>
+            </form>
+            }
+        @endif
     </div>
 
     <div class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">
