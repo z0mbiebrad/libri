@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="flex">
-        <form action="{{ route('deleteCurrentBook', $book) }}" method="post" class="p-3 mx-2">
+        <form action="{{ route('finished.destroy', $book) }}" method="post" class="p-3 mx-2">
             @method('delete')
             @csrf
             <button type="submit" value="delete"

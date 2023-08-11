@@ -70,8 +70,11 @@ class UserBookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UserBook $userBook)
+    public function destroy(UserBook $book)
     {
-        //
+        $book->delete();
+
+        return redirect()->route('finished.index')
+            ->with('message', 'Book deleted successfully.');
     }
 }

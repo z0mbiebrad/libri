@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('finished/{book}', [UserBookController::class, 'show'])->name('finished.show');
 
-    Route::delete('finished/{book}', [FinishedBooksController::class, 'destroy'])->name('deleteFinishedBook');
+    Route::delete('finished/{book}', [UserBookController::class, 'destroy'])->name('finished.destroy');
 
 
 
