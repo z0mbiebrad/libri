@@ -41,20 +41,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('book/{book}', [UserBookController::class, 'show'])->name('book.show');
 
-    Route::get('finished/{book}', [UserBookController::class, 'show'])->name('finished.show');
+    Route::delete('book/{book}', [UserBookController::class, 'destroy'])->name('finished.destroy');
 
-    Route::delete('finished/{book}', [UserBookController::class, 'destroy'])->name('finished.destroy');
-
-    Route::get('current/{book}', [UserBookController::class, 'show'])->name('current.show');
-
-    Route::delete('current/{book}', [CurrentBooksController::class, 'destroy'])->name('deleteCurrentBook');
 
     Route::post('current/{book}', [CurrentBooksController::class, 'finishedTransfer'])->name('finished.transfer');
 
-    Route::get('wishlist/{book}', [WishlistBooksController::class, 'bookshow'])->name('wishlistbook');
-
     Route::delete('wishlist/{book}', [WishlistBooksController::class, 'destroy'])->name('deleteWishlistBook');
-
     Route::post('wishlist/{book}', [WishlistBooksController::class, 'currentTransfer'])->name('current.transfer');
 
 

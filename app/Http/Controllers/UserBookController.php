@@ -54,7 +54,7 @@ class UserBookController extends Controller
             $message = 'wishlist';
         }
         if (UserBook::where('google_book_id', $book->google_book_id)->where('list', $list)->exists()) {
-            return view('book-search.results-book', ['book' => $book])->with('message', 'That book is already in your ' . $message . ' reading list.');
+            return view('book-search.results-book', ['book' => $book])->with('message', 'This book is already in your ' . $message . ' reading list.');
         };
         UserBook::create([
             'user_id' => Auth::id(),
