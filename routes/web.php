@@ -41,14 +41,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('book/{book}', [UserBookController::class, 'show'])->name('book.show');
 
-    Route::delete('book/{book}', [UserBookController::class, 'destroy'])->name('finished.destroy');
+    Route::delete('book/{book}', [UserBookController::class, 'destroy'])->name('book.destroy');
 
+    Route::post('book/{book}', [UserBookController::class, 'update'])->name('book.update');
 
-    Route::post('current/{book}', [CurrentBooksController::class, 'finishedTransfer'])->name('finished.transfer');
-
-    Route::delete('wishlist/{book}', [WishlistBooksController::class, 'destroy'])->name('deleteWishlistBook');
     Route::post('wishlist/{book}', [WishlistBooksController::class, 'currentTransfer'])->name('current.transfer');
-
 
     // **PROFILE ROUTES**
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
