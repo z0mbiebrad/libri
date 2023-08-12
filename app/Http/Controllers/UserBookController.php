@@ -14,18 +14,8 @@ class UserBookController extends Controller
      */
     public function index($list)
     {
-        if ($list === 'finished') {
-            $books = UserBook::where('list', 'finished')->where('user_id', Auth::id())->get();
-            return view('list', ['books' => $books]);
-        }
-        if ($list === 'current') {
-            $books = UserBook::where('list', 'current')->where('user_id', Auth::id())->get();
-            return view('list', ['books' => $books]);
-        }
-        if ($list === 'wishlist') {
-            $books = UserBook::where('list', 'wishlist')->where('user_id', Auth::id())->get();
-            return view('list', ['books' => $books]);
-        }
+        $books = UserBook::where('list', $list)->where('user_id', Auth::id())->get();
+        return view('list', ['books' => $books]);
     }
 
     /**
