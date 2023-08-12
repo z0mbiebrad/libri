@@ -29,14 +29,6 @@ class UserBookController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Book $book, Request $request)
@@ -84,19 +76,24 @@ class UserBookController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(UserBook $userBook)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, UserBook $userBook)
+    public function update(UserBook $book)
     {
-        //
+        // if ($book::where('google_book_id', $book->google_book_id)->where('list', $book->list)->exists()) {
+        //     return redirect()->route('book.show', ['book' => $book])->with('message', 'This book is already in your ' . $book->list . ' reading list.');
+        // };
+        if ($book->list === 'current') {
+            $book->list = 'finished';
+            $book->save();
+            $list = 'current';
+        }
+        if ($book->list === 'wishlist') {
+            $book->list = 'current';
+            $book->save();
+            $list = 'wishlist';
+        }
+        return redirect()->route('list.index', $list)->with('message', 'Book has been transferred to ' . $list . ' successfully.');
     }
 
     /**
