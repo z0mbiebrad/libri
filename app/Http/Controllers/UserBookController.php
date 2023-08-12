@@ -15,7 +15,7 @@ class UserBookController extends Controller
     public function index($list)
     {
         $books = UserBook::where('list', $list)->where('user_id', Auth::id())->get();
-        return view('list', ['books' => $books]);
+        return view('book-lists.list', ['books' => $books]);
     }
 
     /**
@@ -62,7 +62,7 @@ class UserBookController extends Controller
      */
     public function show(UserBook $book)
     {
-        return view('book', ['book' => $book]);
+        return view('book-lists.book', ['book' => $book]);
     }
 
     /**
