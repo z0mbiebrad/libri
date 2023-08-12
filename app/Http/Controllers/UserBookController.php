@@ -70,15 +70,21 @@ class UserBookController extends Controller
      */
     public function update(UserBook $book)
     {
-        // if ($book::where('google_book_id', $book->google_book_id)->where('list', $book->list)->exists()) {
-        //     return redirect()->route('book.show', ['book' => $book])->with('message', 'This book is already in your ' . $book->list . ' reading list.');
-        // };
+
         if ($book->list === 'current') {
+            $listCheck = 'finished';
+            if ($book::where('google_book_id', $book->google_book_id)->where('list', $listCheck)->exists()) {
+                return redirect()->route('book.show', ['book' => $book])->with('message', 'This book is already in your ' . $listCheck . ' reading list.');
+            };
             $book->list = 'finished';
             $book->save();
             $list = 'current';
         }
         if ($book->list === 'wishlist') {
+            $listCheck = 'current';
+            if ($book::where('google_book_id', $book->google_book_id)->where('list', $listCheck)->exists()) {
+                return redirect()->route('book.show', ['book' => $book])->with('message', 'This book is already in your ' . $listCheck . ' reading list.');
+            };
             $book->list = 'current';
             $book->save();
             $list = 'wishlist';
