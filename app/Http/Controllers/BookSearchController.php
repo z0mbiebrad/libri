@@ -18,12 +18,9 @@ class BookSearchController extends Controller
         $book = $request->input('bookSearch');
 
         $bookResponse = Http::get('https://www.googleapis.com/books/v1/volumes?q=' . $book . '&key=' . $key);
-        $bookResults = $bookResponse->body();
-        $bookData = json_decode($bookResults);
-        $google_books = $bookData->items;
+        $google_books = json_decode($bookResponse);
 
-
-        foreach ($google_books as $book) {
+        foreach ($google_books->items as $book) {
             $books[] = Book::updateOrCreate([
                 'google_book_id' => $book->id,
                 'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
