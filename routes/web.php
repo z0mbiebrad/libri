@@ -35,7 +35,7 @@ Route::get('results/{book}', [BookSearchController::class, 'show'])->name('resul
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::post('results/{book}', [UserBookController::class, 'store'])->name('book.store');
+    Route::post('results/{list}/{book}', [UserBookController::class, 'store'])->name('book.store');
 
     Route::get('list/{list}', [UserBookController::class, 'index'])->name('list.index');
 

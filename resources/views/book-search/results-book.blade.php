@@ -21,10 +21,10 @@
 
             @if (Auth::user())
                 <div class="flex justify-around">
-                    <form class="p-2" action="{{ route('book.store', $book) }}" method="POST" class="">
+                    <form class="p-2" action="{{ route('book.store', ['list' => 'finished', $book]) }}"
+                        method="POST" class="">
                         @csrf
-                        <input type="hidden" name="finished_google_book_id" value="{{ $book->id }}"
-                            class="flex items-center">
+                        <input type="hidden" value="{{ $book }}" class="flex items-center">
                         <button type="submit"
                             class="flex items-center p-2 mx-auto border rounded-md shadow-md text-slate-300 border-slate-600 shadow-slate-600"><svg
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -33,9 +33,10 @@
                             </svg>
                             Finished</button>
                     </form>
-                    <form class="p-2" action="{{ route('book.store', $book) }}" method="POST">
+                    <form class="p-2" action="{{ route('book.store', ['list' => 'current', $book]) }}"
+                        method="POST">
                         @csrf
-                        <input type="hidden" name="current_google_book_id" value="{{ $book->id }}">
+                        <input type="hidden" value="{{ $book }}">
                         <button type="submit"
                             class="flex items-center p-2 mx-auto border rounded-md shadow-md text-slate-300 border-slate-600 shadow-slate-600"><svg
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -44,9 +45,10 @@
                             </svg>
                             Current</button>
                     </form>
-                    <form class="p-2" action="{{ route('book.store', $book) }}" method="POST">
+                    <form class="p-2" action="{{ route('book.store', ['list' => 'wishlist', $book]) }}"
+                        method="POST">
                         @csrf
-                        <input type="hidden" name="wishlist_google_book_id" value="{{ $book->id }}">
+                        <input type="hidden" value="{{ $book }}">
                         <button type="submit"
                             class="flex items-center p-2 mx-auto border rounded-md shadow-md text-slate-300 border-slate-600 shadow-slate-600"><svg
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

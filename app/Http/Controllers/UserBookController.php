@@ -21,20 +21,9 @@ class UserBookController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Book $book, Request $request)
+    public function store($list, Book $book)
     {
-        if ($request->finished_google_book_id) {
-            $list = 'finished';
-            $message = 'finished';
-        }
-        if ($request->current_google_book_id) {
-            $list = 'current';
-            $message = 'current';
-        }
-        if ($request->wishlist_google_book_id) {
-            $list = 'wishlist';
-            $message = 'wishlist';
-        }
+        $message = $list;
         if (UserBook::where('google_book_id', $book->google_book_id)->where('list', $list)->exists()) {
             return view('book-search.results-book', ['book' => $book])->with('message', 'This book is already in your ' . $message . ' reading list.');
         };
