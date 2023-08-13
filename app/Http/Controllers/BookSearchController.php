@@ -22,7 +22,6 @@ class BookSearchController extends Controller
         $bookData = json_decode($bookResults);
         $google_books = $bookData->items;
 
-        $books = [];
 
         foreach ($google_books as $book) {
             Book::updateOrCreate([
@@ -37,8 +36,10 @@ class BookSearchController extends Controller
                 'description' => $book->volumeInfo->description ?? null,
                 'publisher' => $book->volumeInfo->publisher ?? null,
             ]);
-            $books[] = Book::where('google_book_id', $book->id)->get();
+            $google_book_ids[] = $book->id;
         }
+
+        $books = Book::whereIn('google_book_id', $google_book_ids)->get();
 
         return view('book-search.results-list', ['books' => $books]);
     }
@@ -46,10 +47,8 @@ class BookSearchController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Book $book)
     {
-        $book = Book::where('google_book_id', $id)->first();
-
         return view('book-search.results-book', ['book' => $book]);
     }
 }

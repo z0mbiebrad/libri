@@ -13,7 +13,7 @@
                     <div class="flex justify-around pt-4 pb-8">
                         {{-- <form class="p-2" action="{{ route('book.store') }}" method="POST" class="">
                             @csrf
-                            <input type="hidden" name="finished_google_book_id" value="{{ $book->id }}"
+                            <input type="hidden" name="finished_google_book_id" value="{{ $book }}"
                                 class="flex items-center">
                             <button type="submit"
                                 class="flex items-center p-2 mx-auto border rounded-md shadow-md text-slate-300 border-slate-600 shadow-slate-600"><svg
@@ -25,7 +25,7 @@
                         </form> --}}
                         {{-- <form class="p-2" action="{{ route('addFinished') }}" method="POST">
                             @csrf
-                            <input type="hidden" name="current_google_book_id" value="{{ $book->id }}">
+                            <input type="hidden" name="current_google_book_id" value="{{ $book }}">
                             <button type="submit"
                                 class="flex items-center p-2 mx-auto border rounded-md shadow-md text-slate-300 border-slate-600 shadow-slate-600"><svg
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -36,7 +36,7 @@
                         </form>
                         <form class="p-2" action="{{ route('addFinished') }}" method="POST">
                             @csrf
-                            <input type="hidden" name="wishlist_google_book_id" value="{{ $book->id }}">
+                            <input type="hidden" name="wishlist_google_book_id" value="{{ $book }}">
                             <button type="submit"
                                 class="flex items-center p-2 mx-auto border rounded-md shadow-md text-slate-300 border-slate-600 shadow-slate-600"><svg
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -49,35 +49,35 @@
                     <a name="book" href="{{ route('results.show', $book) }}" class="0">
                         <p class="pb-6 underline">More information</p>
                         <img class="w-1/2 mx-auto mb-10 border rounded-sm lg:w-1/6 border-slate-300"
-                            src="{{ $book[0]->thumbnail ?? url('/images/book.jpg') }}" alt="">
+                            src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
                     </a>
                 @else
-                    <a name="book" href="results/{{ $book }}" class="0">
+                    <a name="book" href="{{ route('results.show', $book) }}" class="0">
                         <p class="pt-10 pb-6 underline">More information</p>
                         <img class="w-1/2 mx-auto mb-10 border rounded-sm lg:w-1/6 border-slate-300"
-                            src="{{ $book[0]->thumbnail ?? url('/images/book.jpg') }}" alt="">
+                            src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
                     </a>
                 @endif
             </div>
-            @isset($book[0]->title)
+            @isset($book->title)
                 <h5 class="p-1 py-2 text-base underline border rounded-md shadow-md border-slate-600 shadow-slate-600">
-                    {{ $book[0]->title }}</h5>
+                    {{ $book->title }}</h5>
             @endisset
-            @isset($book[0]->subtitle)
+            @isset($book->subtitle)
                 <h5 class="p-1 py-2 text-base border rounded-md shadow-md border-slate-600 shadow-slate-600">
-                    {{ $book[0]->subtitle }}</h5>
+                    {{ $book->subtitle }}</h5>
             @endisset
-            @isset($book[0]->authors)
+            @isset($book->authors)
                 <h5 class="p-1 py-2 text-base border rounded-md shadow-md border-slate-600 shadow-slate-600">
-                    {{ $book[0]->authors }}</h5>
+                    {{ $book->authors }}</h5>
             @endisset
-            @isset($book[0]->categories)
+            @isset($book->categories)
                 <p class="p-1 py-2 text-base italic border rounded-md shadow-md border-slate-600 shadow-slate-600">
-                    {{ $book[0]->categories }}</p>
+                    {{ $book->categories }}</p>
             @endisset
-            @isset($book[0]->published_date)
+            @isset($book->published_date)
                 <p class="p-1 py-2 text-base italic border rounded-md shadow-md border-slate-600 shadow-slate-600">Published
-                    Date: {{ $book[0]->published_date }}</p>
+                    Date: {{ $book->published_date }}</p>
             @endisset
         </div>
     @endforeach
