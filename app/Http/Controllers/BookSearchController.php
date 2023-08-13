@@ -24,7 +24,7 @@ class BookSearchController extends Controller
 
 
         foreach ($google_books as $book) {
-            Book::updateOrCreate([
+            $books[] = Book::updateOrCreate([
                 'google_book_id' => $book->id,
                 'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
                 'title' => $book->volumeInfo->title ?? null,
@@ -36,10 +36,7 @@ class BookSearchController extends Controller
                 'description' => $book->volumeInfo->description ?? null,
                 'publisher' => $book->volumeInfo->publisher ?? null,
             ]);
-            $google_book_ids[] = $book->id;
         }
-
-        $books = Book::whereIn('google_book_id', $google_book_ids)->get();
 
         return view('book-search.results-list', ['books' => $books]);
     }
