@@ -23,7 +23,11 @@ class UserBookController extends Controller
     public function store($list, Book $book)
     {
         $message = $list;
-        if (UserBook::where('google_book_id', $book->google_book_id)->where('list', $list)->exists()) {
+        if (UserBook::where([
+            'google_book_id' => $book->google_book_id,
+            'list' => $list,
+            'user_id' => Auth::id(),
+        ])->exists()) {
             return view('book-search.results-book', ['book' => $book])->with('message', 'This book is already in your ' . $message . ' reading list.');
         };
         UserBook::create([
@@ -64,23 +68,22 @@ class UserBookController extends Controller
 
         if ($book->list === 'current') {
             $listCheck = 'finished';
-            if ($book::where('google_book_id', $book->google_book_id)->where('list', $listCheck)->exists()) {
-                return redirect()->route('book.show', ['book' => $book])->with('message', 'This book is already in your ' . $listCheck . ' reading list.');
-            };
-            $book->list = 'finished';
-            $book->save();
             $list = 'current';
-        }
-        if ($book->list === 'wishlist') {
+        } else {
             $listCheck = 'current';
-            if ($book::where('google_book_id', $book->google_book_id)->where('list', $listCheck)->exists()) {
-                return redirect()->route('book.show', ['book' => $book])->with('message', 'This book is already in your ' . $listCheck . ' reading list.');
-            };
-            $book->list = 'current';
-            $book->save();
             $list = 'wishlist';
         }
-        return redirect()->route('list.index', $list)->with('message', 'Book has been transferred to ' . $list . ' successfully.');
+        if ($book::where([
+            'google_book_id' => $book->google_book_id,
+            'list' => $listCheck,
+            'user_id' => Auth::id(),
+        ])->exists()) {
+            ('a');
+            return redirect()->route('book.show', ['book' => $book])->with('message', 'This book is already in your ' . $listCheck . ' reading list.');
+        };
+        $book->list = $listCheck;
+        $book->save();
+        return redirect()->route('list.index', $list)->with('message', 'Book has been transferred to ' . $listCheck . ' successfully.');
     }
 
     /**
