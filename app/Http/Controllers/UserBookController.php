@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\UserBook;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserBookController extends Controller
@@ -51,7 +50,10 @@ class UserBookController extends Controller
      */
     public function show(UserBook $book)
     {
-        return view('book-lists.book', ['book' => $book]);
+        if ($book->user_id === Auth::id()) {
+            return view('book-lists.book', ['book' => $book]);
+        }
+        return redirect(route('booksearch'));
     }
 
     /**
