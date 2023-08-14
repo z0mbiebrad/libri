@@ -23,6 +23,7 @@ class UserBookController extends Controller
     public function store($list, Book $book)
     {
         $message = $list;
+
         if (UserBook::where([
             'google_book_id' => $book->google_book_id,
             'list' => $list,
@@ -30,6 +31,7 @@ class UserBookController extends Controller
         ])->exists()) {
             return view('book-search.results-book', ['book' => $book])->with('message', 'This book is already in your ' . $message . ' reading list.');
         };
+
         UserBook::create([
             'user_id' => Auth::id(),
             'book_id' => $book->id,
@@ -65,25 +67,22 @@ class UserBookController extends Controller
      */
     public function update(UserBook $book)
     {
+        $list = $book->list;
 
-        if ($book->list === 'current') {
-            $listCheck = 'finished';
-            $list = 'current';
-        } else {
-            $listCheck = 'current';
-            $list = 'wishlist';
-        }
+        ($book->list === 'current') ? $newList = 'finished' : $newList = 'current';
+
         if ($book::where([
             'google_book_id' => $book->google_book_id,
-            'list' => $listCheck,
+            'list' => $newList,
             'user_id' => Auth::id(),
         ])->exists()) {
-            ('a');
-            return redirect()->route('book.show', ['book' => $book])->with('message', 'This book is already in your ' . $listCheck . ' reading list.');
+            return redirect()->route('book.show', ['book' => $book])->with('message', 'This book is already in your ' . $newList . ' reading list.');
         };
-        $book->list = $listCheck;
+
+        $book->list = $newList;
         $book->save();
-        return redirect()->route('list.index', $list)->with('message', 'Book has been transferred to ' . $listCheck . ' successfully.');
+
+        return redirect()->route('list.index', $list)->with('message', 'Book has been transferred to ' . $newList . ' successfully.');
     }
 
     /**
