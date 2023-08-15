@@ -25,14 +25,12 @@ class UserBookController extends Controller
      */
     public function store($list, Book $book)
     {
-        $message = $list;
-
         if (UserBook::where([
             'google_book_id' => $book->google_book_id,
             'list' => $list,
             'user_id' => Auth::id(),
         ])->exists()) {
-            return view('book-search.results-book', ['book' => $book])->with('message', 'This book is already in your ' . $message . ' reading list.');
+            return view('book-search.results-book', ['book' => $book])->with('message', 'This book is already in your ' . $list . ' reading list.');
         };
 
         UserBook::create([
@@ -51,7 +49,7 @@ class UserBookController extends Controller
             'publisher' => $book->publisher ?? null,
         ]);
 
-        return view('book-search.results-book', ['book' => $book])->with('message', 'Book added to ' . $message . ' reading list.');
+        return view('book-search.results-book', ['book' => $book])->with('message', 'Book added to ' . $list . ' reading list.');
     }
 
     /**
