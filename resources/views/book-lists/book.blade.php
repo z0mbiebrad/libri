@@ -1,17 +1,45 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-slate-300">
-            {{ __('Finished Books') }}
+            {{ __(ucwords($book->list) . ' Book') }}
         </h2>
     </x-slot>
 
-    <form action="{{ route('deleteFinishedBook', $book) }}" method="post">
-        @method('delete')
-        @csrf
-        <button type="submit" value="delete"
-            class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Delete
-            Book</button>
-    </form>
+    @if (Session::has('message'))
+        <div class="text-white alert alert-info">
+            {{ Session::get('message') }}
+        </div>
+    @endif
+
+    <div class="flex">
+        <form action="{{ route('book.destroy', $book) }}" method="post" class="p-3 mx-2">
+            @method('delete')
+            @csrf
+            <button type="submit" value="delete"
+                class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Delete
+                Book</button>
+        </form>
+        @if ($book->list === 'current')
+            {
+            <form action="{{ route('book.update', $book) }}" method="post" class="p-3 mx-2">
+                @csrf
+                <button type="submit"
+                    class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Finished
+                    Reading</button>
+            </form>
+            }
+        @endif
+        @if ($book->list === 'wishlist')
+            {
+            <form action="{{ route('book.update', $book) }}" method="post" class="p-3 mx-2">
+                @csrf
+                <button type="submit" value="delete"
+                    class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">Currently
+                    Reading</button>
+            </form>
+            }
+        @endif
+    </div>
 
     <div class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">
         <img class="w-1/2 mx-auto mb-6 border rounded-sm lg:w-1/6 border-slate-300"
