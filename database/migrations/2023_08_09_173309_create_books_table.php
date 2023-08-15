@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->ulid();
-            $table->string('google_book_id');
+            $table->string('google_book_id')->unique();
             $table->string('thumbnail')->nullable();
             $table->string('title')->nullable();
             $table->string('subtitle')->nullable();
@@ -25,8 +25,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('publisher')->nullable();
             $table->timestamps();
-
-            $table->unique(['google_book_id', 'thumbnail']);
         });
     }
 
