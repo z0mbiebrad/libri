@@ -57,7 +57,9 @@ class UserBookController extends Controller
      */
     public function show(UserBook $book)
     {
-        ($book->user_id === Auth::id()) ? $view = view('book-lists.book', ['book' => $book]) : $view = redirect(route('booksearch'));
+        ($book->user_id === Auth::id())
+            ? $view = view('book-lists.book', ['book' => $book])
+            : $view = redirect(route('booksearch'));
         return $view;
     }
 

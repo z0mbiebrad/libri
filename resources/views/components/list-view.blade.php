@@ -1,4 +1,8 @@
-<a name="book" href="{{ route('results.show', $book) }}" class="0">
+@php
+    Request::is('results') ? ($href = 'results.show') : ($href = 'book.show');
+@endphp
+
+<a name="book" href="{{ route($href, $book) }}" class="0">
     <p class="pt-6 pb-6 underline">More information</p>
     <img class="w-1/2 mx-auto mb-10 border rounded-sm lg:w-1/6 border-slate-300"
         src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">

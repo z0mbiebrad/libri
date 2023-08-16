@@ -7,7 +7,9 @@
 
     <x-booksearch />
 
-    <x-message :message='message' />
+    @if (!empty($message))
+        <div class="text-lg text-center text-slate-300"> {{ $message }}</div>
+    @endif
 
     <div>
 
@@ -22,7 +24,7 @@
                 </div>
             @else
                 <a href="{{ route('login') }}"
-                    class="flex w-3/5 mx-auto font-semibold underline rounded-lg max-w-2/3 text-md">Login
+                    class="flex justify-center w-3/5 p-2 mx-auto font-semibold underline rounded-lg max-w-2/3 text-md">Login
                     to add to your book lists</a>
             @endauth
 
