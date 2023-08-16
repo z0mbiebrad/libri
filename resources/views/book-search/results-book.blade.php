@@ -18,9 +18,9 @@
         <div class="text-lg text-center border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
             @auth
                 <div class="flex justify-around">
-                    <x-list-add name="finished" :book='$book' />
-                    <x-list-add name="current" :book='$book' />
-                    <x-list-add name="wishlist" :book='$book' />
+                    <x-list-add name="finished" :book="$book" />
+                    <x-list-add name="current" :book="$book" />
+                    <x-list-add name="wishlist" :book="$book" />
                 </div>
             @else
                 <a href="{{ route('login') }}"
@@ -28,7 +28,7 @@
                     to add to your book lists</a>
             @endauth
 
-            <x-book-view :book='$book' />
+            <x-book-view :book="$book" />
 
         </div>
     </div>

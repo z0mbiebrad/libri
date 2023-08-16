@@ -57,7 +57,7 @@ class UserBookController extends Controller
      */
     public function show(UserBook $book)
     {
-        ($book->user_id === Auth::id())
+        $book->user_id === Auth::id()
             ? $view = view('book-lists.book', ['book' => $book])
             : $view = redirect(route('booksearch'));
         return $view;
@@ -70,7 +70,7 @@ class UserBookController extends Controller
     {
         $list = $book->list;
 
-        ($book->list === 'current') ? $newList = 'finished' : $newList = 'current';
+        $book->list === 'current' ? $newList = 'finished' : $newList = 'current';
 
         if ($book::where([
             'google_book_id' => $book->google_book_id,

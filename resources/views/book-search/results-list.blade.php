@@ -11,13 +11,13 @@
         <div class="text-lg text-center border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
             @auth
                 <div class="flex justify-around pt-4 pb-6">
-                    <x-list-add name="finished" :book='$book' />
-                    <x-list-add name="current" :book='$book' />
-                    <x-list-add name="wishlist" :book='$book' />
+                    <x-list-add name="finished" :book="$book" />
+                    <x-list-add name="current" :book="$book" />
+                    <x-list-add name="wishlist" :book="$book" />
                 </div>
             @endauth
 
-            <x-list-view :book='$book' />
+            <x-list-view :book="$book" />
 
         </div>
     @endforeach
