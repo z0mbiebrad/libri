@@ -13,7 +13,10 @@ class UserBookController extends Controller
      */
     public function index($list)
     {
-        $books = UserBook::where('list', $list)->where('user_id', Auth::id())->get();
+        $books = UserBook::where([
+            'list' => $list,
+            'user_id' => Auth::id()
+        ])->get();
         return view('book-lists.list', ['books' => $books]);
     }
 
@@ -22,14 +25,12 @@ class UserBookController extends Controller
      */
     public function store($list, Book $book)
     {
-        $message = $list;
-
         if (UserBook::where([
             'google_book_id' => $book->google_book_id,
             'list' => $list,
             'user_id' => Auth::id(),
         ])->exists()) {
-            return view('book-search.results-book', ['book' => $book])->with('message', 'This book is already in your ' . $message . ' reading list.');
+            return view('book-search.results-book', ['book' => $book])->with('message', 'This book is already in your ' . $list . ' reading list.');
         };
 
         UserBook::create([
@@ -48,7 +49,7 @@ class UserBookController extends Controller
             'publisher' => $book->publisher ?? null,
         ]);
 
-        return view('book-search.results-book', ['book' => $book])->with('message', 'Book added to ' . $message . ' reading list.');
+        return view('book-search.results-book', ['book' => $book])->with('message', 'Book added to ' . $list . ' reading list.');
     }
 
     /**
@@ -56,10 +57,10 @@ class UserBookController extends Controller
      */
     public function show(UserBook $book)
     {
-        if ($book->user_id === Auth::id()) {
-            return view('book-lists.book', ['book' => $book]);
-        }
-        return redirect(route('booksearch'));
+        $book->user_id === Auth::id()
+            ? $view = view('book-lists.book', ['book' => $book])
+            : $view = redirect(route('booksearch'));
+        return $view;
     }
 
     /**
@@ -69,7 +70,7 @@ class UserBookController extends Controller
     {
         $list = $book->list;
 
-        ($book->list === 'current') ? $newList = 'finished' : $newList = 'current';
+        $book->list === 'current' ? $newList = 'finished' : $newList = 'current';
 
         if ($book::where([
             'google_book_id' => $book->google_book_id,
