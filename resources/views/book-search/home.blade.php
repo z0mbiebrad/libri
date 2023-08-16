@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <x-booksearch></x-booksearch>
+    <x-booksearch />
 
     <div class="flex items-center h-full">
         <div class="p-3 m-auto text-xl sm:text-3xl text-slate-300 sm:w-4/5">

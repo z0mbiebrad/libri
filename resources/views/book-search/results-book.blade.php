@@ -25,7 +25,8 @@
             @else
                 <a href="{{ route('login') }}"
                     class="flex justify-center w-3/5 p-2 mx-auto font-semibold underline rounded-lg max-w-2/3 text-md">Login
-                    to add to your book lists</a>
+                    to add to your book lists
+                </a>
             @endauth
 
             <x-book-view :book="$book" />
