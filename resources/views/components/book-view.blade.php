@@ -1,27 +1,27 @@
-<img class="w-1/2 mx-auto my-6 border rounded-sm lg:w-1/6 border-slate-300"
+<img class="w-1/2 mx-auto my-6 border shadow-lg shadow-slate-700 rounded-sm lg:w-1/6 border-slate-700"
     src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
 @isset($book->title)
-    <h5 class="py-2 underline border rounded-md shadow-md border-slate-600 shadow-slate-600">
+    <h5 class="py-2 underline border rounded-md shadow-md border-slate-800">
         {{ $book->title }}
     </h5>
 @endisset
 @isset($book->subtitle)
-    <h5 class="py-2 text-base border rounded-md shadow-md border-slate-600 shadow-slate-600">
+    <h5 class="py-2 text-base border rounded-md shadow-md border-slate-800">
         {{ $book->subtitle }}
     </h5>
 @endisset
 @isset($book->authors)
-    <h5 class="py-2 text-base border rounded-md shadow-md border-slate-600 shadow-slate-600">
+    <h5 class="py-2 text-base border rounded-md shadow-md border-slate-800">
         {{ $book->authors }}
     </h5>
 @endisset
 @isset($book->categories)
-    <p class="py-2 italic border rounded-md shadow-md border-slate-600 shadow-slate-600">
+    <p class="py-2 italic border rounded-md shadow-md border-slate-800">
         {{ $book->categories }}
     </p>
 @endisset
 @isset($book->rating)
-    <p class="flex items-center justify-center py-2 italic border rounded-md shadow-md border-slate-600 shadow-slate-600">
+    <p class="flex items-center justify-center py-2 italic border rounded-md shadow-md border-slate-800">
         Rating:
         <svg xmlns="http://www.w3.org/2000/svg" fill="gold" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-6 h-6">
@@ -31,10 +31,10 @@
     </p>
 @endisset
 @isset($book->published_date)
-    <p class="py-2 italic border rounded-md shadow-md border-slate-600 shadow-slate-600">Published Date:
+    <p class="py-2 italic border rounded-md shadow-md border-slate-800">Published Date:
         {{ $book->published_date }}
     </p>
 @endisset
-<p class="py-5 text-base border rounded-md shadow-md border-slate-600 shadow-slate-600">
+<p class="py-5 text-base border rounded-md shadow-md border-slate-800">
     {!! strip_tags($book->description, '<b><br><i>') ?? 'Description not available.' !!}
 </p>
