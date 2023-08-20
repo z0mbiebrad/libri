@@ -8,7 +8,7 @@
     <x-booksearch />
 
     @foreach ($books as $book)
-        <div class="text-lg text-center border shadow-md text-slate-300 border-slate-800 shadow-slate-600 w-3/4 mx-auto">
+        <div class="text-lg text-center border text-slate-300 border-slate-800 lg:w-3/4 mx-auto">
             @auth
                 <div class="flex justify-around pt-4 pb-6">
                     <x-list-add name="finished" :book="$book" />
