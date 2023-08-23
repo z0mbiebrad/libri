@@ -4,7 +4,7 @@
 
 <a name="book" href="{{ route($href, $book) }}" class="0">
     <p class="pt-6 pb-6 underline">More information</p>
-    <img class="w-1/2 mx-auto mb-10 shadow-lg shadow-slate-700 border rounded-sm lg:w-1/6 border-slate-700"
+    <img class="w-1/2 mx-auto mb-10 border rounded-sm shadow-lg shadow-slate-700 lg:w-1/4 border-slate-700"
         src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
 </a>
 @isset($book->title)
