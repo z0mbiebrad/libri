@@ -12,7 +12,7 @@
         </x-slot>
 
         @foreach ($books as $book)
-            <div class="text-lg text-center border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
+            <div class="container mx-auto text-lg border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
                 <x-list-view :book="$book" />
             </div>
         @endforeach
