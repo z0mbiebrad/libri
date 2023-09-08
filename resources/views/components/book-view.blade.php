@@ -1,27 +1,27 @@
-<img class="w-1/2 mx-auto my-6 border shadow-lg shadow-slate-700 rounded-sm lg:w-1/6 border-slate-700"
+<img class="w-1/2 mx-auto my-6 border rounded-sm shadow-lg shadow-slate-700 lg:w-1/6 border-slate-700"
     src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
 @isset($book->title)
-    <h5 class="py-2 underline border rounded-md shadow-md border-slate-800">
+    <h5 class="w-5/6 py-2 mx-auto underline">
         {{ $book->title }}
     </h5>
 @endisset
 @isset($book->subtitle)
-    <h5 class="py-2 text-base border rounded-md shadow-md border-slate-800">
+    <h5 class="w-5/6 py-2 mx-auto text-base">
         {{ $book->subtitle }}
     </h5>
 @endisset
 @isset($book->authors)
-    <h5 class="py-2 text-base border rounded-md shadow-md border-slate-800">
+    <h5 class="w-5/6 py-2 mx-auto text-base">
         {{ $book->authors }}
     </h5>
 @endisset
 @isset($book->categories)
-    <p class="py-2 italic border rounded-md shadow-md border-slate-800">
+    <p class="w-5/6 py-2 mx-auto italic">
         {{ $book->categories }}
     </p>
 @endisset
 @isset($book->rating)
-    <p class="flex items-center justify-center py-2 italic border rounded-md shadow-md border-slate-800">
+    <p class="flex items-center justify-center w-5/6 py-2 mx-auto italic">
         Rating:
         <svg xmlns="http://www.w3.org/2000/svg" fill="gold" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-6 h-6">
@@ -31,10 +31,10 @@
     </p>
 @endisset
 @isset($book->published_date)
-    <p class="py-2 italic border rounded-md shadow-md border-slate-800">Published Date:
+    <p class="w-5/6 py-2 mx-auto italic">Published:
         {{ $book->published_date }}
     </p>
 @endisset
-<p class="py-5 text-base border rounded-md shadow-md border-slate-800">
+<p class="w-5/6 py-5 mx-auto text-base">
     {!! strip_tags($book->description, '<b><br><i>') ?? 'Description not available.' !!}
 </p>

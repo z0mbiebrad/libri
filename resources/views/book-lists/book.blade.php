@@ -1,4 +1,4 @@
-+<x-app-layout>
+<x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-slate-300">
             {{ __(ucwords($book->list) . ' Book') }}
@@ -13,7 +13,7 @@
 
 
 
-    <div class="pt-2 text-lg text-center border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
+    <div class="pt-2 text-lg border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
         <div class="flex justify-between">
             <x-book-delete :book="$book" />
 

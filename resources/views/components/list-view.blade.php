@@ -8,21 +8,21 @@
         src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
 </a>
 @isset($book->title)
-    <h5 class="w-1/2 p-1 py-2 mx-auto text-base underline rounded-md">
+    <h5 class="w-1/2 py-2 mx-auto text-base underline">
         {{ $book->title }}</h5>
 @endisset
 @isset($book->subtitle)
-    <h5 class="w-1/2 p-1 py-2 mx-auto text-base rounded-md">
+    <h5 class="w-1/2 py-2 mx-auto text-base">
         {{ $book->subtitle }}</h5>
 @endisset
 @isset($book->authors)
-    <h5 class="w-1/2 p-1 py-2 mx-auto text-base rounded-md">
+    <h5 class="w-1/2 py-2 mx-auto text-base">
         {{ $book->authors }}</h5>
 @endisset
 @isset($book->categories)
-    <p class="w-1/2 p-1 py-2 mx-auto text-base italic rounded-md">
+    <p class="w-1/2 py-2 mx-auto text-base italic">
         {{ $book->categories }}</p>
 @endisset
 @isset($book->published_date)
-    <p class="w-1/2 p-1 py-2 mx-auto mb-4 text-base italic rounded-md">Published: {{ $book->published_date }}</p>
+    <p class="w-1/2 py-2 mx-auto mb-4 text-base italic">Published: {{ $book->published_date }}</p>
 @endisset
