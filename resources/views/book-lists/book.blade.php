@@ -14,6 +14,8 @@
 
 
     <div class="pt-2 text-lg border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
+        <x-back-button />
+
         <div class="flex justify-between">
             <x-book-delete :book="$book" />
 
