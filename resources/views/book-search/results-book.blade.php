@@ -15,7 +15,7 @@
 
         <x-back-button />
 
-        <div class="text-lg text-center border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
+        <div class="text-lg border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
             @auth
                 <div class="flex justify-around">
                     <x-list-add name="finished" :book="$book" />
