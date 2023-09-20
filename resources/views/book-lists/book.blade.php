@@ -11,14 +11,18 @@
         </div>
     @endif
 
-    <div class="flex">
-        <x-book-delete :book="$book" />
 
-        <x-list-update :book="$book" />
 
-    </div>
+    <div class="pt-2 text-lg border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
+        <x-back-button />
 
-    <div class="text-lg text-center border shadow-md py-7 text-slate-300 border-slate-800 shadow-slate-600">
+        <div class="flex justify-between">
+            <x-book-delete :book="$book" />
+
+            <x-list-update :book="$book" />
+
+        </div>
+
         <x-book-view :book="$book" />
     </div>
 </x-app-layout>
