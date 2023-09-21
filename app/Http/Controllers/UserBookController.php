@@ -49,7 +49,7 @@ class UserBookController extends Controller
             'publisher' => $book->publisher ?? null,
         ]);
 
-        return view('book-search.results-book', ['book' => $book])->with('message', 'Book added to ' . $list . ' reading list.');
+        return redirect('/results')->with('message', 'Book added to ' . $list . ' reading list.');
     }
 
     /**
