@@ -7,13 +7,15 @@
 
     <x-booksearch />
 
-    @if (!empty($message))
-        <div class="text-lg text-center text-slate-300"> {{ $message }}</div>
+    @if (session('status'))
+        <div class="ml-2 alert alert-success text-slate-300">
+            {{ session('status') }}
+        </div>
     @endif
 
     <div>
 
-        <x-back-button />
+        <x-back-button :book="$book" />
 
         <div class="text-lg border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
             @auth
