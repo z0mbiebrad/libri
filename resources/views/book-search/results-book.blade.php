@@ -13,7 +13,7 @@
 
     <div>
 
-        <x-back-button />
+        <x-back-button :book="$book" />
 
         <div class="text-lg border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
             @auth
