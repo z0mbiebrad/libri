@@ -14,7 +14,7 @@
 
 
     <div class="pt-2 text-lg border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
-        <x-back-button />
+        <x-back-button :book="$book" />
 
         <div x-data="{ open: false }" class="mx-auto">
             <div class="flex items-center -mr-2 sm:hidden">
