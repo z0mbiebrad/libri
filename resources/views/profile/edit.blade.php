@@ -5,8 +5,10 @@
         </h2>
     </x-slot>
 
-    @if (!empty($message))
-        <div class="text-lg text-center text-slate-300"> {{ $message }}</div>
+    @if (session('status'))
+        <div class="ml-2 alert alert-success text-slate-300">
+            {{ session('status') }}
+        </div>
     @endif
 
     <div class="py-12">
