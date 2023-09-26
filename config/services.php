@@ -21,10 +21,6 @@ return [
         'scheme' => 'https',
     ],
 
-    'postmark' => [
-        'token' => env('POSTMARK_TOKEN'),
-    ],
-
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
@@ -33,4 +29,7 @@ return [
 
     'google_api' => env('API_KEY'),
 
+    'postmark' => [
+        'token' => env('POSTMARK_TOKEN'),
+    ],
 ];
