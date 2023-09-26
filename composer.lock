@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "adb51a39c21b4b469161a645d8b04051",
+    "content-hash": "cffadd2742f3d57bcf1337e5163d7f47",
     "packages": [
         {
             "name": "brick/math",
@@ -60,6 +60,86 @@
                 }
             ],
             "time": "2023-01-15T23:15:59+00:00"
+        },
+        {
+            "name": "coconutcraig/laravel-postmark",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/craigpaul/laravel-postmark.git",
+                "reference": "93c504255c3783b613f66d7155ce3085660bf854"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/craigpaul/laravel-postmark/zipball/93c504255c3783b613f66d7155ce3085660bf854",
+                "reference": "93c504255c3783b613f66d7155ce3085660bf854",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.0",
+                "illuminate/mail": "^9.0|^10.0",
+                "illuminate/support": "^9.0|^10.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "ext-gd": "*",
+                "fakerphp/faker": "^1.17",
+                "orchestra/testbench": "^7.19|^8.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "suggest": {
+                "mvdnbrk/postmark-inbound": "Allows you to process Postmark Inbound Webhooks."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "CraigPaul\\Mail\\PostmarkServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CraigPaul\\Mail\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Craig Paul",
+                    "email": "craig.paul@coconutsoftware.com",
+                    "homepage": "https://www.coconutsoftware.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel package for sending mail via the Postmark API",
+            "homepage": "https://github.com/craigpaul/laravel-postmark",
+            "keywords": [
+                "coconutcraig",
+                "email",
+                "laravel",
+                "mail",
+                "postmark",
+                "wildbit"
+            ],
+            "support": {
+                "issues": "https://github.com/craigpaul/laravel-postmark/issues",
+                "source": "https://github.com/craigpaul/laravel-postmark/tree/v3.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mvdnbrk",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-08-25T04:27:08+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
