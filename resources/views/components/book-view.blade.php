@@ -1,4 +1,4 @@
-<img class="w-1/2 mx-auto my-6 border rounded-sm shadow-lg shadow-slate-700 lg:w-1/6 border-slate-700"
+<img class="w-5/6 mx-auto my-6 border rounded-sm shadow-lg shadow-slate-700 lg:w-1/6 border-slate-700"
     src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
 @isset($book->title)
     <h5 class="w-5/6 py-2 mx-auto underline">
