@@ -9,4 +9,3 @@
     </svg>
     Back
 </a>
-{{-- 'results?bookSearch=' . $book->title --}}
