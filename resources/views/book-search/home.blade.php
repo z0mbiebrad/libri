@@ -7,7 +7,7 @@
 
     <x-booksearch />
 
-    <div class="w-5/6 h-full p-3 m-auto text-xl sm:text-2xl text-slate-300">
+    <div class="w-5/6 h-full py-3 m-auto text-xl sm:text-2xl text-slate-300">
         <h3 class="py-4">Welcome to Libri Search!</h3>
         <p class="py-4">
             Libri Search is a user-friendly book search tool. Discover, organize, and curate your reading journey
