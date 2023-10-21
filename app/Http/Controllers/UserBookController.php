@@ -77,13 +77,13 @@ class UserBookController extends Controller
             'list' => $newList,
             'user_id' => Auth::id(),
         ])->exists()) {
-            return redirect()->route('book.show', ['book' => $book])->with('message', 'This book is already in your ' . $newList . ' reading list.');
+            return redirect()->route('book.show', ['book' => $book])->with('status', 'This book is already in your ' . $newList . ' reading list.');
         };
 
         $book->list = $newList;
         $book->save();
 
-        return redirect()->route('list.index', $list)->with('message', 'Book has been transferred to ' . $newList . ' successfully.');
+        return redirect()->route('list.index', $list)->with('status', 'Book has been transferred to ' . $newList . ' successfully.');
     }
 
     /**
@@ -95,6 +95,6 @@ class UserBookController extends Controller
         $book->delete();
 
         return redirect()->route('list.index', $list)
-            ->with('message', 'Book deleted from ' . $list . ' list successfully.');
+            ->with('status', 'Book deleted from ' . $list . ' list successfully.');
     }
 }
