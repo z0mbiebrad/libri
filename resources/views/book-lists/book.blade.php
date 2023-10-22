@@ -5,14 +5,6 @@
         </h2>
     </x-slot>
 
-    @if (Session::has('message'))
-        <div class="text-white alert alert-info">
-            {{ Session::get('message') }}
-        </div>
-    @endif
-
-
-
     <div class="pt-2 text-lg border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
 
         <div class="flex items-center justify-between">

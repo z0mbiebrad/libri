@@ -1,7 +1,11 @@
 @php
     $book = $books->first();
 @endphp
+
 <x-app-layout>
+
+    <x-message />
+
     @if ($books->isEmpty())
         <p class="pt-4 pl-6 text-slate-300">No books in this list, check back after adding!</p>
     @else
