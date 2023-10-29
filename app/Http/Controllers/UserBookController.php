@@ -22,11 +22,7 @@ class UserBookController extends Controller
      */
     public function store($list, Book $book)
     {
-        if (UserBook::where([
-            'google_book_id' => $book->google_book_id,
-            'list' => $list,
-            'user_id' => Auth::id(),
-        ])->exists()) {
+        if (UserBook::store($book, $list)->exists()) {
             return redirect()->route('results.show', ['book' => $book])->with('status', 'This book is already in your ' . $list . ' reading list.');
         };
 

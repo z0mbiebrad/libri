@@ -21,6 +21,15 @@ class UserBook extends Model
         ]);
     }
 
+    public function scopeStore($query, $book, $list)
+    {
+        $query->where([
+            'google_book_id' => $book->google_book_id,
+            'list' => $list,
+            'user_id' => Auth::id(),
+        ]);
+    }
+
     public function getRouteKeyName()
     {
         return 'ulid';
