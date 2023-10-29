@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class UserBook extends Model
 {
@@ -12,6 +13,13 @@ class UserBook extends Model
 
     protected $guarded = [];
 
+    public function scopeIndex($query, $list)
+    {
+        $query->where([
+            'list' => $list,
+            'user_id' => Auth::id()
+        ]);
+    }
 
     public function getRouteKeyName()
     {
