@@ -21,7 +21,7 @@ class UserBook extends Model
         ]);
     }
 
-    public function scopeStore($query, $book, $list)
+    public function scopeList($query, $book, $list)
     {
         $query->where([
             'google_book_id' => $book->google_book_id,

@@ -22,7 +22,7 @@ class UserBookController extends Controller
      */
     public function store($list, Book $book)
     {
-        if (UserBook::store($book, $list)->exists()) {
+        if (UserBook::list($book, $list)->exists()) {
             return redirect()->route('results.show', ['book' => $book])->with('status', 'This book is already in your ' . $list . ' reading list.');
         };
 
@@ -61,22 +61,18 @@ class UserBookController extends Controller
      */
     public function update(UserBook $book)
     {
-        $list = $book->list;
+        $oldList = $book->list;
 
-        $book->list === 'current' ? $newList = 'finished' : $newList = 'current';
+        $book->list === 'current' ? $list = 'finished' : $list = 'current';
 
-        if ($book::where([
-            'google_book_id' => $book->google_book_id,
-            'list' => $newList,
-            'user_id' => Auth::id(),
-        ])->exists()) {
-            return redirect()->route('book.show', ['book' => $book])->with('status', 'This book is already in your ' . $newList . ' reading list.');
+        if ($book::list($book, $list)->exists()) {
+            return redirect()->route('book.show', ['book' => $book])->with('status', 'This book is already in your ' . $list . ' reading list.');
         };
 
-        $book->list = $newList;
+        $book->list = $list;
         $book->save();
 
-        return redirect()->route('list.index', $list)->with('status', 'Book has been transferred to ' . $newList . ' successfully.');
+        return redirect()->route('list.index', $oldList)->with('status', 'Book has been transferred to ' . $list . ' successfully.');
     }
 
     /**
