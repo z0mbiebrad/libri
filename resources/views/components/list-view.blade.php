@@ -12,6 +12,11 @@
         <h5 class="py-2 text-base underline">
             {{ $book->title }}</h5>
     @endisset
+    @isset($book->published_date)
+        <p class="py-2 text-base italic">
+            {{ $book->published_date }}
+        </p>
+    @endisset
     @isset($book->subtitle)
         <h5 class="py-2 text-base">
             {{ $book->subtitle }}</h5>
@@ -21,12 +26,7 @@
             {{ $book->authors }}</h5>
     @endisset
     @isset($book->categories)
-        <p class="py-2 text-base italic">
-            {{ $book->categories }}</p>
-    @endisset
-    @isset($book->published_date)
         <p class="py-2 mb-4 text-base italic">
-            {{ $book->published_date }}
-        </p>
+            {{ $book->categories }}</p>
     @endisset
 </div>
