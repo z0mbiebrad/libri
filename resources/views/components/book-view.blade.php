@@ -2,17 +2,17 @@
     <img class="w-full my-6 border rounded-sm shadow-lg shadow-slate-700 lg:w-1/6 border-slate-700"
         src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
     @isset($book->title)
-        <h5 class="py-2 underline">
+        <h5 class="py-2">
             {{ $book->title }}
         </h5>
     @endisset
     @isset($book->subtitle)
-        <h5 class="py-2 text-base">
+        <h5 class="py-2">
             {{ $book->subtitle }}
         </h5>
     @endisset
     @isset($book->authors)
-        <h5 class="py-2 text-base">
+        <h5 class="py-2">
             {{ $book->authors }}
         </h5>
     @endisset
@@ -36,7 +36,7 @@
             {{ $book->published_date }}
         </p>
     @endisset
-    <p class="py-5 text-base">
+    <p class="py-5">
         {!! strip_tags($book->description, '<b><br><i>') ?? 'Description not available.' !!}
     </p>
 </div>
