@@ -17,10 +17,6 @@
             {{ $book->published_date }}
         </p>
     @endisset
-    @isset($book->subtitle)
-        <h5 class="py-2 text-base">
-            {{ $book->subtitle }}</h5>
-    @endisset
     @isset($book->categories)
         <p class="py-2 text-base italic">
             {{ $book->categories }}</p>
