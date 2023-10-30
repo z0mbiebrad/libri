@@ -2,7 +2,7 @@
     <form action="{{ route('results.index') }}" class="text-lg font-semibold">
         <label for="bookSearch" class="block w-full py-2 text-center"></label>
         <input id="bookSearch" name="bookSearch" class="block w-3/5 mx-auto text-black rounded-lg"
-            placeholder="{{ request('bookSearch') ?? 'Name of book...' }}" required>
+            placeholder="{{ ucwords(request('bookSearch')) ?? 'Name of book...' }}" required>
         <button class="block w-full py-2">Search</button>
     </form>
 </div>
