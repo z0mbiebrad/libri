@@ -29,7 +29,7 @@ class BookSearchController extends Controller
                 'authors' => $book->volumeInfo->authors[0] ?? null,
                 'categories' => $book->volumeInfo->categories[0] ?? null,
                 'rating' => $book->volumeInfo->averageRating ?? null,
-                'published_date' => $book->volumeInfo->publishedDate ?? null,
+                'published_date' => date('Y', strtotime($book->volumeInfo->publishedDate)) ?? null,
                 'description' => $book->volumeInfo->description ?? null,
                 'publisher' => $book->volumeInfo->publisher ?? null,
             ]);

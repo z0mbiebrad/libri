@@ -9,22 +9,20 @@
             src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
     </a>
     @isset($book->title)
-        <h5 class="py-2 text-base underline">
+        <h5 class="py-2">
             {{ $book->title }}</h5>
     @endisset
-    @isset($book->subtitle)
-        <h5 class="py-2 text-base">
-            {{ $book->subtitle }}</h5>
-    @endisset
-    @isset($book->authors)
-        <h5 class="py-2 text-base">
-            {{ $book->authors }}</h5>
+    @isset($book->published_date)
+        <p class="py-2 italic">
+            {{ $book->published_date }}
+        </p>
     @endisset
     @isset($book->categories)
-        <p class="py-2 text-base italic">
+        <p class="py-2 italic">
             {{ $book->categories }}</p>
     @endisset
-    @isset($book->published_date)
-        <p class="py-2 mb-4 text-base italic">Published: {{ $book->published_date }}</p>
+    @isset($book->authors)
+        <h5 class="py-2 mb-4">
+            {{ $book->authors }}</h5>
     @endisset
 </div>
