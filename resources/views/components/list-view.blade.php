@@ -25,6 +25,8 @@
             {{ $book->categories }}</p>
     @endisset
     @isset($book->published_date)
-        <p class="py-2 mb-4 text-base italic">Published: {{ $book->published_date }}</p>
+        <p class="py-2 mb-4 text-base italic">
+            {{ $book->published_date }}
+        </p>
     @endisset
 </div>

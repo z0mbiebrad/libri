@@ -32,7 +32,7 @@
         </p>
     @endisset
     @isset($book->published_date)
-        <p class="py-2 italic">Published:
+        <p class="py-2 italic">
             {{ $book->published_date }}
         </p>
     @endisset
