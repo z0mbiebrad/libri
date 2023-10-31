@@ -1,14 +1,8 @@
 <?php
 
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\BookSearch;
 use App\Http\Controllers\BookSearchController;
-use App\Http\Controllers\CurrentBooksController;
-use App\Http\Controllers\FinishedBooksController;
-use App\Http\Controllers\WishlistBooksController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserBookController;
-use App\Models\FinishedBooks;
 use Illuminate\Support\Facades\Route;
 
 // **BOOKSEARCH**
