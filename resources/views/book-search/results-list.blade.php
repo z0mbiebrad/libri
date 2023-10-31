@@ -11,7 +11,7 @@
         <div class="mx-auto text-lg border text-slate-300 border-slate-800 lg:w-1/2">
             @auth
                 <div class="pt-4">
-                    <div x-data="{ show: false }" class="w-5/6 m-3 mx-auto">
+                    <div x-data="{ show: false }" class="">
                         <div @click="show = ! show" class="flex">
                             <button class="flex items-center py-2 mb-2 border-b-2">
                                 Add to a list
