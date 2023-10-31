@@ -28,7 +28,7 @@
 
     {{-- Trigger --}}
     <div @click="show = ! show">
-        <button class="flex items-center py-2 mb-2 border-b-2">
+        <button class="flex items-center py-2 mb-4 border-b-2">
             More information
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6 pt-2">
