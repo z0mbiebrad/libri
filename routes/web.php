@@ -12,11 +12,9 @@ Route::get('/', function () {
 
 Route::get('results', [BookSearchController::class, 'index'])->name('results.index');
 
-Route::get('results/{book}', [BookSearchController::class, 'show'])->name('results.show');
-
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::post('results/{list}/{book}', [UserBookController::class, 'store'])->name('book.store');
+    Route::post('results/{bookSearch}/{list}/{book}', [UserBookController::class, 'store'])->name('book.store');
 
     Route::get('list/{list}', [UserBookController::class, 'index'])->name('list.index');
 
