@@ -3,12 +3,8 @@
 @endphp
 
 <div x-data="{ show: false }" @click.away="show = false" class="w-5/6 mx-auto">
-    {{-- Trigger --}}
-    <div @click="show = ! show">
-        <img class="w-full mb-4 border rounded-sm shadow-lg shadow-slate-700 lg:w-1/6 border-slate-700"
-            src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
-        <p class="py-2 underline">More information</p>
-    </div>
+    <img class="w-full mb-4 border rounded-sm shadow-lg shadow-slate-700 lg:w-1/6 border-slate-700"
+        src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
     @isset($book->title)
         <p class="py-2">
             {{ $book->title }}
@@ -30,6 +26,17 @@
         </p>
     @endisset
 
+    {{-- Trigger --}}
+    <div @click="show = ! show">
+        <button class="flex items-center py-2 mb-2 border-b-2">
+            More information
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6 pt-2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0l-3.75-3.75M17.25 21L21 17.25" />
+            </svg>
+        </button>
+    </div>
 
     {{-- Links  --}}
     <div x-show="show" style="display:none">
