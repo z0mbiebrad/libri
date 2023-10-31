@@ -36,7 +36,6 @@
         <div>
             @isset($book->rating)
                 <p class="flex items-center py-2 italic">
-                    Rating:
                     {{ $book->rating }}
                     <svg xmlns="http://www.w3.org/2000/svg" fill="gold" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
