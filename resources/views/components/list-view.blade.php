@@ -9,7 +9,7 @@
         <div @click="show = ! show">
             <img class="w-full mb-4 border rounded-sm shadow-lg shadow-slate-700 lg:w-1/6 border-slate-700"
                 src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
-            <p class="pb-6 underline">More information</p>
+            <p class="py-2 underline">More information</p>
         </div>
         @isset($book->title)
             <p class="py-2">
