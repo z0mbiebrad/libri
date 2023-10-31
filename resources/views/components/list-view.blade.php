@@ -4,7 +4,7 @@
 
 <div class="w-5/6 mx-auto">
 
-    <div x-data="{ show: false }">
+    <div x-data="{ show: false }" @click.away="show = false">
         {{-- Trigger --}}
         <div @click="show = ! show">
             <img class="w-full mb-4 border rounded-sm shadow-lg shadow-slate-700 lg:w-1/6 border-slate-700"
