@@ -20,10 +20,10 @@ class UserBookController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store($list, Book $book)
+    public function store($bookSearch, $list, Book $book)
     {
         if (UserBook::list($book, $list)->exists()) {
-            return redirect()->route('results.show', ['book' => $book])->with('status', 'This book is already in your ' . $list . ' reading list.');
+            return redirect()->route('results.index', ['bookSearch' => $bookSearch])->with('status', 'This book is already in your ' . $list . ' reading list.');
         };
 
         UserBook::create([
@@ -42,7 +42,7 @@ class UserBookController extends Controller
             'publisher' => $book->publisher ?? null,
         ]);
 
-        return redirect()->route('results.show', ['book' => $book])->with('status', 'Book added to ' . $list . ' reading list.');
+        return redirect()->route('results.index', ['bookSearch' => $bookSearch])->with('status', 'Book added to ' . $list . ' reading list.');
     }
 
     /**

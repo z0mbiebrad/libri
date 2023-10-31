@@ -1,14 +1,8 @@
 <?php
 
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\BookSearch;
 use App\Http\Controllers\BookSearchController;
-use App\Http\Controllers\CurrentBooksController;
-use App\Http\Controllers\FinishedBooksController;
-use App\Http\Controllers\WishlistBooksController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserBookController;
-use App\Models\FinishedBooks;
 use Illuminate\Support\Facades\Route;
 
 // **BOOKSEARCH**
@@ -18,11 +12,9 @@ Route::get('/', function () {
 
 Route::get('results', [BookSearchController::class, 'index'])->name('results.index');
 
-Route::get('results/{book}', [BookSearchController::class, 'show'])->name('results.show');
-
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::post('results/{list}/{book}', [UserBookController::class, 'store'])->name('book.store');
+    Route::post('results/{bookSearch}/{list}/{book}', [UserBookController::class, 'store'])->name('book.store');
 
     Route::get('list/{list}', [UserBookController::class, 'index'])->name('list.index');
 
