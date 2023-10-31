@@ -13,8 +13,13 @@
                 <div class="pt-4">
                     <div x-data="{ show: false }" @click.away="show = false" class="w-5/6 m-3 mx-auto">
                         <div @click="show = ! show" class="flex">
-                            <button>
-                                <p class="underline">Add to a list</p>
+                            <button class="flex items-center py-2 mb-2 border-b-2">
+                                Add to a list
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6 pt-2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0l-3.75-3.75M17.25 21L21 17.25" />
+                                </svg>
                             </button>
                         </div>
                         <div x-show="show" style="display:none" class="flex">
