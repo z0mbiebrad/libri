@@ -7,8 +7,11 @@
 
     <x-booksearch />
 
-    @auth
-        <div class="w-5/6 h-full py-8 m-auto space-y-6 text-xl sm:text-2xl text-slate-300">
+    <div class="w-5/6 h-full py-8 m-auto space-y-6 text-xl sm:text-2xl text-slate-300">
+        @auth
+            <p>Wlcome back, {{ Auth::user()->name }}!</p>
+            <p>Happy reading!</p>
+        @else
             <h3>Welcome to Libri Search!</h3>
             <p>
                 Libri Search is a user-friendly book search tool. Discover, organize, and curate your reading journey
@@ -28,12 +31,6 @@
             <p>
                 Happy reading!
             </p>
-        @else
-            @auth
-                <p>Wlcome back, {{ Auth::user()->name }}!</p>
-            @else
-                <p>Happy reading!</p>
-            @endauth
-        </div>
-    @endauth
+        @endauth
+    </div>
 </x-app-layout>
