@@ -87,7 +87,11 @@
             <div class="flex items-center -mr-2 sm:hidden">
                 <button @click="open = ! open"
                     class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
-                    <p class="mr-2">Menu</p>
+                    @auth
+                        <p class="mr-2">{{ Auth::user()->name }}</p>
+                    @else
+                        <p class="mr-2">Menu</p>
+                    @endauth
                     <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
