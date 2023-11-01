@@ -29,8 +29,11 @@
                 Happy reading!
             </p>
         @else
-            <p>Wlcome back, {{ Auth::user()->name }}!</p>
-            <p>Happy reading!</p>
+            @auth
+                <p>Wlcome back, {{ Auth::user()->name }}!</p>
+            @else
+                <p>Happy reading!</p>
+            @endauth
         </div>
     @endauth
 </x-app-layout>
