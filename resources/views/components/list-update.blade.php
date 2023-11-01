@@ -4,5 +4,5 @@
 
 <form action="{{ route('book.update', $book) }}" method="post" class="">
     @csrf
-    <button type="submit" class="px-2 text-lg underline text-slate-300">Move to {{ ucwords($list) }}</button>
+    <button type="submit" class="p-2 mx-auto border-b-2">Move to {{ ucwords($list) }}</button>
 </form>

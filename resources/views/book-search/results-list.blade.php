@@ -9,7 +9,7 @@
 
     @foreach ($books as $book)
         <div
-            class="w-11/12 px-3 mx-auto mb-6 text-lg border shadow-inner text-slate-300 shadow-slate-600 border-slate-600 lg:w-1/2">
+            class="w-11/12 px-3 mx-auto mb-6 text-lg border shadow-inner text-slate-300 shadow-slate-600 border-slate-600 lg:w-1/2 {{ $loop->iteration === 1 ? 'mt-6' : '' }}">
             @auth
                 <div x-data="{ show: false }" class="">
                     <div @click="show = ! show" class="flex">
@@ -22,7 +22,7 @@
                             </svg>
                         </button>
                     </div>
-                    <div x-show="show" style="display:none" class="flex mb-4">
+                    <div x-show="show" style="display:none" class="flex justify-around mb-4">
                         @if (Auth::user())
                             <x-list-add name="finished" :book="$book" />
                             <x-list-add name="current" :book="$book" />
@@ -39,7 +39,7 @@
 
             @endauth
 
-            <x-list-view :book="$book" />
+            <x-list-view :book="$book" :loop="$loop" />
 
         </div>
     @endforeach
