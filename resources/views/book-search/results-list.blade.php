@@ -8,9 +8,10 @@
     <x-booksearch />
 
     @foreach ($books as $book)
-        <div class="w-11/12 px-3 mx-auto text-lg border text-slate-300 border-slate-800 lg:w-1/2">
+        <div
+            class="w-11/12 px-3 mx-auto mb-6 text-lg border shadow-inner text-slate-300 shadow-slate-600 border-slate-600 lg:w-1/2">
             @auth
-                <div x-data="{ show: false }" class="pt-4">
+                <div x-data="{ show: false }" class="">
                     <div @click="show = ! show" class="flex">
                         <button class="flex items-center py-2 mb-4 border-b-2">
                             Add to a list
