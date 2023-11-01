@@ -29,10 +29,9 @@
                             </svg>
                         </button>
                     </div>
-                    <div x-show="show" style="display:none">
+                    <div x-show="show" style="display:none" class="flex items-center justify-around mb-4">
                         @if (Auth::user())
                             <x-book-delete :book="$book" />
-
                             <x-list-update :book="$book" />
                         @endif
                     </div>

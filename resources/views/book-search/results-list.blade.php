@@ -22,7 +22,7 @@
                             </svg>
                         </button>
                     </div>
-                    <div x-show="show" style="display:none" class="flex mb-4">
+                    <div x-show="show" style="display:none" class="flex justify-around mb-4">
                         @if (Auth::user())
                             <x-list-add name="finished" :book="$book" />
                             <x-list-add name="current" :book="$book" />
