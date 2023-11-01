@@ -6,16 +6,6 @@
             {{ $book->title }}
         </p>
     @endisset
-    @isset($book->published_date)
-        <p class="py-2 italic">
-            {{ $book->published_date }}
-        </p>
-    @endisset
-    @isset($book->categories)
-        <p class="py-2 italic">
-            {{ $book->categories }}
-        </p>
-    @endisset
     @isset($book->authors)
         <p class="py-2">
             {{ $book->authors }}
@@ -37,6 +27,21 @@
     {{-- Links  --}}
     <div x-show="show" style="display:none">
         <div>
+            @isset($book->subtitle)
+                <p class="py-2 italic">
+                    {{ $book->subtitle }}
+                </p>
+            @endisset
+            @isset($book->categories)
+                <p class="py-2 italic">
+                    {{ $book->categories }}
+                </p>
+            @endisset
+            @isset($book->published_date)
+                <p class="py-2 italic">
+                    {{ $book->published_date }}
+                </p>
+            @endisset
             @isset($book->rating)
                 <p class="flex items-center py-2 italic">
                     {{ $book->rating }}
