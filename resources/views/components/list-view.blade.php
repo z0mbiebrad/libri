@@ -1,23 +1,9 @@
-@php
-    Request::is('results') ? ($href = 'results.show') : ($href = 'book.show');
-@endphp
-
 <div x-data="{ show: false }">
-    <img class="w-full mb-4 border rounded-sm shadow-lg shadow-slate-700 lg:w-1/6 border-slate-700"
+    <img class="w-full mb-4 border rounded-sm shadow-lg shadow-slate-600 lg:w-1/6 border-slate-600"
         src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
     @isset($book->title)
         <p class="py-2">
             {{ $book->title }}
-        </p>
-    @endisset
-    @isset($book->published_date)
-        <p class="py-2 italic">
-            {{ $book->published_date }}
-        </p>
-    @endisset
-    @isset($book->categories)
-        <p class="py-2 italic">
-            {{ $book->categories }}
         </p>
     @endisset
     @isset($book->authors)
@@ -41,6 +27,21 @@
     {{-- Links  --}}
     <div x-show="show" style="display:none">
         <div>
+            @isset($book->subtitle)
+                <p class="py-2 italic">
+                    {{ $book->subtitle }}
+                </p>
+            @endisset
+            @isset($book->categories)
+                <p class="py-2 italic">
+                    {{ $book->categories }}
+                </p>
+            @endisset
+            @isset($book->published_date)
+                <p class="py-2 italic">
+                    {{ $book->published_date }}
+                </p>
+            @endisset
             @isset($book->rating)
                 <p class="flex items-center py-2 italic">
                     {{ $book->rating }}
