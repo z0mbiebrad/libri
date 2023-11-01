@@ -25,7 +25,7 @@ class BookSearchController extends Controller
                 'google_book_id' => $book->id,
                 'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
                 'title' => $book->volumeInfo->title ?? null,
-                'subtitle' => $book->volumeInfo->subtitle ?? null,
+                'subtitle' =>  $book->volumeInfo->subtitle ?? null,
                 'authors' => $book->volumeInfo->authors[0] ?? null,
                 'categories' => $book->volumeInfo->categories[0] ?? null,
                 'rating' => $book->volumeInfo->averageRating ?? null,
