@@ -1,7 +1,3 @@
-@php
-    Request::is('results') ? ($href = 'results.show') : ($href = 'book.show');
-@endphp
-
 <div x-data="{ show: false }">
     <img class="w-full mb-4 border rounded-sm shadow-lg shadow-slate-700 lg:w-1/6 border-slate-700"
         src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
