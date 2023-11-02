@@ -31,7 +31,7 @@
                     </div>
                 </div>
             @else
-                <button class="my-4 border-b-2">
+                <button class="flex mx-auto my-4 border-b-2">
                     <a href="{{ route('login') }}">
                         <p class="">Login to add to list</p>
                     </a>
