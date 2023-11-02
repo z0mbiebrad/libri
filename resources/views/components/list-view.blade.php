@@ -1,13 +1,13 @@
 <div class="px-3">
     {{-- <div class="flex items-center justify-around"> --}}
-    <div class="w-11/12 mx-auto text-center">
+    <div class="mx-auto text-center">
 
         @isset($book->title)
             <p class="py-2 text-xl font-bold">
                 {{ $book->title }}
             </p>
         @endisset
-        <img class="flex justify-center mx-auto my-2 border rounded-sm shadow-lg shadow-slate-600 lg:w-1/6 border-slate-600"
+        <img class="flex justify-center w-1/2 mx-auto my-2 border rounded-sm shadow-lg shadow-slate-600 border-slate-600"
             src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
 
         @isset($book->authors)
