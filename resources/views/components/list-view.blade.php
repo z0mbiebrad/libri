@@ -1,19 +1,23 @@
 <div x-data="{ show: false }">
-    <img class="mb-4 border rounded-sm shadow-lg  shadow-slate-600 lg:w-1/6 border-slate-600"
-        src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
-    @isset($book->title)
-        <p class="py-2">
-            {{ $book->title }}
-        </p>
-    @endisset
-    @isset($book->authors)
-        <p class="py-2">
-            {{ $book->authors }}
-        </p>
-    @endisset
+    <div class="flex items-center justify-around">
+        <img class="border rounded-sm shadow-lg shadow-slate-600 lg:w-1/6 border-slate-600"
+            src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
+        <div>
+            @isset($book->title)
+                <p class="py-2">
+                    {{ $book->title }}
+                </p>
+            @endisset
+            @isset($book->authors)
+                <p class="py-2">
+                    {{ $book->authors }}
+                </p>
+            @endisset
+        </div>
+    </div>
 
     {{-- Trigger --}}
-    <div @click="show = ! show">
+    <div @click="show = ! show" class="flex justify-center mt-2">
         <button class="flex items-center py-2 mb-4 border-b-2">
             More information
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

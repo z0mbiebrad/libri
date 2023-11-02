@@ -12,7 +12,7 @@
             class=" w-11/12 px-3 mx-auto mb-6 text-lg border shadow-inner text-slate-300 shadow-slate-600 border-slate-600 lg:w-1/2 {{ $loop->iteration === 1 ? 'mt-6' : '' }}">
             @auth
                 <div x-data="{ show: false }" class="">
-                    <div @click="show = ! show" class="flex">
+                    <div @click="show = ! show" class="flex justify-center">
                         <button class="flex items-center py-2 mb-4 border-b-2">
                             Add to a list
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
