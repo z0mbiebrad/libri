@@ -1,5 +1,5 @@
 <div x-data="{ show: false }">
-    <img class="w-full mb-4 border rounded-sm shadow-lg shadow-slate-600 lg:w-1/6 border-slate-600"
+    <img class="mb-4 border rounded-sm shadow-lg  shadow-slate-600 lg:w-1/6 border-slate-600"
         src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
     @isset($book->title)
         <p class="py-2">
