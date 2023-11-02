@@ -1,4 +1,4 @@
-<div>
+<div class="px-3">
     {{-- <div class="flex items-center justify-around"> --}}
     <div class="w-11/12 mx-auto text-center">
 
