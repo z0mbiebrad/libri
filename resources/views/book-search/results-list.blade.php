@@ -9,7 +9,7 @@
 
     @foreach ($books as $book)
         <div
-            class=" w-11/12 px-3 mx-auto mb-6 text-lg border shadow-inner text-slate-300 shadow-slate-600 border-slate-600 lg:w-1/2 {{ $loop->iteration === 1 ? 'mt-6' : '' }}">
+            class=" w-5/6 mx-auto mb-6 text-lg border shadow-inner text-slate-300 shadow-slate-600 border-slate-600 lg:w-1/2 {{ $loop->iteration === 1 ? 'mt-6' : '' }}">
             @auth
                 <div x-data="{ show: false }" class="">
                     <div @click="show = ! show" class="flex justify-center">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             @else
-                <button class="flex mx-auto my-4 border-b-2">
+                <button class="flex mx-auto mt-4 mb-2 border-b-2">
                     <a href="{{ route('login') }}">
                         <p class="">Login to add to list</p>
                     </a>
