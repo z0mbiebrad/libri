@@ -15,7 +15,7 @@
             </p>
         @endisset
     </div>
-    <div x-data="{ show: false }">
+    <div x-data="{ show: false }" class="relative">
 
         {{-- Trigger --}}
         <div @click="show = ! show" class="flex justify-center">
@@ -31,7 +31,7 @@
 
         {{-- Links  --}}
         <div x-show="show" style="display:none"
-            class="absolute flex w-1/2 px-4 py-2 m-auto mt-2 overflow-auto bg-slate-900 text-slate-300 max-h-72 rounded-xl">
+            class="absolute w-full px-4 py-2 m-auto mt-2 overflow-auto bg-slate-900 text-slate-300 max-h-72 rounded-xl">
             <div class="space-y-2 italic">
                 @isset($book->subtitle)
                     <p>
