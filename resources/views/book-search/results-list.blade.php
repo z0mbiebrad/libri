@@ -10,7 +10,7 @@
     <div class="lg:grid lg:grid-cols-3 ">
         @foreach ($books as $book)
             <div
-                class="w-5/6 sm:max-w-md mx-auto mb-6 text-lg border shadow-inner text-slate-300 shadow-slate-600 border-slate-600 lg:mt-6 {{ $loop->iteration === 1 ? 'mt-6' : '' }}">
+                class="w-5/6 sm:max-w-md rounded-md mx-auto mb-6 text-lg border shadow-inner text-slate-300 shadow-slate-600 border-slate-600 lg:mt-6 {{ $loop->iteration === 1 ? 'mt-6' : '' }}">
                 @auth
                     <div x-data="{ show: false }" class="">
                         <div @click="show = ! show" class="flex justify-center">
