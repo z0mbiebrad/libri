@@ -31,7 +31,7 @@
 
         {{-- Links  --}}
         <div x-show="show" style="display:none"
-            class="absolute z-50 w-full px-4 py-2 m-auto mt-2 overflow-auto rounded-md bg-slate-900 text-slate-300 max-h-72">
+            class="z-50 w-full px-4 py-2 m-auto mt-2 overflow-auto rounded-md bg-slate-900 text-slate-300 max-h-72">
             <div class="space-y-2 italic">
                 @isset($book->subtitle)
                     <p>
