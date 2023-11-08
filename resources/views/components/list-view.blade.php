@@ -1,5 +1,4 @@
 <div class="px-3">
-    {{-- <div class="flex items-center justify-around"> --}}
     <div class="mx-auto text-center">
 
         @isset($book->title)
@@ -16,8 +15,7 @@
             </p>
         @endisset
     </div>
-    {{-- </div> --}}
-    <div x-data="{ show: false }">
+    <div x-data="{ show: false }" class="relative" @click.away="show = false">
 
         {{-- Trigger --}}
         <div @click="show = ! show" class="flex justify-center">
@@ -32,25 +30,26 @@
         </div>
 
         {{-- Links  --}}
-        <div x-show="show" style="display:none">
-            <div>
+        <div x-show="show" style="display:none"
+            class="absolute z-50 w-full px-4 py-2 m-auto mt-2 overflow-auto rounded-md bg-slate-900 text-slate-300 max-h-72">
+            <div class="space-y-2 italic">
                 @isset($book->subtitle)
-                    <p class="py-2 italic">
+                    <p>
                         {{ $book->subtitle }}
                     </p>
                 @endisset
                 @isset($book->categories)
-                    <p class="py-2 italic">
+                    <p>
                         {{ $book->categories }}
                     </p>
                 @endisset
                 @isset($book->published_date)
-                    <p class="py-2 italic">
+                    <p>
                         {{ $book->published_date }}
                     </p>
                 @endisset
                 @isset($book->rating)
-                    <p class="flex items-center py-2 italic">
+                    <p class="flex items-center">
                         {{ $book->rating }}
                         <svg xmlns="http://www.w3.org/2000/svg" fill="gold" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -59,7 +58,7 @@
                         </svg>
                     </p>
                 @endisset
-                <p class="py-2 mb-5">
+                <p class="pb-3 not-italic">
                     {!! strip_tags($book->description, '<b><br><i>') ?? 'Description not available.' !!}
                 </p>
             </div>
