@@ -15,7 +15,7 @@
             </p>
         @endisset
     </div>
-    <div x-data="{ show: false }" class="relative">
+    <div x-data="{ show: false }" class="relative" @click.away="show = false">
 
         {{-- Trigger --}}
         <div @click="show = ! show" class="flex justify-center">
