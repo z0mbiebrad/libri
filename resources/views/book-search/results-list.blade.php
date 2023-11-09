@@ -24,7 +24,7 @@
                             </button>
                         </div>
                         <div x-show="show" style="display:none"
-                            class="z-50 flex justify-around w-full px-4 py-2 mx-auto mt-2 mb-4 overflow-auto bg-black rounded-md text-slate-300 max-h-72">
+                            class="z-50 flex justify-around w-full px-4 py-2 mx-auto mt-2 mb-4 overflow-auto rounded-md bg-slate-800 text-slate-300 max-h-72">
                             @if (Auth::user())
                                 <x-list-add name="finished" :book="$book" />
                                 <x-list-add name="current" :book="$book" />
