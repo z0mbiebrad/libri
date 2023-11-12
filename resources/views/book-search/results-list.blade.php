@@ -7,10 +7,11 @@
 
     <x-booksearch />
 
+    <x-message />
+
     <div class="lg:grid lg:grid-cols-2 lg:gap-4">
         @foreach ($books as $book)
-            <div
-                class="w-5/6 -2 max-w-xs rounded-md mx-auto mb-6 text-lg border shadow-md bg-slate-900 text-slate-300 shadow-slate-600 border-slate-600 lg:mt-6 {{ $loop->iteration === 1 ? 'mt-6' : '' }} {{ $loop->odd ? 'lg:mr-6' : 'lg:ml-6' }}">
+            <x-list-card :loop="$loop">
                 @auth
                     <div x-data="{ show: false }" class="relative" @click.away="show = false">
                         <div @click="show = ! show" class="flex justify-center">
@@ -41,7 +42,7 @@
 
                 <x-list-view :book="$book" :loop="$loop" />
 
-            </div>
+            </x-list-card>
         @endforeach
     </div>
 </x-app-layout>
