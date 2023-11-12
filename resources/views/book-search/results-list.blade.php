@@ -14,14 +14,9 @@
             <x-list-card :loop="$loop">
                 @auth
                     <div x-data="{ show: false }" class="relative" @click.away="show = false">
-                        <div @click="show = ! show" class="flex justify-center">
-                            <button class="flex items-center py-2 mb-2 border-b-2">
-                                <p class="pr-2">
-                                    Add to a list
-                                </p>
-                                <x-dropdown-icon />
-                            </button>
-                        </div>
+                        <x-dropdown-trigger>
+                            Add to List
+                        </x-dropdown-trigger>
                         <div x-show="show" style="display:none"
                             class="z-50 flex justify-around w-full px-4 py-2 mx-auto mt-2 mb-4 overflow-auto rounded-md lg:absolute bg-slate-800 text-slate-300 max-h-72">
                             @if (Auth::user())
