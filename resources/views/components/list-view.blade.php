@@ -16,16 +16,9 @@
         @endisset
     </div>
     <div x-data="{ show: false }" class="relative" @click.away="show = false">
-
-        {{-- Trigger --}}
-        <div @click="show = ! show" class="flex justify-center">
-            <button class="flex items-center py-2 mb-4 border-b-2">
-                <p class="pr-2">
-                    More information
-                </p>
-                <x-dropdown-icon />
-            </button>
-        </div>
+        <x-dropdown-trigger>
+            More information
+        </x-dropdown-trigger>
 
         {{-- Links  --}}
         <div x-show="show" style="display:none"
