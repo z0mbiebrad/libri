@@ -18,18 +18,14 @@
         @foreach ($books as $book)
             <x-list-card :loop="$loop">
                 <div x-data="{ show: false }" class="">
-                    <div @click="show = ! show" class="">
-                        <button class="flex items-center py-2 mb-4 border-b-2">
-                            <p class="">Book Options</p>
-                            <x-dropdown-icon />
-                        </button>
-                    </div>
-                    <div x-show="show" style="display:none" class="flex items-center justify-around mb-4">
-                        @if (Auth::user())
-                            <x-book-delete :book="$book" />
-                            <x-list-update :book="$book" />
-                        @endif
-                    </div>
+                    <x-dropdown-trigger>
+                        Book Options
+                    </x-dropdown-trigger>
+
+                    <x-dropdown-links>
+                        <x-book-delete :book="$book" />
+                        <x-list-update :book="$book" />
+                    </x-dropdown-links>
                 </div>
                 <x-list-view :book="$book" :loop="$loop" />
             </x-list-card>
