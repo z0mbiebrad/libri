@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="border-b border-gray-100 bg-slate-900">
+<nav x-data="{ show: false }" class="border-b border-gray-100 bg-slate-900">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto sm:px-2 lg:px-8">
         <div class="flex justify-between h-16">
@@ -12,16 +12,15 @@
 
                 @if (Auth::user())
                     <!-- Navigation Links -->
-                    <div
-                        class="hidden 2xl:space-x-10 xl:space-x-8 lg:space-x-6 md:space-x-4 sm:space-x-2 sm:-my-px sm:flex">
-                        <x-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
-                            {{ __('Book Search') }}
+                    <div class="hidden 2xl:space-x-10 xl:space-x-8 lg:space-x-6 md:space-x-4 sm:space-x-8 sm:flex">
+                        <x-nav-link class="sm:ml-4" :href="route('booksearch')" :active="request()->routeIs('booksearch')">
+                            {{ __('Search') }}
                         </x-nav-link>
                         <x-nav-link :href="route('list.index', ['list' => 'finished'])" :active="Request::is('list/finished')">
-                            {{ __('Finished Books') }}
+                            {{ __('Finished') }}
                         </x-nav-link>
                         <x-nav-link :href="route('list.index', ['list' => 'current'])" :active="Request::is('list/current')">
-                            {{ __('Current Books') }}
+                            {{ __('Current') }}
                         </x-nav-link>
                         <x-nav-link :href="route('list.index', ['list' => 'wishlist'])" :active="Request::is('list/wishlist')">
                             {{ __('Wishlist') }}
@@ -47,7 +46,7 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none">
+                                class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out border border-transparent rounded-md bg-slate-800 text-slate-300 hover:text-slate-700 focus:outline-none">
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ml-1">
@@ -85,27 +84,21 @@
 
             <!-- Hamburger -->
             <div class="flex items-center -mr-2 sm:hidden">
-                <button @click="open = ! open"
+                <button @click="show = ! show"
                     class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
                     @auth
                         <p class="mr-2">{{ Auth::user()->name }}</p>
                     @else
                         <p class="mr-2">Menu</p>
                     @endauth
-                    <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <x-dropdown-icon />
                 </button>
             </div>
         </div>
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
+    <div :class="{ 'block': show, 'hidden': !show }" class="hidden sm:hidden">
         @if (Auth::user())
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
