@@ -15,7 +15,9 @@
                     <div x-data="{ show: false }" class="relative" @click.away="show = false">
                         <div @click="show = ! show" class="flex justify-center">
                             <button class="flex items-center py-2 mb-2 border-b-2">
-                                Add to a list
+                                <p class="pr-2">
+                                    Add to a list
+                                </p>
                                 <x-dropdown-icon />
                             </button>
                         </div>
