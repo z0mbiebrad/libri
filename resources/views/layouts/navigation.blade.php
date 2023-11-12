@@ -12,16 +12,15 @@
 
                 @if (Auth::user())
                     <!-- Navigation Links -->
-                    <div
-                        class="hidden 2xl:space-x-10 xl:space-x-8 lg:space-x-6 md:space-x-4 sm:space-x-2 sm:-my-px sm:flex">
-                        <x-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
-                            {{ __('Book Search') }}
+                    <div class="hidden 2xl:space-x-10 xl:space-x-8 lg:space-x-6 md:space-x-4 sm:space-x-8 sm:flex">
+                        <x-nav-link class="sm:ml-4" :href="route('booksearch')" :active="request()->routeIs('booksearch')">
+                            {{ __('Search') }}
                         </x-nav-link>
                         <x-nav-link :href="route('list.index', ['list' => 'finished'])" :active="Request::is('list/finished')">
-                            {{ __('Finished Books') }}
+                            {{ __('Finished') }}
                         </x-nav-link>
                         <x-nav-link :href="route('list.index', ['list' => 'current'])" :active="Request::is('list/current')">
-                            {{ __('Current Books') }}
+                            {{ __('Current') }}
                         </x-nav-link>
                         <x-nav-link :href="route('list.index', ['list' => 'wishlist'])" :active="Request::is('list/wishlist')">
                             {{ __('Wishlist') }}
@@ -47,7 +46,7 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none">
+                                class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out border border-transparent rounded-md bg-slate-800 text-slate-300 hover:text-slate-700 focus:outline-none">
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ml-1">
