@@ -2,7 +2,7 @@
     <div class="mx-auto text-center">
 
         @isset($book->title)
-            <p class="py-2 text-xl font-bold">
+            <p class="py-2 text-xl italic font-bold">
                 {{ $book->title }}
             </p>
         @endisset
@@ -10,7 +10,7 @@
             src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
 
         @isset($book->authors)
-            <p class="py-2 text-xl italic">
+            <p class="py-2 text-xl">
                 {{ $book->authors }}
             </p>
         @endisset
