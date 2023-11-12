@@ -21,11 +21,6 @@
         </x-dropdown-trigger>
 
         <x-dropdown-links>
-
-        </x-dropdown-links>
-        {{-- Links  --}}
-        <div x-show="show" style="display:none"
-            class="z-50 w-full px-4 py-2 m-auto mt-2 overflow-auto rounded-md bg-slate-800 lg:absolute text-slate-300 max-h-72">
             <div class="space-y-2 italic">
                 @isset($book->subtitle)
                     <p>
@@ -52,6 +47,6 @@
                     {!! strip_tags($book->description, '<b><br><i>') ?? 'Description not available.' !!}
                 </p>
             </div>
-        </div>
+        </x-dropdown-links>
     </div>
 </div>
