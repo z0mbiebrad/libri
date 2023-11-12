@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="border-b border-gray-100 bg-slate-900">
+<nav x-data="{ show: false }" class="border-b border-gray-100 bg-slate-900">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto sm:px-2 lg:px-8">
         <div class="flex justify-between h-16">
@@ -84,7 +84,7 @@
 
             <!-- Hamburger -->
             <div class="flex items-center -mr-2 sm:hidden">
-                <button @click="open = ! open"
+                <button @click="show = ! show"
                     class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
                     @auth
                         <p class="mr-2">{{ Auth::user()->name }}</p>
@@ -98,7 +98,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
+    <div :class="{ 'block': show, 'hidden': !show }" class="hidden sm:hidden">
         @if (Auth::user())
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
