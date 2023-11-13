@@ -10,6 +10,7 @@
     <div class="w-5/6 h-full py-8 m-auto space-y-6 text-xl sm:text-2xl text-slate-300">
         @auth
             <p>Welcome back, {{ Auth::user()->name }}!</p>
+            <p>You are currently reading <a href="">{{ $book->title }}</a> by {{ $book->authors }},</p>
             <p>Happy reading!</p>
         @else
             <h3>Welcome to Libri Search!</h3>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\UserBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -11,7 +12,16 @@ class BookSearchController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(UserBook $userBook)
+    {
+        $book = $userBook->first();
+        return view('book-search.home', ['book' => $book]);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Request $request)
     {
         $key = config('services.google_api');
 
@@ -36,13 +46,5 @@ class BookSearchController extends Controller
         }
 
         return view('book-search.results-list', ['books' => $books]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Book $book)
-    {
-        return view('book-search.results-book', ['book' => $book]);
     }
 }
