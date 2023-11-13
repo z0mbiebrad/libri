@@ -14,7 +14,7 @@ class BookSearchController extends Controller
      */
     public function index(UserBook $userBook)
     {
-        $book = $userBook->first();
+        $book = $userBook->where(['list' => 'current'])->first();
         return view('book-search.home', ['book' => $book]);
     }
 
