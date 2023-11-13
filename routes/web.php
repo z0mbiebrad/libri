@@ -6,11 +6,9 @@ use App\Http\Controllers\UserBookController;
 use Illuminate\Support\Facades\Route;
 
 // **BOOKSEARCH**
-Route::get('/', function () {
-    return view('book-search.home');
-})->name('booksearch');
+Route::get('/', [BookSearchController::class, 'index'])->name('booksearch');
 
-Route::get('results', [BookSearchController::class, 'index'])->name('results.index');
+Route::get('results', [BookSearchController::class, 'show'])->name('results.show');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 

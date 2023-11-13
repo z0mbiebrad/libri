@@ -10,6 +10,11 @@
     <div class="w-5/6 h-full py-8 m-auto space-y-6 text-xl sm:text-2xl text-slate-300">
         @auth
             <p>Welcome back, {{ Auth::user()->name }}!</p>
+            <p>You are currently reading {{ $book->title }} by {{ $book->authors }}.</p>
+            <p>Would you like to see more books by this author? <a class="underline"
+                    href="{{ route('results.show', ['bookSearch' => $book->authors]) }}">Click
+                    Here</a></p>
+
             <p>Happy reading!</p>
         @else
             <h3>Welcome to Libri Search!</h3>
