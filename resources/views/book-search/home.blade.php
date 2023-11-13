@@ -13,7 +13,7 @@
             @isset($book)
                 <p>You are currently reading {{ $book->title }} by {{ $book->authors }}.</p>
                 <p>Would you like to see more books by this author? <a class="underline"
-                        href="{{ route('results.show', ['bookSearch' => $book->authors]) }}">Click
+                        href="{{ route('results.show', ['query' => 'inauthor', 'bookSearch' => $book->authors]) }}">Click
                         Here</a>
                 </p>
             @endisset
