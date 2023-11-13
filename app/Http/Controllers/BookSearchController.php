@@ -6,6 +6,8 @@ use App\Models\Book;
 use App\Models\UserBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
+
 
 class BookSearchController extends Controller
 {
@@ -14,7 +16,7 @@ class BookSearchController extends Controller
      */
     public function index(UserBook $userBook)
     {
-        $book = $userBook->where(['list' => 'current'])->first();
+        $book = $userBook->where(['user_id' => Auth::id(), 'list' => 'current'])->first();
         return view('book-search.home', ['book' => $book]);
     }
 
