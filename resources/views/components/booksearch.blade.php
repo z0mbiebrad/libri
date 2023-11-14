@@ -2,7 +2,7 @@
     <form action="{{ route('results.show') }}" class="text-lg font-semibold">
         <div class="pt-4 mx-auto text-center text-black rounded-lg">
             <input id="bookSearch" name="bookSearch" class="w-1/2 rounded-lg lg:w-1/3"
-                placeholder="{{ ucwords(request('bookSearch')) ?? 'Name of book...' }}" required>
+                placeholder="{{ ucwords(request('bookSearch')) ?: 'Name of book...' }}" required>
             <div class="flex items-center justify-center pt-2 space-x-2 text-center text-slate-300">
                 <input type="checkbox" id="epub" value="epub" name="epub"
                     {{ request('epub') === 'epub' ? 'checked' : '' }}>
