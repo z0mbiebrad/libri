@@ -6,9 +6,11 @@
             <input id="bookSearch" name="bookSearch" class="rounded-lg"
                 placeholder="{{ ucwords(request('bookSearch')) ?? 'Name of book...' }}" required>
             <div class="flex items-center ml-2 space-x-2 text-slate-300">
-                <input type="radio" id="intitle" value="intitle" name="searchBy" />
+                <input type="radio" id="intitle" value="intitle" name="searchBy"
+                    {{ request('searchBy') === 'intitle' ? 'checked' : '' }} />
                 <label for="intitle">Title</label>
-                <input type="radio" id="inauthor" value="inauthor" name="searchBy">
+                <input type="radio" id="inauthor" value="inauthor" name="searchBy"
+                    {{ request('searchBy') === 'inauthor' ? 'checked' : '' }}>
                 <label for="inauthor">Author</label>
             </div>
         </div>
