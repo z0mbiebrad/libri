@@ -29,7 +29,7 @@
                 @else
                     <div class="hidden sm:space-x-8 sm:-my-px sm:flex sm:ml-4">
                         <x-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
-                            {{ __('Book Search') }}
+                            {{ __('Search') }}
                         </x-nav-link>
                         <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
                             {{ __('Login') }}
