@@ -12,6 +12,8 @@
                 <input type="radio" id="inauthor" value="inauthor" name="searchBy"
                     {{ request('searchBy') === 'inauthor' ? 'checked' : '' }}>
                 <label for="inauthor">Author</label>
+                <input type="checkbox" id="epub" value="epub" name="epub">
+                <label for="epub">Ebook</label>
             </div>
         </div>
         <button class="block w-full py-2">Search</button>
