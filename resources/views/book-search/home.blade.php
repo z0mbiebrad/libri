@@ -22,7 +22,7 @@
             <h3>Welcome to Libri Search!</h3>
             <p>
                 Libri Search is a user-friendly book search tool. Discover, organize, and curate your reading journey
-                effortlessly with three distinct lists: Finished Books, Currently Reading, and Wishlist.
+                effortlessly with three distinct lists: Finished, Current, and Wishlist.
             </p>
             <p>
                 Just type in the full or partial name of a book, and you will be presented with a list of the
@@ -32,8 +32,10 @@
                 preferred list.
             </p>
             <p>
-                While the search feature is accessible to all, utilizing the full potential of Libri Search's Book Lists
-                requires a quick account creation and login.
+                Although the search feature is available to everyone, unlocking the complete capabilities of Libri Search's
+                Book Lists involves a brief account creation and login. Creating an account enables you to access more
+                refined search results. You have the option to narrow down your searches by specifying a title or author,
+                and you can also apply filters to exclusively display ebooks.
             </p>
             <p>
                 Happy reading!
