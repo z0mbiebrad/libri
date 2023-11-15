@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('booksearch') }}" class="mr-2 text-xl text-slate-300">
+                    <a href="{{ route('booksearch') }}" class="mr-2 text-xl">
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-9" />
                     </a>
                 </div>
@@ -46,7 +46,7 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out border border-transparent rounded-md bg-slate-800 text-slate-300 hover:text-slate-700 focus:outline-none">
+                                class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out border border-transparent rounded-md bg-slate-800 hover:text-slate-700 focus:outline-none">
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ml-1">
@@ -117,8 +117,8 @@
             <!-- Responsive Settings Options -->
             <div class="pt-4 pb-1 border-t border-gray-200">
                 <div class="px-4">
-                    <div class="text-base font-medium text-slate-300">{{ Auth::user()->name }}</div>
-                    <div class="text-sm font-medium text-slate-300">{{ Auth::user()->email }}</div>
+                    <div class="text-base font-medium">{{ Auth::user()->name }}</div>
+                    <div class="text-sm font-medium">{{ Auth::user()->email }}</div>
                 </div>
 
                 <div class="mt-3 space-y-1">

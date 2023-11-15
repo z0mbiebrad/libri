@@ -16,12 +16,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased text-slate-900">
+<body class="font-sans antialiased text-white">
     <div class="min-h-screen bg-black">
         @include('layouts.navigation')
 
         <div
-            class="w-11/12 px-6 py-4 mx-auto mt-6 overflow-hidden border rounded-lg shadow-md border-slate-600 shadow-slate-600 bg-slate-900 text-slate-300 sm:w-2/3 md:w-1/3">
+            class="w-11/12 px-6 py-4 mx-auto mt-6 overflow-hidden border rounded-lg shadow-md border-slate-600 shadow-slate-600 bg-slate-900 sm:w-2/3 md:w-1/3">
             {{ $slot }}
         </div>
     </div>

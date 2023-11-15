@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-slate-300 ">
+        <h2 class="text-xl font-semibold leading-tight ">
             {{ __('Book Search') }}
         </h2>
     </x-slot>
@@ -40,7 +40,7 @@
             @endforeach
         </div>
     @else
-        <p class="mt-2 text-xl text-center text-slate-300">No results found, please try searching for something else!</p>
+        <p class="mt-2 text-xl text-center ">No results found, please try searching for something else!</p>
     @endisset
 
 </x-app-layout>

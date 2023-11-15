@@ -7,10 +7,10 @@
     <x-message />
 
     @if ($books->isEmpty())
-        <p class="pt-4 pl-6 text-slate-300">No books in this list, check back after adding!</p>
+        <p class="pt-4 pl-6">No books in this list, check back after adding!</p>
     @else
         <x-slot name="header">
-            <h2 class="text-xl font-semibold leading-tight text-slate-300">
+            <h2 class="text-xl font-semibold leading-tight">
                 {{ __(ucwords($book->list) . ' Books') }}
             </h2>
         </x-slot>
