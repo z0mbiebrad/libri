@@ -10,7 +10,7 @@
             src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
 
         @isset($book->authors)
-            <p class="py-2 text-xl">
+            <p class="py-2 text-xl italic">
                 {{ $book->authors }}
             </p>
         @endisset
