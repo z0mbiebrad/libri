@@ -1,4 +1,4 @@
-<div class="mx-auto my-1 shadow-md bg-slate-900 shadow-slate-600">
+<div class="mx-auto border-b shadow-inner border-slate-600 bg-slate-900 shadow-slate-600">
     <form action="{{ route('results.show') }}" class="text-lg font-semibold">
         <div class="pt-4 mx-auto text-center text-black rounded-lg">
             <input id="bookSearch" name="bookSearch" class="w-1/2 rounded-lg lg:w-1/3"
