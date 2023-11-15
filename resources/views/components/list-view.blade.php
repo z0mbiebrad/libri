@@ -20,6 +20,12 @@
             More information
         </x-dropdown-trigger>
 
+        @isset($book->epub)
+            <p class="py-2 text-xl">
+                {{ $book->epub }}
+            </p>
+        @endisset
+
         <x-dropdown-links>
             <div class="space-y-2 italic">
                 @isset($book->subtitle)

@@ -27,14 +27,16 @@ class BookSearchController extends Controller
     {
         $key = config('services.google_api');
 
-        $ebook =  $request->input('epub') === 'epub' ? '&download=epub' : '';
+        $ebook =  $request->input('epub') === 'epub' ? '&filter=ebooks' : '';
 
-        $query = $request->input('searchBy') . ':';
+        $query = $request->input('searchBy') ? $request->input('searchBy') . ':' : '';
 
         $book = $request->input('bookSearch');
 
+        // dd('https://www.googleapis.com/books/v1/volumes?q=' . $query . $book . $ebook . '&key=' . $key);
         $bookResponse = Http::get('https://www.googleapis.com/books/v1/volumes?q=' . $query . $book . $ebook . '&key=' . $key);
         $google_books = json_decode($bookResponse);
+        // dd($google_books);
 
         if (isset($google_books->items)) {
             foreach ($google_books->items as $book) {
@@ -49,6 +51,8 @@ class BookSearchController extends Controller
                     'published_date' => date('Y', strtotime($book->volumeInfo->publishedDate ?? null)),
                     'description' => $book->volumeInfo->description ?? null,
                     'publisher' => $book->volumeInfo->publisher ?? null,
+                    'epub'  => $book->saleInfo->buyLink ?? null,
+                    'price' => $book->saleInfo->retailPrice->amount ?? null,
                 ]);
             }
         } else {

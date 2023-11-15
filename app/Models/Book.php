@@ -15,10 +15,10 @@ class Book extends Model
 
     public function getRouteKeyName()
     {
-        return 'ulid';
+        return 'google_book_id';
     }
     public function uniqueIds()
     {
-        return ['ulid'];
+        return ['google_book_id'];
     }
 }
