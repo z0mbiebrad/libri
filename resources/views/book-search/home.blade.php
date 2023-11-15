@@ -33,7 +33,10 @@
             </p>
             <p>
                 Although the search feature is available to everyone, unlocking the complete capabilities of Libri Search's
-                Book Lists involves a brief account creation and login. Creating an account enables you to access more
+                Book Lists involves a brief account creation and login.
+            </p>
+            <p>
+                Creating an account enables you to access more
                 refined search results. You have the option to narrow down your searches by specifying a title or author,
                 and you can also apply filters to exclusively display ebooks.
             </p>
