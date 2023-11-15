@@ -13,7 +13,7 @@
                 @if (Auth::user())
                     <!-- Navigation Links -->
                     <div class="hidden 2xl:space-x-10 xl:space-x-8 lg:space-x-6 md:space-x-4 sm:space-x-8 sm:flex">
-                        <x-nav-link class="sm:ml-4" :href="route('booksearch')" :active="request()->routeIs('booksearch')">
+                        <x-nav-link class="sm:ml-4" :href="route('booksearch')" :active="request()->routeIs(['booksearch', 'results.show'])">
                             {{ __('Search') }}
                         </x-nav-link>
                         <x-nav-link :href="route('list.index', ['list' => 'finished'])" :active="Request::is('list/finished')">

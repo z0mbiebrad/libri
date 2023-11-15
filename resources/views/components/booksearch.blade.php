@@ -19,7 +19,7 @@
         </div>
         <div class="flex justify-center">
             <button
-                class="w-1/3 py-2 text-center rounded-lg shadow-inner shadow-gray-300 hover:bg-slate-800 hover:shadow-white sm:w-1/4 md:w-1/5 lg:w-1/6">Search</button>
+                class="w-1/3 py-2 my-2 text-center rounded-lg shadow-inner shadow-gray-300 hover:bg-slate-800 hover:shadow-white sm:w-1/4 md:w-1/5 lg:w-1/6">Search</button>
         </div>
     </form>
 </div>
