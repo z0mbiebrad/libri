@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-slate-300 ">
+        <h2 class="text-xl font-semibold leading-tight ">
             {{ __('Book Search') }}
         </h2>
     </x-slot>
@@ -13,7 +13,7 @@
 
         <x-back-button :book="$book" />
 
-        <div class="text-lg border shadow-md text-slate-300 border-slate-800 shadow-slate-600">
+        <div class="text-lg border shadow-md border-slate-800 shadow-slate-600">
             @auth
                 <div class="flex justify-around">
                     <x-list-add name="finished" :book="$book" />
