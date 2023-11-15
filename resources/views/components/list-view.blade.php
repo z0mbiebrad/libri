@@ -20,12 +20,6 @@
             More information
         </x-dropdown-trigger>
 
-        @isset($book->epub)
-            <p class="py-2 text-xl">
-                {{ $book->epub }}
-            </p>
-        @endisset
-
         <x-dropdown-links>
             <div class="space-y-2 italic">
                 @isset($book->subtitle)
@@ -54,5 +48,14 @@
                 </p>
             </div>
         </x-dropdown-links>
+
+        @if (request('epub') === 'epub')
+            @isset($book->epub)
+                <div class="py-2 text-xl text-center underline shadow-inner shadow-slate-100">
+                    <a href="{{ $book->epub }}">eBook {{ $book->price }}</a>
+                </div>
+            @endisset
+        @endif
+
     </div>
 </div>
