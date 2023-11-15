@@ -48,5 +48,14 @@
                 </p>
             </div>
         </x-dropdown-links>
+
+        @if (request('epub') === 'epub')
+            @isset($book->epub)
+                <div class="py-2 text-xl text-center underline shadow-inner shadow-slate-100">
+                    <a href="{{ $book->epub }}">eBook {{ $book->price }}</a>
+                </div>
+            @endisset
+        @endif
+
     </div>
 </div>

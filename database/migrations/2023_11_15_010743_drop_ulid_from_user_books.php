@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->text('subtitle')->nullable()->change();
+        Schema::table('user_books', function (Blueprint $table) {
+            $table->dropColumn('ulid');
         });
     }
 
@@ -21,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('user_books', function (Blueprint $table) {
+            //
+        });
     }
 };

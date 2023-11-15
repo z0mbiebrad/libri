@@ -42,6 +42,7 @@ class UserBookController extends Controller
             'publisher' => $book->publisher ?? null,
         ]);
 
+        $list = '<a class="text-white underline" href="/list/' . $list . '">' . $list . '</a>';
         return redirect()->route('results.show', ['bookSearch' => $bookSearch])->with('status', 'Book added to ' . $list . ' reading list.');
     }
 

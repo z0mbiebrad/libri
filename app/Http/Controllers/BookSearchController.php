@@ -27,29 +27,36 @@ class BookSearchController extends Controller
     {
         $key = config('services.google_api');
 
-        $ebook = '&download=' . $request->input('epub');
+        $ebook =  $request->input('epub') === 'epub' ? '&filter=ebooks' : '';
 
-        $query = $request->input('searchBy') . ':';
+        $query = $request->input('searchBy') ? $request->input('searchBy') . ':' : '';
 
         $book = $request->input('bookSearch');
 
-
+        // dd('https://www.googleapis.com/books/v1/volumes?q=' . $query . $book . $ebook . '&key=' . $key);
         $bookResponse = Http::get('https://www.googleapis.com/books/v1/volumes?q=' . $query . $book . $ebook . '&key=' . $key);
         $google_books = json_decode($bookResponse);
+        // dd($google_books);
 
-        foreach ($google_books->items as $book) {
-            $books[] = Book::updateOrCreate([
-                'google_book_id' => $book->id,
-                'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
-                'title' => $book->volumeInfo->title ?? null,
-                'subtitle' =>  $book->volumeInfo->subtitle ?? null,
-                'authors' => $book->volumeInfo->authors[0] ?? null,
-                'categories' => $book->volumeInfo->categories[0] ?? null,
-                'rating' => $book->volumeInfo->averageRating ?? null,
-                'published_date' => date('Y', strtotime($book->volumeInfo->publishedDate ?? null)),
-                'description' => $book->volumeInfo->description ?? null,
-                'publisher' => $book->volumeInfo->publisher ?? null,
-            ]);
+        if (isset($google_books->items)) {
+            foreach ($google_books->items as $book) {
+                $books[] = Book::updateOrCreate([
+                    'google_book_id' => $book->id,
+                    'thumbnail' => $book->volumeInfo->imageLinks->thumbnail ?? null,
+                    'title' => $book->volumeInfo->title ?? null,
+                    'subtitle' =>  $book->volumeInfo->subtitle ?? null,
+                    'authors' => $book->volumeInfo->authors[0] ?? null,
+                    'categories' => $book->volumeInfo->categories[0] ?? null,
+                    'rating' => $book->volumeInfo->averageRating ?? null,
+                    'published_date' => date('Y', strtotime($book->volumeInfo->publishedDate ?? null)),
+                    'description' => $book->volumeInfo->description ?? null,
+                    'publisher' => $book->volumeInfo->publisher ?? null,
+                    'epub'  => $book->saleInfo->buyLink ?? null,
+                    'price' => $book->saleInfo->retailPrice->amount ?? null,
+                ]);
+            }
+        } else {
+            return view('book-search.results-list');
         }
 
         return view('book-search.results-list', ['books' => $books]);

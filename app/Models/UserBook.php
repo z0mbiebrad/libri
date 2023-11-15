@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 class UserBook extends Model
 {
-    use HasFactory, HasUlids;
+    use HasFactory;
 
     protected $guarded = [];
 
@@ -32,10 +31,10 @@ class UserBook extends Model
 
     public function getRouteKeyName()
     {
-        return 'ulid';
+        return 'google_book_id';
     }
     public function uniqueIds()
     {
-        return ['ulid'];
+        return ['google_book_id'];
     }
 }
