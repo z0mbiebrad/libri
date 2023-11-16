@@ -5,9 +5,6 @@
                 placeholder="{{ ucwords(request('bookSearch')) ?: 'Name of book...' }}" required>
             @auth
                 <div class="flex items-center justify-center pt-2 space-x-2 text-center text-white">
-                    <input type="checkbox" id="epub" value="epub" name="epub"
-                        {{ request('epub') === 'epub' ? 'checked' : '' }}>
-                    <label for="epub">Ebook</label>
                     <input type="radio" id="intitle" value="intitle" name="searchBy"
                         {{ request('searchBy') === 'intitle' ? 'checked' : '' }} />
                     <label for="intitle">Title</label>
