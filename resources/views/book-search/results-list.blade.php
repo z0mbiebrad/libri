@@ -10,10 +10,6 @@
     @isset($books)
         <x-message />
 
-        @if (Request::is('/results'))
-            <x-booksearch />
-        @endif
-
         @if (count($books) === 0)
             <p class="pt-4 pl-6">No books in this list, check back after adding!</p>
         @endif
@@ -24,6 +20,8 @@
                     {{ __(ucwords(Str::of(Request::path())->substr(5)) . ' Books') }}
                 </h2>
             </x-slot>
+        @else
+            <x-booksearch />
         @endif
 
 
