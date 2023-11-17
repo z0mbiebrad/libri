@@ -1,43 +1,14 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white'])
-
-@php
-switch ($align) {
-    case 'left':
-        $alignmentClasses = 'origin-top-left left-0';
-        break;
-    case 'top':
-        $alignmentClasses = 'origin-top';
-        break;
-    case 'right':
-    default:
-        $alignmentClasses = 'origin-top-right right-0';
-        break;
-}
-
-switch ($width) {
-    case '48':
-        $width = 'w-48';
-        break;
-}
-@endphp
-
-<div class="relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
-    <div @click="open = ! open">
-        {{ $trigger }}
-    </div>
-
-    <div x-show="open"
-            x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0 scale-95"
-            x-transition:enter-end="opacity-100 scale-100"
-            x-transition:leave="transition ease-in duration-75"
-            x-transition:leave-start="opacity-100 scale-100"
-            x-transition:leave-end="opacity-0 scale-95"
-            class="absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }}"
-            style="display: none;"
-            @click="open = false">
-        <div class="rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}">
-            {{ $content }}
+<div x-data="{ show: false }" class="relative" @click.away="show = false">
+    <div @click="show = ! show" class="flex justify-center">
+        <div class="flex items-center py-2 mb-2 border-b-2">
+            <p class="pr-2">
+                {{ $trigger }}
+            </p>
+            <x-dropdown-icon />
         </div>
+    </div>
+    <div x-show="show" style="display:none"
+        class="z-50 flex justify-around px-4 py-2 mx-auto mt-2 mb-4 overflow-auto rounded-md lg:absolute bg-slate-800 max-h-72">
+        {{ $content }}
     </div>
 </div>

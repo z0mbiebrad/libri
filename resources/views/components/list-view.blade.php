@@ -1,26 +1,24 @@
     @if (Request::is('list/*'))
-        <div x-data="{ show: false } @click.away ="show=false"">
-            <x-dropdown-trigger>
+        <x-dropdown>
+            <x-slot name="trigger">
                 Book Options
-            </x-dropdown-trigger>
-
-            <x-dropdown-links>
+            </x-slot>
+            <x-slot name="content">
                 <x-book-delete :book="$book" />
                 <x-list-update :book="$book" />
-            </x-dropdown-links>
-        </div>
+            </x-slot>
+        </x-dropdown>
     @else
-        <div x-data="{ show: false }">
-            <x-dropdown-trigger>
+        <x-dropdown>
+            <x-slot name="trigger">
                 Add to List
-            </x-dropdown-trigger>
-
-            <x-dropdown-links>
+            </x-slot>
+            <x-slot name="content">
                 <x-list-add name="finished" :book="$book" />
                 <x-list-add name="current" :book="$book" />
                 <x-list-add name="wishlist" :book="$book" />
-            </x-dropdown-links>
-        </div>
+            </x-slot>
+        </x-dropdown>
     @endif
 
     <div class="px-3">
