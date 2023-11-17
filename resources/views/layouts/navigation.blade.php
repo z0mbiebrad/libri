@@ -101,7 +101,7 @@
     <div :class="{ 'block': show, 'hidden': !show }" class="hidden sm:hidden">
         @if (Auth::user())
             <div class="pt-2 pb-3 space-y-1 shadow-inner shadow-slate-600">
-                <x-responsive-nav-link :href="route('booksearch')" :active="request()->routeIs('booksearch')">
+                <x-responsive-nav-link :href="route('booksearch')" :active="request()->routeIs(['booksearch', 'results.show'])">
                     {{ __('Search') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('list.index', ['list' => 'finished'])" :active="Request::is('list/finished')">
