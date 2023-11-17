@@ -1,5 +1,5 @@
     @if (Request::is('list/*'))
-        <div x-data="{ show: false }" class="">
+        <div x-data="{ show: false } @click.away ="show=false"">
             <x-dropdown-trigger>
                 Book Options
             </x-dropdown-trigger>
@@ -10,7 +10,7 @@
             </x-dropdown-links>
         </div>
     @else
-        <div x-data="{ show: false }" class="relative" @click.away="show = false">
+        <div x-data="{ show: false }">
             <x-dropdown-trigger>
                 Add to List
             </x-dropdown-trigger>
