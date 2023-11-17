@@ -8,7 +8,6 @@
 
 
     @isset($books)
-        <x-message />
 
         @if (count($books) === 0)
             <p class="pt-4 pl-6">No books in this list, check back after adding!</p>
@@ -23,6 +22,9 @@
         @else
             <x-booksearch />
         @endif
+
+        <x-message />
+
 
 
         <div class="lg:grid lg:grid-cols-2 lg:gap-4">
