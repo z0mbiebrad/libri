@@ -18,17 +18,9 @@
         <div class="lg:grid lg:grid-cols-2 lg:gap-4">
             @foreach ($books as $book)
                 <x-list-card :loop="$loop">
-                    <div x-data="{ show: false }" class="">
-                        <x-dropdown-trigger>
-                            Book Options
-                        </x-dropdown-trigger>
 
-                        <x-dropdown-links>
-                            <x-book-delete :book="$book" />
-                            <x-list-update :book="$book" />
-                        </x-dropdown-links>
-                    </div>
                     <x-list-view :book="$book" :loop="$loop" />
+
                 </x-list-card>
             @endforeach
         </div>
