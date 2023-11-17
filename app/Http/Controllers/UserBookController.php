@@ -14,7 +14,7 @@ class UserBookController extends Controller
     public function index($list)
     {
         $books = UserBook::index($list)->get();
-        return view('book-lists.list', ['books' => $books]);
+        return view('book-search.results-list', ['books' => $books]);
     }
 
     /**
