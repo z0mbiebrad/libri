@@ -4,8 +4,10 @@
             Book Options
         </x-slot>
         <x-slot name="content">
-            <x-book-delete :book="$book" />
-            <x-list-update :book="$book" />
+            <div class="flex justify-center">
+                <x-book-delete :book="$book" />
+                <x-list-update :book="$book" />
+            </div>
         </x-slot>
     </x-dropdown>
 @else
@@ -14,9 +16,11 @@
             Add to List
         </x-slot>
         <x-slot name="content">
-            <x-list-add name="finished" :book="$book" />
-            <x-list-add name="current" :book="$book" />
-            <x-list-add name="wishlist" :book="$book" />
+            <div class="flex justify-center">
+                <x-list-add name="finished" :book="$book" />
+                <x-list-add name="current" :book="$book" />
+                <x-list-add name="wishlist" :book="$book" />
+            </div>
         </x-slot>
     </x-dropdown>
 @endif
