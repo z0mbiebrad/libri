@@ -11,7 +11,7 @@
 
         <x-message />
 
-        <div class="lg:grid lg:grid-cols-2 lg:gap-4">
+        <div class="">
             @foreach ($books as $book)
                 <x-list-card :loop="$loop">
 
