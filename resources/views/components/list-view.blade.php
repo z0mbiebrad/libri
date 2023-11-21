@@ -83,7 +83,7 @@
                     <x-rating-icon />
                 </p>
             @endisset
-            <p class="pb-3 not-italic">
+            <p class="not-italic">
                 {!! strip_tags($book->description, '<b><br><i>') ?? 'Description not available.' !!}
             </p>
         </div>
