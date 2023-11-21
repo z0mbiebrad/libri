@@ -63,7 +63,7 @@
     <x-slot name="content">
         <div class="space-y-2 italic">
             @isset($book->subtitle)
-                <p>
+                <p class="pt-2">
                     {{ $book->subtitle }}
                 </p>
             @endisset
