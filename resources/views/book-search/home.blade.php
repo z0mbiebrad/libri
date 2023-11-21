@@ -38,7 +38,7 @@
             <p>
                 Creating an account enables you to access more
                 refined search results. You have the option to narrow down your searches by specifying a title or author,
-                and you can also apply filters to exclusively display ebooks.
+                and adding books to your lists.
             </p>
             <p>
                 Happy reading!
