@@ -1,3 +1,59 @@
+{{-- Card header --}}
+@if (Request::is('list/*'))
+    <x-dropdown>
+        <x-slot name="trigger">
+            Book Options
+        </x-slot>
+        <x-slot name="content">
+            <div class="flex justify-center">
+                <x-book-delete :book="$book" />
+                <x-list-update :book="$book" />
+            </div>
+        </x-slot>
+    </x-dropdown>
+@else
+    <x-dropdown>
+        <x-slot name="trigger">
+            Add to List
+        </x-slot>
+        <x-slot name="content">
+            <div class="flex justify-around">
+                <x-list-add name="finished" :book="$book" />
+                <x-list-add name="current" :book="$book" />
+                <x-list-add name="wishlist" :book="$book" />
+            </div>
+        </x-slot>
+    </x-dropdown>
+@endif
+
+
+
+{{-- card body --}}
+<div class="">
+    <div class="mx-auto text-center">
+
+        @isset($book->title)
+            <p class="py-2 text-xl italic font-bold">
+                {{ $book->title }}
+            </p>
+        @endisset
+        <img class="flex justify-center w-1/2 mx-auto my-2 border rounded-sm shadow-lg shadow-slate-600 border-slate-600"
+            src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
+
+        @isset($book->authors)
+            <p class="py-2 text-xl italic">
+                {{ $book->authors }}
+            </p>
+        @endisset
+    </div>
+
+    @isset($book->epub)
+        <div class="px-0 pt-2 pb-4 text-xl text-center text-white underline border-b-4 border-slate-800">
+            <a href="{{ $book->epub }}">eBook {{ $book->price }}</a>
+        </div>
+    @endisset
+</div>
+
 {{-- card about --}}
 <x-dropdown>
     <x-slot name="trigger">
@@ -5,7 +61,6 @@
     </x-slot>
 
     <x-slot name="content">
-
         <div class="space-y-2 italic">
             @isset($book->subtitle)
                 <p>
@@ -34,57 +89,3 @@
         </div>
     </x-slot>
 </x-dropdown>
-
-{{-- card body --}}
-<div class="px-3">
-    <div class="mx-auto text-center">
-
-        @isset($book->title)
-            <p class="py-2 text-xl italic font-bold">
-                {{ $book->title }}
-            </p>
-        @endisset
-        <img class="flex justify-center w-1/2 mx-auto my-2 border rounded-sm shadow-lg shadow-slate-600 border-slate-600"
-            src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
-
-        @isset($book->authors)
-            <p class="py-2 text-xl italic">
-                {{ $book->authors }}
-            </p>
-        @endisset
-    </div>
-
-    @isset($book->epub)
-        <div class="py-2 mb-2 text-xl text-center text-white underline">
-            <a href="{{ $book->epub }}">eBook {{ $book->price }}</a>
-        </div>
-    @endisset
-</div>
-
-{{-- Card header --}}
-@if (Request::is('list/*'))
-    <x-dropdown>
-        <x-slot name="trigger">
-            Book Options
-        </x-slot>
-        <x-slot name="content">
-            <div class="flex justify-center">
-                <x-book-delete :book="$book" />
-                <x-list-update :book="$book" />
-            </div>
-        </x-slot>
-    </x-dropdown>
-@else
-    <x-card-dropdown>
-        <x-slot name="trigger">
-            Add to List
-        </x-slot>
-        <x-slot name="content">
-            <div class="flex justify-center">
-                <x-list-add name="finished" :book="$book" />
-                <x-list-add name="current" :book="$book" />
-                <x-list-add name="wishlist" :book="$book" />
-            </div>
-        </x-slot>
-    </x-card-dropdown>
-@endif
