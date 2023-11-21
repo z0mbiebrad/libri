@@ -8,7 +8,7 @@
         </div>
     </div>
     <div x-show="open" style="display:none" x-transition
-        class="z-50 w-full px-4 py-2 overflow-auto rounded-md -mx-auto bg-slate-800 max-h-56">
+        class="z-50 w-full px-4 pb-2 overflow-auto rounded-md -mx-auto bg-slate-800 max-h-56">
         {{ $content }}
     </div>
 </div>
