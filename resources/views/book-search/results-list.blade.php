@@ -1,10 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight ">
-            {{ __('Book Search') }}
-        </h2>
-    </x-slot>
-
     @isset($books)
 
         <x-list-header :books="$books" />

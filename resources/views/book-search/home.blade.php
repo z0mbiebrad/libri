@@ -1,10 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight ">
-            {{ __('Book Search') }}
-        </h2>
-    </x-slot>
-
     <x-booksearch />
 
     <div class="w-5/6 h-full py-8 m-auto space-y-6 text-xl sm:text-2xl ">
