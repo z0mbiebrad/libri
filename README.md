@@ -1,1 +1,1 @@
-![image](https://github.com/z0mbiebrad/libri/assets/87036647/48042fae-f402-4953-930b-c9c069811fab)
+![image](https://github.com/user-attachments/assets/674a4dcd-82b1-472f-9225-90212af4a413)
