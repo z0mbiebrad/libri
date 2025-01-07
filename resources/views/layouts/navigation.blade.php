@@ -1,6 +1,6 @@
 <nav class="border-gray-200 py-6">
     <div class="container mx-auto flex flex-wrap items-center justify-between">
-        <a href="#" class="flex">
+        <a href="{{ route('booksearch') }}" class="flex">
             <x-application-logo class="block w-auto text-gray-800 fill-current h-9" />
             <span class="self-center text-lg font-semibold whitespace-nowrap">Librisearch</span>
         </a>
