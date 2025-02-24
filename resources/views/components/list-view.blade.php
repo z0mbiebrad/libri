@@ -37,7 +37,7 @@
                 {{ $book->title }}
             </p>
         @endisset
-        <img class="flex justify-center w-1/2 mx-auto my-2 border rounded-sm shadow-lg shadow-slate-600 border-slate-600"
+        <img class="flex justify-center w-1/2 mx-auto my-2 border rounded-xs shadow-lg shadow-slate-600 border-slate-600"
             src="{{ $book->thumbnail ?? url('/images/book.jpg') }}" alt="">
 
         @isset($book->authors)
