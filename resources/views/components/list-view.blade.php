@@ -11,7 +11,8 @@
             </div>
         </x-slot>
     </x-dropdown>
-@else
+@endif
+@auth
     <x-dropdown>
         <x-slot name="trigger">
             Add to List
@@ -24,8 +25,11 @@
             </div>
         </x-slot>
     </x-dropdown>
-@endif
-
+@else
+    <div class="flex justify-center">
+        <a href="{{ route('login') }}" class="text-sm italic text-center text-slate-600">Login to add to your lists</a>
+    </div>
+@endauth
 
 
 {{-- card body --}}
