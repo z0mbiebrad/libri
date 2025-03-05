@@ -1,42 +1,17 @@
 <x-app-layout>
     <x-booksearch />
 
-    <div class="w-5/6 h-full py-8 m-auto space-y-6 text-xl sm:text-2xl ">
-        @auth
-            <p>Welcome back, {{ Auth::user()->name }}!</p>
-            @isset($book)
-                <p>You are currently reading {{ $book->title }} by {{ $book->authors }}.</p>
-                <p>Would you like to see more books by this author? <a class="underline"
-                        href="{{ route('results.show', ['query' => 'inauthor', 'bookSearch' => $book->authors]) }}">Click
-                        Here</a>
-                </p>
-            @endisset
-            <p>Happy reading!</p>
-        @else
-            <h3>Welcome to Libri Search!</h3>
-            <p>
-                Libri Search is a user-friendly book search tool. Discover, organize, and curate your reading journey
-                effortlessly with three distinct lists: Finished, Current, and Wishlist.
+    <article
+        class="group flex rounded-sm max-w-2xl flex-col overflow-hidden border border-neutral-300 bg-neutral-50 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 mx-auto w-full mt-8">
+        <div class="flex flex-col gap-4 p-6">
+            <span class="text-sm font-medium">Librisearch</span>
+            <h3 class="text-balance text-xl lg:text-2xl font-bold text-neutral-900 dark:text-white"
+                aria-describedby="featureDescription">
+                Happy Reading!
+            </h3>
+            <p id="featureDescription" class="text-pretty text-sm">
+                Libri Search is a user-friendly book search tool. Discover, organize, and curate your reading journey.
             </p>
-            <p>
-                Just type in the full or partial name of a book, and you will be presented with a list of the
-                top
-                ten closest matches. Found what you're looking for? A simple selection lets you add it seamlessly to
-                your
-                preferred list.
-            </p>
-            <p>
-                Although the search feature is available to everyone, unlocking the complete capabilities of Libri Search's
-                Book Lists involves a brief account creation and login.
-            </p>
-            <p>
-                Creating an account enables you to access more
-                refined search results. You have the option to narrow down your searches by specifying a title or author,
-                and adding books to your lists.
-            </p>
-            <p>
-                Happy reading!
-            </p>
-        @endauth
-    </div>
+        </div>
+    </article>
 </x-app-layout>

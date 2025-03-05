@@ -27,12 +27,12 @@ class BookSearchController extends Controller
     {
         $key = config('services.google_api');
 
-        $query = $request->input('searchBy') ? $request->input('searchBy') . ':' : '';
+        // $query = $request->input('searchBy') ? $request->input('searchBy') . ':' : '';
 
         $book = $request->input('bookSearch');
 
         // dd('https://www.googleapis.com/books/v1/volumes?q=' . $query . $book . $ebook . '&key=' . $key);
-        $bookResponse = Http::get('https://www.googleapis.com/books/v1/volumes?q=' . $query . $book . '&filter=ebooks' . '&key=' . $key);
+        $bookResponse = Http::get('https://www.googleapis.com/books/v1/volumes?q=' . $book . '&key=' . $key);
         $google_books = json_decode($bookResponse);
         // dd($google_books);
 

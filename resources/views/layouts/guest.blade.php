@@ -21,7 +21,7 @@
         @include('layouts.navigation')
 
         <div
-            class="w-11/12 px-6 py-4 mx-auto mt-6 overflow-hidden border rounded-lg shadow-md border-slate-600 shadow-slate-600 bg-slate-900 sm:w-2/3 md:w-1/3">
+            class="px-6 py-4 mx-auto mt-6 overflow-hidden border rounded-lg shadow-md border-zinc-600 shadow-zinc-600 bg-zinc-900 sm:w-2/3 md:w-1/3">
             {{ $slot }}
         </div>
     </div>
