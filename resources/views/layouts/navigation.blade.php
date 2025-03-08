@@ -1,4 +1,4 @@
-<nav x-data="{ mobileMenuIsOpen: false }" x-on:click.away="mobileMenuIsOpen = false" class="flex items-center justify-between dark:bg-zinc-900 border-b border-neutral-300 px-6 py-4 dark:border-neutral-700" aria-label="penguin ui menu">
+<nav x-data="{ mobileMenuIsOpen: false }" x-on:click.away="mobileMenuIsOpen = false" class="flex items-center justify-between bg-zinc-100 dark:bg-zinc-900 border-b border-neutral-300 px-6 py-4 dark:border-neutral-700" aria-label="penguin ui menu">
 	<!-- Brand Logo -->
 	<a href="/" class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
 		<span>Libri<span class="text-black dark:text-zinc-400">search</span></span>
@@ -21,38 +21,14 @@
             </li>
             <li>
                 <a 
-                    href="{{ route('list.index', ['list' => 'finished']) }}" 
+                    href="{{ route('list.index', ['list' => 'current']) }}"
                     @class([
                         'hover:text-black focus:outline-hidden focus:underline underline-offset-2 dark:hover:text-white',
-                        'font-bold text-black dark:text-white' => Request::is('list/finished'),
-                        'font-medium text-neutral-600 dark:text-neutral-300' => !Request::is('list/finished'),
+                        'font-bold text-black dark:text-white' => request()->routeIs('list.*'),
+                        'font-medium text-neutral-600 dark:text-neutral-300' => !request()->routeIs('list.*'),
                         ])
                 >
-                    Finished
-                </a>
-            </li>
-            <li>
-                <a 
-                    href="{{ route('list.index', ['list' => 'current']) }}" 
-                    @class([
-                        'hover:text-black focus:outline-hidden focus:underline underline-offset-2 dark:hover:text-white',
-                        'font-bold text-black dark:text-white' => Request::is('list/current'),  
-                        'font-medium text-neutral-600 dark:text-neutral-300' => !Request::is('list/current'), 
-                        ])
-                >
-                    Current
-                </a>
-            </li>
-            <li>
-                <a 
-                    href="{{ route('list.index', ['list' => 'wishlist']) }}" 
-                    @class([
-                        'hover:text-black focus:outline-hidden focus:underline underline-offset-2 dark:hover:text-white',
-                        'font-bold text-black dark:text-white' => Request::is('list/wishlist'),
-                        'font-medium text-neutral-600 dark:text-neutral-300' => !Request::is('list/wishlist'),
-                        ])
-                >
-                    Wishlist
+                    Lists
                 </a>
             </li>
             <li>
@@ -139,9 +115,7 @@
             
         @endauth
 		<li class="py-4"><a href="{{ route('booksearch') }}" class="w-full text-lg font-medium text-neutral-600 focus:underline dark:text-neutral-300" >Search</a></li>
-		<li class="py-4"><a href="{{ route('list.index', ['list' => 'finished']) }}" class="w-full text-lg font-medium text-neutral-600 focus:underline dark:text-neutral-300">Finished</a></li>
-		<li class="py-4"><a href="{{ route('list.index', ['list' => 'current']) }}" class="w-full text-lg font-medium text-neutral-600 focus:underline dark:text-neutral-300">Current</a></li>
-		<li class="py-4"><a href="{{ route('list.index', ['list' => 'wishlist']) }}" class="w-full text-lg font-medium text-neutral-600 focus:underline dark:text-neutral-300">Wishlist</a></li>
+		<li class="py-4"><a href="{{ route('list.index', ['list' => 'current']) }}" class="w-full text-lg font-medium text-neutral-600 focus:underline dark:text-neutral-300">Lists</a></li>
 		<li class="py-4"><a href="{{ route('profile.edit') }}" class="w-full text-lg font-medium text-neutral-600 focus:underline dark:text-neutral-300">Profile</a></li>
         <li>
             <form method="POST" action="{{ route('logout') }}">

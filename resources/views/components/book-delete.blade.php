@@ -1,6 +1,6 @@
-<form action="{{ route('book.destroy', $book) }}" method="post" class="p-2">
+<form action="{{ route('book.destroy', $book) }}" method="post">
     @method('delete')
     @csrf
-    <button type="submit" value="delete" class="mx-auto italic border-b-2">Delete
+    <button type="submit" value="delete" class="mx-auto italic">Delete
         Book</button>
 </form>
