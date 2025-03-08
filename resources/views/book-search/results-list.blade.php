@@ -11,7 +11,7 @@
                         class="h-full mx-auto my-4 p-5 md:p-10 md:w-full object-contain transition duration-700 ease-out sm:group-hover:scale-105" />
                 </div>
                 <!-- body -->
-                <div class="flex flex-col col-span-4 p-6 sm:p-10 my-4">
+                <div class="flex flex-col col-span-4 p-6 sm:p-10 my-4 justify-center">
                     <div class="space-y-1">
                     <h3 class="text-balance mt-4 text-xl font-bold text-neutral-900 lg:text-2xl dark:text-white"
                         aria-describedby="articleDescription">
