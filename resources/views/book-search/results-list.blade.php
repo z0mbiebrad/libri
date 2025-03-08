@@ -50,7 +50,7 @@
                                 </svg>
                             </a>
                         @endisset
-                        <div class="absolute top-0 right-0">
+                        <div class="absolute top-0 right-0 w-full flex justify-end">
                             <x-book-options :book="$book" />
                         </div>
                     </div>
