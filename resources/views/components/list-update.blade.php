@@ -2,7 +2,7 @@
     $book->list === 'current' ? ($list = 'finished') : ($list = 'current');
 @endphp
 
-<form action="{{ route('book.update', $book) }}" method="post" class="p-2">
+<form action="{{ route('book.update', $book) }}" method="post">
     @csrf
-    <button type="submit" class="mx-auto italic border-b-2">Move to {{ ucwords($list) }}</button>
+    <button type="submit" class="mx-auto italic">Move to {{ ucwords($list) }}</button>
 </form>

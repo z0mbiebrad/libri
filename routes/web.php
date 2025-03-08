@@ -20,7 +20,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::delete('book/{book}', [UserBookController::class, 'destroy'])->name('book.destroy');
 
-    Route::post('book/{book}', [UserBookController::class, 'update'])->name('book.update');
+    Route::post('book/{book}/{list}', [UserBookController::class, 'update'])->name('book.update');
 
     // **PROFILE ROUTES**
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -60,14 +60,12 @@ class UserBookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserBook $book)
+    public function update(UserBook $book, $list)
     {
         $oldList = $book->list;
-
-        $book->list === 'current' ? $list = 'finished' : $list = 'current';
-
+        
         if ($book::list($book, $list)->exists()) {
-            return redirect()->route('book.show', ['book' => $book])->with('status', 'This book is already in your ' . $list . ' reading list.');
+            return redirect()->back()->with('status', 'This book is already in your ' . $list . ' reading list.');
         };
 
         $book->list = $list;
